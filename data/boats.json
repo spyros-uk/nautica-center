@@ -1,0 +1,1202 @@
+{
+  "categories": [
+    {
+      "id": "inflatable",
+      "name": "Φουσκωτά Σκάφη",
+      "nameEn": "Inflatable Boats",
+      "description": "RIB και φουσκωτά σκάφη υψηλής ποιότητας"
+    },
+    {
+      "id": "fiberglass",
+      "name": "Πολυεστερικά Σκάφη",
+      "nameEn": "Fiberglass Boats",
+      "description": "Σκάφη από πολυεστέρα για κάθε χρήση"
+    },
+    {
+      "id": "jetski",
+      "name": "Jet Ski",
+      "nameEn": "Personal Watercraft",
+      "description": "Jet Ski για αδρεναλίνη στη θάλασσα"
+    },
+    {
+      "id": "engines",
+      "name": "Εξωλέμβιες Μηχανές",
+      "nameEn": "Outboard Engines",
+      "description": "Μηχανές από τις κορυφαίες μάρκες"
+    }
+  ],
+  "brands": [
+    {
+      "id": "zar-formenti",
+      "name": "ZAR Formenti",
+      "logo": "/images/brands/zar.png",
+      "category": "inflatable",
+      "country": "Italy",
+      "description": "Ιταλικά RIB σκάφη υψηλών επιδόσεων με μοναδική ποιότητα κατασκευής. Η ZAR Formenti είναι συνώνυμο της αριστείας στα φουσκωτά σκάφη.",
+      "website": "https://www.zar-formenti.it/",
+      "featured": true,
+      "models": [
+        {
+          "id": "zar-43",
+          "name": "ZAR 43",
+          "image": "/images/boats/zar-43.jpg",
+          "specs": {
+            "length": "4.30m",
+            "beam": "1.95m",
+            "weight": "180kg",
+            "passengers": 5,
+            "maxPower": "40HP",
+            "tubes": "42cm",
+            "category": "CE C"
+          },
+          "features": ["Αυτοκένωση", "Console κεντρική", "Inox καταπέλτης"],
+          "description": "Το ZAR 43 είναι ένα compact και ευέλικτο RIB ιδανικό για ημερήσιες εκδρομές.",
+          "isOffer": true,
+          "isAvailable": true
+        },
+        {
+          "id": "zar-47",
+          "name": "ZAR 47",
+          "image": "/images/boats/zar-47.jpg",
+          "specs": {
+            "length": "4.70m",
+            "beam": "2.10m",
+            "weight": "230kg",
+            "passengers": 6,
+            "maxPower": "60HP",
+            "tubes": "46cm",
+            "category": "CE C"
+          },
+          "features": ["Αυτοκένωση", "Sundeck πλώρης", "Console κεντρική"],
+          "description": "Ιδανικό για οικογένειες που αναζητούν άνεση και απόδοση.",
+          "isAvailable": true
+        },
+        {
+          "id": "zar-53",
+          "name": "ZAR 53",
+          "image": "/images/boats/zar-53.jpg",
+          "specs": {
+            "length": "5.30m",
+            "beam": "2.20m",
+            "weight": "320kg",
+            "passengers": 8,
+            "maxPower": "100HP",
+            "tubes": "50cm",
+            "category": "CE C"
+          },
+          "features": ["Sundeck πλώρης", "Τιμόνι με καθίσματα", "Ντους"],
+          "description": "Το ZAR 53 συνδυάζει χώρο, άνεση και κορυφαίες επιδόσεις."
+        },
+        {
+          "id": "zar-57",
+          "name": "ZAR 57",
+          "image": "/images/boats/zar-57.jpg",
+          "specs": {
+            "length": "5.70m",
+            "beam": "2.45m",
+            "weight": "420kg",
+            "passengers": 10,
+            "maxPower": "150HP",
+            "tubes": "52cm",
+            "category": "CE C"
+          },
+          "features": ["T-Top προαιρετικό", "WC χώρος", "Sundeck"],
+          "description": "Πολυτελές RIB για απαιτητικούς ιδιοκτήτες.",
+          "isUsed": true
+        },
+        {
+          "id": "zar-61",
+          "name": "ZAR 61",
+          "image": "/images/boats/zar-61.jpg",
+          "specs": {
+            "length": "6.10m",
+            "beam": "2.55m",
+            "weight": "520kg",
+            "passengers": 12,
+            "maxPower": "200HP",
+            "tubes": "55cm",
+            "category": "CE B"
+          },
+          "features": ["Καμπίνα", "WC", "T-Top", "Sundeck πλώρης και πρύμνης"],
+          "description": "Το κορυφαίο μοντέλο της σειράς με πλήρη εξοπλισμό."
+        },
+        {
+          "id": "zar-65",
+          "name": "ZAR 65",
+          "image": "/images/boats/zar-65.jpg",
+          "specs": {
+            "length": "6.50m",
+            "beam": "2.68m",
+            "weight": "680kg",
+            "passengers": 14,
+            "maxPower": "250HP",
+            "tubes": "58cm",
+            "category": "CE B"
+          },
+          "features": ["Μεγάλη καμπίνα", "WC", "T-Top", "Twin engine ready"],
+          "description": "Για όσους θέλουν το καλύτερο - απόλυτη πολυτέλεια στη θάλασσα."
+        }
+      ]
+    },
+    {
+      "id": "zar-mini",
+      "name": "ZAR Mini",
+      "logo": "/images/brands/zar-mini.png",
+      "category": "inflatable",
+      "country": "Italy",
+      "description": "Μικρά και πρακτικά φουσκωτά σκάφη ιδανικά ως βοηθητικά ή για μικρές αποδράσεις.",
+      "website": "https://www.zar-formenti.it/",
+      "featured": false,
+      "models": [
+        {
+          "id": "zar-mini-rib-10",
+          "name": "ZAR Mini RIB 10",
+          "image": "/images/boats/zar-mini-10.jpg",
+          "specs": {
+            "length": "3.10m",
+            "beam": "1.55m",
+            "weight": "65kg",
+            "passengers": 3,
+            "maxPower": "15HP",
+            "tubes": "38cm",
+            "category": "CE D"
+          },
+          "features": ["Ultra-light", "Εύκολη μεταφορά", "Ιδανικό για tender"],
+          "description": "Το μικρότερο μοντέλο, ιδανικό ως βοηθητικό σκάφος."
+        },
+        {
+          "id": "zar-mini-rib-12",
+          "name": "ZAR Mini RIB 12",
+          "image": "/images/boats/zar-mini-12.jpg",
+          "specs": {
+            "length": "3.60m",
+            "beam": "1.70m",
+            "weight": "95kg",
+            "passengers": 4,
+            "maxPower": "25HP",
+            "tubes": "40cm",
+            "category": "CE D"
+          },
+          "features": ["Compact", "Εύκολη φόρτωση σε τρέιλερ"],
+          "description": "Ιδανικό για ψάρεμα και κοντινές εκδρομές."
+        },
+        {
+          "id": "zar-mini-rib-14",
+          "name": "ZAR Mini RIB 14",
+          "image": "/images/boats/zar-mini-14.jpg",
+          "specs": {
+            "length": "4.20m",
+            "beam": "1.85m",
+            "weight": "140kg",
+            "passengers": 5,
+            "maxPower": "40HP",
+            "tubes": "42cm",
+            "category": "CE C"
+          },
+          "features": ["Sundeck", "Console", "Αποθηκευτικοί χώροι"],
+          "description": "Το μεγαλύτερο της σειράς Mini με πλήρεις δυνατότητες."
+        }
+      ]
+    },
+    {
+      "id": "mv-marine",
+      "name": "MV Marine",
+      "logo": "/images/brands/mv-marine.png",
+      "category": "inflatable",
+      "country": "Italy",
+      "description": "Ιταλικά RIB με έμφαση στο design και την καινοτομία. Μοναδική αισθητική και κορυφαία κατασκευή.",
+      "website": "https://www.mvmarine.it/",
+      "featured": true,
+      "models": [
+        {
+          "id": "mv-500",
+          "name": "MV 500",
+          "image": "/images/boats/mv-500.jpg",
+          "specs": {
+            "length": "5.00m",
+            "beam": "2.15m",
+            "weight": "280kg",
+            "passengers": 7,
+            "maxPower": "80HP",
+            "tubes": "48cm",
+            "category": "CE C"
+          },
+          "features": ["Italian design", "Console εργονομική", "Sundeck"],
+          "description": "Κομψό και αποδοτικό RIB για απαιτητικούς.",
+          "isOffer": true
+        },
+        {
+          "id": "mv-550",
+          "name": "MV 550",
+          "image": "/images/boats/mv-550.jpg",
+          "specs": {
+            "length": "5.50m",
+            "beam": "2.30m",
+            "weight": "360kg",
+            "passengers": 9,
+            "maxPower": "115HP",
+            "tubes": "50cm",
+            "category": "CE C"
+          },
+          "features": ["Premium materials", "Sundeck πλώρης", "Ντουζιέρα"],
+          "description": "Η χρυσή τομή μεταξύ μεγέθους και απόδοσης."
+        },
+        {
+          "id": "mv-650",
+          "name": "MV 650",
+          "image": "/images/boats/mv-650.jpg",
+          "specs": {
+            "length": "6.50m",
+            "beam": "2.60m",
+            "weight": "550kg",
+            "passengers": 12,
+            "maxPower": "200HP",
+            "tubes": "55cm",
+            "category": "CE B"
+          },
+          "features": ["T-Top", "Καμπίνα", "WC", "Premium εξοπλισμός"],
+          "description": "Το flagship της MV Marine με απαράμιλλη πολυτέλεια."
+        },
+        {
+          "id": "mv-700",
+          "name": "MV 700",
+          "image": "/images/boats/mv-700.jpg",
+          "specs": {
+            "length": "7.00m",
+            "beam": "2.75m",
+            "weight": "720kg",
+            "passengers": 14,
+            "maxPower": "300HP",
+            "tubes": "58cm",
+            "category": "CE B"
+          },
+          "features": ["Twin engines", "Πλήρης καμπίνα", "Luxury interior"],
+          "description": "Απόλυτη πολυτέλεια για μεγάλα ταξίδια."
+        }
+      ]
+    },
+    {
+      "id": "yam",
+      "name": "YAM",
+      "logo": "/images/brands/yam.png",
+      "category": "inflatable",
+      "country": "France",
+      "description": "Γαλλικά φουσκωτά σκάφη με εξαιρετική σχέση ποιότητας-τιμής.",
+      "website": "https://www.yam-international.com/",
+      "featured": false,
+      "models": [
+        {
+          "id": "yam-310s",
+          "name": "YAM 310S",
+          "image": "/images/boats/yam-310s.jpg",
+          "specs": {
+            "length": "3.10m",
+            "beam": "1.60m",
+            "weight": "42kg",
+            "passengers": 4,
+            "maxPower": "15HP",
+            "tubes": "40cm",
+            "category": "CE D"
+          },
+          "features": ["Αναδιπλούμενο", "Ελαφρύ", "Εύκολη αποθήκευση"],
+          "description": "Ιδανικό για tender ή ψάρεμα."
+        },
+        {
+          "id": "yam-380s",
+          "name": "YAM 380S",
+          "image": "/images/boats/yam-380s.jpg",
+          "specs": {
+            "length": "3.80m",
+            "beam": "1.78m",
+            "weight": "68kg",
+            "passengers": 5,
+            "maxPower": "25HP",
+            "tubes": "42cm",
+            "category": "CE C"
+          },
+          "features": ["Αλουμινένιο πάτωμα", "Στιβαρή κατασκευή"],
+          "description": "Σταθερό και αξιόπιστο για κάθε χρήση."
+        }
+      ]
+    },
+    {
+      "id": "quicksilver",
+      "name": "Quicksilver",
+      "logo": "/images/brands/quicksilver.png",
+      "category": "fiberglass",
+      "country": "Belgium",
+      "description": "Παγκόσμιος ηγέτης στα σκάφη αναψυχής με πλήρη γκάμα μοντέλων για κάθε ανάγκη.",
+      "website": "https://www.quicksilver-boats.com/",
+      "featured": true,
+      "models": [
+        {
+          "id": "activ-455-cabin",
+          "name": "Activ 455 Cabin",
+          "image": "/images/boats/activ-455.jpg",
+          "specs": {
+            "length": "4.50m",
+            "beam": "1.90m",
+            "weight": "450kg",
+            "passengers": 4,
+            "maxPower": "60HP",
+            "fuelCapacity": "45L",
+            "category": "CE C"
+          },
+          "features": ["Μικρή καμπίνα", "Cuddy cabin", "Bimini top"],
+          "description": "Compact cabin boat για ημερήσιες εξορμήσεις.",
+          "isAvailable": true,
+          "isOffer": true
+        },
+        {
+          "id": "activ-505-cabin",
+          "name": "Activ 505 Cabin",
+          "image": "/images/boats/activ-505.jpg",
+          "specs": {
+            "length": "5.15m",
+            "beam": "2.07m",
+            "weight": "650kg",
+            "passengers": 5,
+            "maxPower": "100HP",
+            "fuelCapacity": "80L",
+            "category": "CE C"
+          },
+          "features": ["V-berth", "Τέντα", "Χώρος αποσκευών"],
+          "description": "Πολυχρηστικό cabin boat με άνετη καμπίνα."
+        },
+        {
+          "id": "activ-555-cabin",
+          "name": "Activ 555 Cabin",
+          "image": "/images/boats/activ-555.jpg",
+          "specs": {
+            "length": "5.50m",
+            "beam": "2.22m",
+            "weight": "850kg",
+            "passengers": 6,
+            "maxPower": "130HP",
+            "fuelCapacity": "100L",
+            "category": "CE C"
+          },
+          "features": ["Standing height cabin", "WC χώρος", "Sundeck"],
+          "description": "Ιδανικό για weekends στη θάλασσα."
+        },
+        {
+          "id": "activ-605-cruiser",
+          "name": "Activ 605 Cruiser",
+          "image": "/images/boats/activ-605.jpg",
+          "specs": {
+            "length": "5.99m",
+            "beam": "2.48m",
+            "weight": "1150kg",
+            "passengers": 7,
+            "maxPower": "175HP",
+            "fuelCapacity": "150L",
+            "category": "CE B"
+          },
+          "features": ["Full cabin", "WC", "Galley", "Berths for 2"],
+          "description": "Cruiser για μεγαλύτερα ταξίδια με άνεση.",
+          "isUsed": true
+        },
+        {
+          "id": "activ-675-cruiser",
+          "name": "Activ 675 Cruiser",
+          "image": "/images/boats/activ-675.jpg",
+          "specs": {
+            "length": "6.63m",
+            "beam": "2.54m",
+            "weight": "1450kg",
+            "passengers": 8,
+            "maxPower": "225HP",
+            "fuelCapacity": "200L",
+            "category": "CE B"
+          },
+          "features": ["Full cabin", "Enclosed head", "Galley", "Berths for 4"],
+          "description": "Το κορυφαίο cruiser της σειράς Activ."
+        },
+        {
+          "id": "activ-505-open",
+          "name": "Activ 505 Open",
+          "image": "/images/boats/activ-505-open.jpg",
+          "specs": {
+            "length": "5.15m",
+            "beam": "2.07m",
+            "weight": "520kg",
+            "passengers": 6,
+            "maxPower": "100HP",
+            "fuelCapacity": "80L",
+            "category": "CE C"
+          },
+          "features": ["Open deck", "Sundeck πλώρης", "Σκιάδιο"],
+          "description": "Ανοιχτό σκάφος για water sports και βόλτες."
+        },
+        {
+          "id": "activ-555-open",
+          "name": "Activ 555 Open",
+          "image": "/images/boats/activ-555-open.jpg",
+          "specs": {
+            "length": "5.50m",
+            "beam": "2.22m",
+            "weight": "680kg",
+            "passengers": 7,
+            "maxPower": "130HP",
+            "fuelCapacity": "100L",
+            "category": "CE C"
+          },
+          "features": ["Μεγάλο sundeck", "T-Top option", "Ski pylon"],
+          "description": "Ευρύχωρο open για οικογένειες."
+        }
+      ]
+    },
+    {
+      "id": "marinello",
+      "name": "Marinello",
+      "logo": "/images/brands/marinello.png",
+      "category": "fiberglass",
+      "country": "Italy",
+      "description": "Ιταλικά σκάφη με κλασική ομορφιά και σύγχρονη τεχνολογία.",
+      "website": "https://www.marinello.it/",
+      "featured": false,
+      "models": [
+        {
+          "id": "eden-18",
+          "name": "Eden 18",
+          "image": "/images/boats/eden-18.jpg",
+          "specs": {
+            "length": "5.50m",
+            "beam": "2.20m",
+            "weight": "620kg",
+            "passengers": 6,
+            "maxPower": "115HP",
+            "category": "CE C"
+          },
+          "features": ["Italian design", "Open bow", "Sundeck"],
+          "description": "Κομψό open με ιταλικό design."
+        },
+        {
+          "id": "eden-20",
+          "name": "Eden 20",
+          "image": "/images/boats/eden-20.jpg",
+          "specs": {
+            "length": "6.00m",
+            "beam": "2.35m",
+            "weight": "780kg",
+            "passengers": 7,
+            "maxPower": "150HP",
+            "category": "CE C"
+          },
+          "features": ["Walk-around", "Fishing ready", "Bimini"],
+          "description": "Πολυχρηστικό σκάφος για ψάρεμα και βόλτα."
+        },
+        {
+          "id": "eden-22",
+          "name": "Eden 22",
+          "image": "/images/boats/eden-22.jpg",
+          "specs": {
+            "length": "6.70m",
+            "beam": "2.48m",
+            "weight": "950kg",
+            "passengers": 8,
+            "maxPower": "200HP",
+            "category": "CE B"
+          },
+          "features": ["T-Top", "Cabin", "Premium finish"],
+          "description": "Το κορυφαίο Eden με πλήρη εξοπλισμό."
+        }
+      ]
+    },
+    {
+      "id": "eolo",
+      "name": "Eolo",
+      "logo": "/images/brands/eolo.png",
+      "category": "fiberglass",
+      "country": "Italy",
+      "description": "Ιταλικά cabin boats γνωστά για την ποιότητα κατασκευής και το κλασικό design.",
+      "website": "https://www.eolo.it/",
+      "featured": false,
+      "models": [
+        {
+          "id": "eolo-530",
+          "name": "Eolo 530",
+          "image": "/images/boats/eolo-530.jpg",
+          "specs": {
+            "length": "5.30m",
+            "beam": "2.20m",
+            "weight": "700kg",
+            "passengers": 6,
+            "maxPower": "100HP",
+            "category": "CE C"
+          },
+          "features": ["Cabin", "Italian craftsmanship", "Classic lines"],
+          "description": "Κλασικό cabin boat με ιταλική φινέτσα."
+        },
+        {
+          "id": "eolo-590",
+          "name": "Eolo 590",
+          "image": "/images/boats/eolo-590.jpg",
+          "specs": {
+            "length": "5.90m",
+            "beam": "2.35m",
+            "weight": "950kg",
+            "passengers": 7,
+            "maxPower": "150HP",
+            "category": "CE C"
+          },
+          "features": ["Enclosed cabin", "WC ready", "Sundeck"],
+          "description": "Η ιδανική επιλογή για weekends."
+        },
+        {
+          "id": "eolo-650",
+          "name": "Eolo 650",
+          "image": "/images/boats/eolo-650.jpg",
+          "specs": {
+            "length": "6.50m",
+            "beam": "2.50m",
+            "weight": "1200kg",
+            "passengers": 8,
+            "maxPower": "200HP",
+            "category": "CE B"
+          },
+          "features": ["Full cabin", "WC", "Galley", "4 berths"],
+          "description": "Day cruiser με πλήρεις ανέσεις."
+        }
+      ]
+    },
+    {
+      "id": "bma",
+      "name": "BMA",
+      "logo": "/images/brands/bma.png",
+      "category": "fiberglass",
+      "country": "Italy",
+      "description": "Ιταλικά σκάφη με έμφαση στη λειτουργικότητα και την ανθεκτικότητα.",
+      "website": "https://www.bmaboats.it/",
+      "featured": false,
+      "models": [
+        {
+          "id": "bma-x199",
+          "name": "BMA X199",
+          "image": "/images/boats/bma-x199.jpg",
+          "specs": {
+            "length": "5.98m",
+            "beam": "2.40m",
+            "weight": "720kg",
+            "passengers": 7,
+            "maxPower": "150HP",
+            "category": "CE C"
+          },
+          "features": ["Walk-around", "Fishing ready", "Large cockpit"],
+          "description": "Ιδανικό για ψάρεμα με μεγάλο κατάστρωμα."
+        },
+        {
+          "id": "bma-x222",
+          "name": "BMA X222",
+          "image": "/images/boats/bma-x222.jpg",
+          "specs": {
+            "length": "6.85m",
+            "beam": "2.55m",
+            "weight": "1050kg",
+            "passengers": 9,
+            "maxPower": "250HP",
+            "category": "CE B"
+          },
+          "features": ["T-Top", "Rod holders", "Live well"],
+          "description": "Professional fishing boat με premium εξοπλισμό."
+        }
+      ]
+    },
+    {
+      "id": "olympic",
+      "name": "Olympic",
+      "logo": "/images/brands/olympic.png",
+      "category": "fiberglass",
+      "country": "Greece",
+      "description": "Ελληνικά σκάφη με εξαιρετική σχέση ποιότητας-τιμής.",
+      "website": "",
+      "featured": false,
+      "models": [
+        {
+          "id": "olympic-490cc",
+          "name": "Olympic 490 CC",
+          "image": "/images/boats/olympic-490cc.jpg",
+          "specs": {
+            "length": "4.90m",
+            "beam": "2.00m",
+            "weight": "420kg",
+            "passengers": 5,
+            "maxPower": "70HP",
+            "category": "CE C"
+          },
+          "features": ["Center console", "Greek built", "Value for money"],
+          "description": "Ελληνικής κατασκευής center console.",
+          "isAvailable": true
+        },
+        {
+          "id": "olympic-520br",
+          "name": "Olympic 520 BR",
+          "image": "/images/boats/olympic-520br.jpg",
+          "specs": {
+            "length": "5.20m",
+            "beam": "2.10m",
+            "weight": "480kg",
+            "passengers": 6,
+            "maxPower": "90HP",
+            "category": "CE C"
+          },
+          "features": ["Bow rider", "Sundeck", "Family friendly"],
+          "description": "Bow rider για οικογενειακές βόλτες.",
+          "isOffer": true
+        }
+      ]
+    },
+    {
+      "id": "yamaha-jetski",
+      "name": "Yamaha WaveRunner",
+      "logo": "/images/brands/yamaha.png",
+      "category": "jetski",
+      "country": "Japan",
+      "description": "Τα κορυφαία Jet Ski της αγοράς με αξεπέραστη αξιοπιστία και απόδοση.",
+      "website": "https://www.yamaha-motor.eu/",
+      "featured": true,
+      "models": [
+        {
+          "id": "yamaha-ex",
+          "name": "Yamaha EX",
+          "image": "/images/jetski/yamaha-ex.jpg",
+          "specs": {
+            "length": "3.14m",
+            "beam": "1.15m",
+            "weight": "236kg",
+            "passengers": 3,
+            "maxPower": "100HP",
+            "engine": "TR-1 1049cc"
+          },
+          "features": ["Entry level", "Lightweight", "Fuel efficient"],
+          "description": "Η ιδανική είσοδος στον κόσμο των Jet Ski.",
+          "isAvailable": true
+        },
+        {
+          "id": "yamaha-vx",
+          "name": "Yamaha VX",
+          "image": "/images/jetski/yamaha-vx.jpg",
+          "specs": {
+            "length": "3.35m",
+            "beam": "1.22m",
+            "weight": "297kg",
+            "passengers": 3,
+            "maxPower": "125HP",
+            "engine": "TR-1 HO 1049cc"
+          },
+          "features": ["RiDE system", "Cruise assist", "No wake mode"],
+          "description": "Κορυφαία άνεση και τεχνολογία.",
+          "isOffer": true
+        },
+        {
+          "id": "yamaha-fx-ho",
+          "name": "Yamaha FX HO",
+          "image": "/images/jetski/yamaha-fx-ho.jpg",
+          "specs": {
+            "length": "3.56m",
+            "beam": "1.27m",
+            "weight": "361kg",
+            "passengers": 3,
+            "maxPower": "180HP",
+            "engine": "1.8L High Output"
+          },
+          "features": ["Luxury seat", "Touchscreen display", "GPS"],
+          "description": "Πολυτέλεια και απόδοση σε απόλυτη αρμονία."
+        },
+        {
+          "id": "yamaha-gp1800r",
+          "name": "Yamaha GP1800R SVHO",
+          "image": "/images/jetski/yamaha-gp1800r.jpg",
+          "specs": {
+            "length": "3.35m",
+            "beam": "1.22m",
+            "weight": "330kg",
+            "passengers": 3,
+            "maxPower": "250HP",
+            "engine": "1.8L Supercharged"
+          },
+          "features": ["Race ready", "Supercharged", "Competition hull"],
+          "description": "Το απόλυτο performance Jet Ski για αγώνες.",
+          "isAvailable": true
+        },
+        {
+          "id": "yamaha-fx-cruiser",
+          "name": "Yamaha FX Cruiser SVHO",
+          "image": "/images/jetski/yamaha-fx-cruiser.jpg",
+          "specs": {
+            "length": "3.56m",
+            "beam": "1.27m",
+            "weight": "386kg",
+            "passengers": 3,
+            "maxPower": "250HP",
+            "engine": "1.8L Supercharged"
+          },
+          "features": ["Cruiser seat", "Audio system", "Extended range"],
+          "description": "Το κορυφαίο touring Jet Ski."
+        }
+      ]
+    },
+    {
+      "id": "mercury",
+      "name": "Mercury",
+      "logo": "/images/brands/mercury.png",
+      "category": "engines",
+      "country": "USA",
+      "description": "Η νούμερο ένα μάρκα εξωλέμβιων μηχανών παγκοσμίως. Αξιοπιστία, απόδοση, καινοτομία.",
+      "website": "https://www.mercurymarine.com/",
+      "featured": true,
+      "models": [
+        {
+          "id": "mercury-fourstroke-15",
+          "name": "Mercury FourStroke 15HP",
+          "image": "/images/engines/mercury-15.jpg",
+          "specs": {
+            "power": "15HP",
+            "cylinders": "2",
+            "displacement": "333cc",
+            "fuelSystem": "EFI",
+            "weight": "51kg",
+            "shaft": "L/XL"
+          },
+          "features": ["4-stroke", "Portable", "Easy start"],
+          "description": "Compact και αξιόπιστη για μικρά σκάφη."
+        },
+        {
+          "id": "mercury-fourstroke-40",
+          "name": "Mercury FourStroke 40HP",
+          "image": "/images/engines/mercury-40.jpg",
+          "specs": {
+            "power": "40HP",
+            "cylinders": "3",
+            "displacement": "747cc",
+            "fuelSystem": "EFI",
+            "weight": "99kg",
+            "shaft": "L/XL"
+          },
+          "features": ["Command Thrust", "Power Trim", "Quiet operation"],
+          "description": "Η δημοφιλέστερη επιλο��ή για RIBs."
+        },
+        {
+          "id": "mercury-fourstroke-60",
+          "name": "Mercury FourStroke 60HP",
+          "image": "/images/engines/mercury-60.jpg",
+          "specs": {
+            "power": "60HP",
+            "cylinders": "4",
+            "displacement": "995cc",
+            "fuelSystem": "EFI",
+            "weight": "111kg",
+            "shaft": "L/XL"
+          },
+          "features": ["Big Tiller compatible", "SmartCraft ready"],
+          "description": "Ισχυρή και οικονομική για μεσαία σκάφη."
+        },
+        {
+          "id": "mercury-fourstroke-100",
+          "name": "Mercury FourStroke 100HP",
+          "image": "/images/engines/mercury-100.jpg",
+          "specs": {
+            "power": "100HP",
+            "cylinders": "4",
+            "displacement": "2100cc",
+            "fuelSystem": "EFI",
+            "weight": "163kg",
+            "shaft": "L/XL"
+          },
+          "features": ["SmartCraft", "Advanced Range Optimization"],
+          "description": "Κορυφαία απόδοση για cabin boats."
+        },
+        {
+          "id": "mercury-fourstroke-150",
+          "name": "Mercury FourStroke 150HP",
+          "image": "/images/engines/mercury-150.jpg",
+          "specs": {
+            "power": "150HP",
+            "cylinders": "4",
+            "displacement": "3000cc",
+            "fuelSystem": "EFI",
+            "weight": "209kg",
+            "shaft": "L/XL/XXL"
+          },
+          "features": ["Advanced MidSection", "Transient Spark"],
+          "description": "Η καλύτερη επιλογή για μεγάλα RIBs."
+        },
+        {
+          "id": "mercury-verado-250",
+          "name": "Mercury Verado 250HP",
+          "image": "/images/engines/mercury-verado-250.jpg",
+          "specs": {
+            "power": "250HP",
+            "cylinders": "V6",
+            "displacement": "2600cc",
+            "fuelSystem": "Supercharged",
+            "weight": "272kg",
+            "shaft": "XL/XXL"
+          },
+          "features": ["Supercharged", "Joystick Piloting", "Digital Throttle"],
+          "description": "Premium μηχανή για απαιτητικούς."
+        },
+        {
+          "id": "mercury-verado-350",
+          "name": "Mercury Verado 350HP",
+          "image": "/images/engines/mercury-verado-350.jpg",
+          "specs": {
+            "power": "350HP",
+            "cylinders": "V8",
+            "displacement": "4600cc",
+            "fuelSystem": "EFI",
+            "weight": "313kg",
+            "shaft": "XL/XXL"
+          },
+          "features": ["V8", "Advanced Sound Control", "Top speed"],
+          "description": "Η κορυφαία Verado για maximum power."
+        }
+      ]
+    },
+    {
+      "id": "yamaha",
+      "name": "Yamaha",
+      "logo": "/images/brands/yamaha.png",
+      "category": "engines",
+      "country": "Japan",
+      "description": "Ιαπωνική ποιότητα και αξιοπιστία. Από μικρές portable έως high-performance outboards.",
+      "website": "https://www.yamaha-motor.eu/",
+      "featured": true,
+      "models": [
+        {
+          "id": "yamaha-f25",
+          "name": "Yamaha F25",
+          "image": "/images/engines/yamaha-f25.jpg",
+          "specs": {
+            "power": "25HP",
+            "cylinders": "2",
+            "displacement": "498cc",
+            "fuelSystem": "EFI",
+            "weight": "59kg",
+            "shaft": "S/L"
+          },
+          "features": ["Portable", "Tiller handle", "Ultra lightweight"],
+          "description": "Η ελαφρύτερη στην κατηγορία της."
+        },
+        {
+          "id": "yamaha-f40",
+          "name": "Yamaha F40",
+          "image": "/images/engines/yamaha-f40.jpg",
+          "specs": {
+            "power": "40HP",
+            "cylinders": "3",
+            "displacement": "747cc",
+            "fuelSystem": "EFI",
+            "weight": "87kg",
+            "shaft": "L/XL"
+          },
+          "features": ["Lean Burn Control", "Variable Trolling Speed"],
+          "description": "Οικονομική και αθόρυβη."
+        },
+        {
+          "id": "yamaha-f70",
+          "name": "Yamaha F70",
+          "image": "/images/engines/yamaha-f70.jpg",
+          "specs": {
+            "power": "70HP",
+            "cylinders": "4",
+            "displacement": "1049cc",
+            "fuelSystem": "EFI",
+            "weight": "113kg",
+            "shaft": "L/XL"
+          },
+          "features": ["SOHC 16-valve", "Compact design"],
+          "description": "Ιδανική για μεσαία RIBs."
+        },
+        {
+          "id": "yamaha-f115",
+          "name": "Yamaha F115",
+          "image": "/images/engines/yamaha-f115.jpg",
+          "specs": {
+            "power": "115HP",
+            "cylinders": "4",
+            "displacement": "1832cc",
+            "fuelSystem": "EFI",
+            "weight": "163kg",
+            "shaft": "L/XL"
+          },
+          "features": ["Variable Camshaft Timing", "Integrated tilt tube"],
+          "description": "Best seller για cabin boats."
+        },
+        {
+          "id": "yamaha-f150",
+          "name": "Yamaha F150",
+          "image": "/images/engines/yamaha-f150.jpg",
+          "specs": {
+            "power": "150HP",
+            "cylinders": "4",
+            "displacement": "2670cc",
+            "fuelSystem": "EFI",
+            "weight": "213kg",
+            "shaft": "XL/UL"
+          },
+          "features": ["In-Bank exhaust", "Shallow Water Drive"],
+          "description": "Δυνατή και αξιόπιστη για ����άθε χρήση."
+        },
+        {
+          "id": "yamaha-f200",
+          "name": "Yamaha F200",
+          "image": "/images/engines/yamaha-f200.jpg",
+          "specs": {
+            "power": "200HP",
+            "cylinders": "V6",
+            "displacement": "4169cc",
+            "fuelSystem": "EFI",
+            "weight": "260kg",
+            "shaft": "XL/UL"
+          },
+          "features": ["V6 power", "Digital Electric Steering"],
+          "description": "V6 power για μεγάλα σκάφη."
+        }
+      ]
+    },
+    {
+      "id": "honda",
+      "name": "Honda",
+      "logo": "/images/brands/honda.png",
+      "category": "engines",
+      "country": "Japan",
+      "description": "Θρυλική αξιοπιστία Honda. Καινοτόμες τεχνολογίες και χαμηλή κατανάλωση.",
+      "website": "https://marine.honda.com/",
+      "featured": false,
+      "models": [
+        {
+          "id": "honda-bf15",
+          "name": "Honda BF15",
+          "image": "/images/engines/honda-bf15.jpg",
+          "specs": {
+            "power": "15HP",
+            "cylinders": "2",
+            "displacement": "350cc",
+            "fuelSystem": "Carb",
+            "weight": "46kg",
+            "shaft": "S/L"
+          },
+          "features": ["Portable", "Easy start", "Low emissions"],
+          "description": "Αξιόπιστη για μικρά σκάφη."
+        },
+        {
+          "id": "honda-bf50",
+          "name": "Honda BF50",
+          "image": "/images/engines/honda-bf50.jpg",
+          "specs": {
+            "power": "50HP",
+            "cylinders": "3",
+            "displacement": "808cc",
+            "fuelSystem": "PGM-FI",
+            "weight": "96kg",
+            "shaft": "L/XL"
+          },
+          "features": ["BLAST", "Lean Burn Control", "4-Front Corrosion"],
+          "description": "Τεχνολογικά προηγμένη."
+        },
+        {
+          "id": "honda-bf100",
+          "name": "Honda BF100",
+          "image": "/images/engines/honda-bf100.jpg",
+          "specs": {
+            "power": "100HP",
+            "cylinders": "4",
+            "displacement": "1496cc",
+            "fuelSystem": "PGM-FI",
+            "weight": "163kg",
+            "shaft": "L/XL"
+          },
+          "features": ["VTEC", "ECOmo", "NMEA 2000"],
+          "description": "VTEC technology για κορυφαία απόδοση."
+        }
+      ]
+    },
+    {
+      "id": "suzuki",
+      "name": "Suzuki",
+      "logo": "/images/brands/suzuki.png",
+      "category": "engines",
+      "country": "Japan",
+      "description": "Ελαφριές, αθόρυβες και οικονομικές εξωλέμβιες μηχανές.",
+      "website": "https://www.suzukimarine.com/",
+      "featured": false,
+      "models": [
+        {
+          "id": "suzuki-df30",
+          "name": "Suzuki DF30A",
+          "image": "/images/engines/suzuki-df30.jpg",
+          "specs": {
+            "power": "30HP",
+            "cylinders": "3",
+            "displacement": "490cc",
+            "fuelSystem": "EFI",
+            "weight": "73kg",
+            "shaft": "S/L"
+          },
+          "features": ["Lean Burn", "Offset Driveshaft", "Light weight"],
+          "description": "Η ελαφρύτερη 30HP στην αγορά."
+        },
+        {
+          "id": "suzuki-df90",
+          "name": "Suzuki DF90A",
+          "image": "/images/engines/suzuki-df90.jpg",
+          "specs": {
+            "power": "90HP",
+            "cylinders": "4",
+            "displacement": "1502cc",
+            "fuelSystem": "EFI",
+            "weight": "157kg",
+            "shaft": "L/XL"
+          },
+          "features": ["Lean Burn", "Keyless start", "Suzuki Precision"],
+          "description": "Εξαιρετική σχέση ισχύος/βάρους."
+        },
+        {
+          "id": "suzuki-df140",
+          "name": "Suzuki DF140BG",
+          "image": "/images/engines/suzuki-df140.jpg",
+          "specs": {
+            "power": "140HP",
+            "cylinders": "4",
+            "displacement": "2044cc",
+            "fuelSystem": "EFI",
+            "weight": "186kg",
+            "shaft": "L/XL"
+          },
+          "features": ["Dual Prop System", "Drive by Wire"],
+          "description": "Δημοφιλής επιλογή για μεγάλα RIBs."
+        }
+      ]
+    },
+    {
+      "id": "tohatsu",
+      "name": "Tohatsu",
+      "logo": "/images/brands/tohatsu.png",
+      "category": "engines",
+      "country": "Japan",
+      "description": "Ιαπωνική αξιοπιστία σε προσιτές τιμές. Ιδανικές για πρώτη αγορά.",
+      "website": "https://www.tohatsu.com/",
+      "featured": false,
+      "models": [
+        {
+          "id": "tohatsu-mfs6",
+          "name": "Tohatsu MFS6",
+          "image": "/images/engines/tohatsu-mfs6.jpg",
+          "specs": {
+            "power": "6HP",
+            "cylinders": "1",
+            "displacement": "139cc",
+            "fuelSystem": "Carb",
+            "weight": "26kg",
+            "shaft": "S/L"
+          },
+          "features": ["Ultra portable", "Built-in tank", "Lightweight"],
+          "description": "Η ελαφρύτερη επιλογή για tender."
+        },
+        {
+          "id": "tohatsu-mfs20",
+          "name": "Tohatsu MFS20",
+          "image": "/images/engines/tohatsu-mfs20.jpg",
+          "specs": {
+            "power": "20HP",
+            "cylinders": "2",
+            "displacement": "333cc",
+            "fuelSystem": "EFI",
+            "weight": "52kg",
+            "shaft": "S/L"
+          },
+          "features": ["EFI", "Portable", "Reliable"],
+          "description": "Αξιόπιστη και οικονομική."
+        }
+      ]
+    },
+    {
+      "id": "selva",
+      "name": "Selva",
+      "logo": "/images/brands/selva.png",
+      "category": "engines",
+      "country": "Italy",
+      "description": "Ιταλικές εξωλέμβιες μηχανές με μοναδικό design και κορυφαία ποιότητα κατασκευής.",
+      "website": "https://www.selvamarine.com/",
+      "featured": false,
+      "models": [
+        {
+          "id": "selva-guppy-2.5",
+          "name": "Selva Guppy 2.5",
+          "image": "/images/engines/selva-guppy.jpg",
+          "specs": {
+            "power": "2.5HP",
+            "cylinders": "1",
+            "displacement": "72cc",
+            "fuelSystem": "Carb",
+            "weight": "13kg",
+            "shaft": "S"
+          },
+          "features": ["Ultra light", "Air cooled", "Ideal for tenders"],
+          "description": "Η μικρότερη και ελαφρύτερη για μικρά φουσκωτά."
+        },
+        {
+          "id": "selva-piranha-9.9",
+          "name": "Selva Piranha 9.9",
+          "image": "/images/engines/selva-piranha.jpg",
+          "specs": {
+            "power": "9.9HP",
+            "cylinders": "2",
+            "displacement": "209cc",
+            "fuelSystem": "Carb",
+            "weight": "38kg",
+            "shaft": "S/L"
+          },
+          "features": ["2-stroke", "Lightweight", "High power-to-weight"],
+          "description": "Ισχυρή 2-χρονη για RIBs."
+        },
+        {
+          "id": "selva-dorado-40",
+          "name": "Selva Dorado 40",
+          "image": "/images/engines/selva-dorado-40.jpg",
+          "specs": {
+            "power": "40HP",
+            "cylinders": "3",
+            "displacement": "697cc",
+            "fuelSystem": "EFI",
+            "weight": "84kg",
+            "shaft": "L/XL"
+          },
+          "features": ["4-stroke", "EFI", "Power trim & tilt"],
+          "description": "Μοντέρνα 4-χρονη με EFI."
+        },
+        {
+          "id": "selva-killer-whale-150",
+          "name": "Selva Killer Whale 150",
+          "image": "/images/engines/selva-killer-whale.jpg",
+          "specs": {
+            "power": "150HP",
+            "cylinders": "4",
+            "displacement": "2354cc",
+            "fuelSystem": "EFI",
+            "weight": "198kg",
+            "shaft": "L/XL"
+          },
+          "features": ["V4", "Digital ignition", "Stainless steel prop"],
+          "description": "Κορυφαία ισχύς για μεγάλα σκάφη."
+        },
+        {
+          "id": "selva-orca-250",
+          "name": "Selva Orca 250",
+          "image": "/images/engines/selva-orca.jpg",
+          "specs": {
+            "power": "250HP",
+            "cylinders": "V6",
+            "displacement": "3352cc",
+            "fuelSystem": "EFI",
+            "weight": "265kg",
+            "shaft": "XL/XXL"
+          },
+          "features": ["V6", "Counter rotation available", "Sport performance"],
+          "description": "Η κορυφαία Selva για maximum απόδοση."
+        }
+      ]
+    }
+  ]
+}
