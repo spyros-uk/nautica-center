@@ -33,18 +33,19 @@ export function ContactSection() {
   return (
     <section id="contact" className="py-20 md:py-32 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left side - Info */}
-          <div>
-            <span className="text-sm font-semibold text-accent uppercase tracking-wider">Επικοινωνία</span>
-            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
-              Ελάτε να τα πούμε
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Επισκεφθείτε το κατάστημά μας στον Βόλο ή επικοινωνήστε μαζί μας για οποιαδήποτε πληροφορία.
-            </p>
+        <div className="max-w-3xl mb-12 md:mb-16">
+          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Επικοινωνία</span>
+          <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
+            Ελάτε να τα πούμε
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Επισκεφθείτε το κατάστημά μας στον Βόλο ή επικοινωνήστε μαζί μας για οποιαδήποτε πληροφορία.
+          </p>
+        </div>
 
-            {/* Contact cards */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Contact details + map */}
+          <div>
             <div className="grid sm:grid-cols-2 gap-4">
               {contactInfo.map((item) => (
                 <Card key={item.title} className="bg-card border-0 shadow-sm">
@@ -65,10 +66,9 @@ export function ContactSection() {
               ))}
             </div>
 
-            {/* Map placeholder */}
             <div className="mt-8 rounded-xl overflow-hidden shadow-lg h-64 bg-muted">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.8!2d22.9833!3d39.3167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDE5JzAwLjEiTiAyMsKwNTknMDAuMCJF!5e0!3m2!1sen!2sgr!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3085.215394111304!2d22.99043387721869!3d39.351358619789394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a76cacef23cbe7%3A0x1d636d9cb793f9a7!2sNautica%20Center!5e0!3m2!1sen!2sus!4v1778458837664!5m2!1sen!2sus"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -80,7 +80,7 @@ export function ContactSection() {
             </div>
           </div>
 
-          {/* Right side - Form */}
+          {/* Form */}
           <div>
             <Card className="bg-card border-0 shadow-xl">
               <CardContent className="p-8">
