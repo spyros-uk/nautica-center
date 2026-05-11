@@ -9,7 +9,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Nautica Center | Σκάφη, Τρέιλερ & Ναυτιλιακός Εξοπλισμός - Βόλος',
-  description: 'Αντιπροσωπεία σκαφών Quicksilver, ZAR, MV Marine. Τρέιλερ ΔΡΟΜΕΥΣ, εξωλέμβιες μηχανές Mercury, Yamaha, Honda. Ναυτιλιακός εξοπλισμός στον Βόλο.',
+  description: 'Αντιπροσωπεία σκαφών Quicksilver, ZAR, MV Marine. Τρέιλερ ΔΡΟΜΕΥΣ, εξωλέμβιες Mercury, Yamaha, Honda. Ναυτιλιακός εξοπλισμός στον Βόλο.',
   keywords: ['σκάφη', 'τρέιλερ', 'εξωλέμβιες', 'Βόλος', 'Quicksilver', 'ZAR', 'MV Marine', 'Mercury', 'Yamaha', 'φουσκωτά σκάφη', 'ναυτιλιακός εξοπλισμός'],
   authors: [{ name: 'Nautica Center' }],
   robots: {

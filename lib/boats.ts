@@ -14,6 +14,8 @@ export interface BoatSpec {
   displacement?: string
   fuelSystem?: string
   shaft?: string
+  /** Jet Ski / PWC powerplant (not an outboard). */
+  motor?: string
 }
 
 export interface BoatModel {
@@ -29,7 +31,7 @@ export interface Brand {
   id: string
   name: string
   logo: string
-  category: 'inflatable' | 'fiberglass' | 'engines'
+  category: 'inflatable' | 'fiberglass' | 'jetski' | 'outboards'
   country: string
   description: string
   website: string
@@ -80,6 +82,14 @@ export function getAllModels(): { brand: Brand; model: BoatModel }[] {
   return result
 }
 
+/** Breadcrumb back to the listing that actually lists this brand (boats vs outboards). */
+export function getCatalogBreadcrumb(brand: Brand): { href: string; label: string } {
+  if (brand.category === 'outboards') {
+    return { href: '/outboards', label: 'Εξωλέμβιες' }
+  }
+  return { href: '/boats', label: 'Σκάφη' }
+}
+
 export function getCategoryName(categoryId: string): string {
   const category = boatData.categories.find(c => c.id === categoryId)
   return category?.name || categoryId
@@ -100,6 +110,7 @@ export function getSpecLabel(key: string): string {
     displacement: 'Κυβισμός',
     fuelSystem: 'Σύστημα Τροφοδοσίας',
     shaft: 'Άξονας',
+    motor: 'Κινητήρας',
   }
   return labels[key] || key
 }

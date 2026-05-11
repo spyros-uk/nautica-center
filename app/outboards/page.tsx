@@ -19,27 +19,27 @@ import {
 } from 'lucide-react'
 import boatsData from '@/data/boats.json'
 
-// Get all engine brands from the data
-const engineBrands = boatsData.brands.filter(brand => brand.category === 'engines')
+const PLACEHOLDER_OUTBOARD = '/placeholder.svg'
 
-// Flatten all engine models with brand info
-const allEngines = engineBrands.flatMap(brand => 
+// Brands that sell outboards (see `data/boats.json` category `outboards`)
+const outboardBrands = boatsData.brands.filter(brand => brand.category === 'outboards')
+
+const allOutboards = outboardBrands.flatMap(brand =>
   brand.models.map(model => ({
     ...model,
     brandId: brand.id,
     brandName: brand.name,
     brandCountry: brand.country,
-    hp: parseInt(model.specs.power) || 0
+    hp: parseInt(String(model.specs.power), 10) || 0
   }))
 ).sort((a, b) => a.hp - b.hp)
 
-// Get min/max HP for slider
-const minHP = Math.min(...allEngines.map(e => e.hp))
-const maxHP = Math.max(...allEngines.map(e => e.hp))
+const minHP = Math.min(...allOutboards.map((o) => o.hp))
+const maxHP = Math.max(...allOutboards.map((o) => o.hp))
 
 const ITEMS_PER_PAGE = 12
 
-export default function EnginesPage() {
+export default function OutboardsPage() {
   // Mount state to prevent hydration flash
   const [isMounted, setIsMounted] = useState(false)
   
@@ -65,15 +65,12 @@ export default function EnginesPage() {
     }
   }, [])
 
-  // Filter engines based on selections
-  const filteredEngines = useMemo(() => {
-    return allEngines.filter(engine => {
-      // Brand filter
-      if (selectedBrands.length > 0 && !selectedBrands.includes(engine.brandId)) {
+  const filteredOutboards = useMemo(() => {
+    return allOutboards.filter((outboard) => {
+      if (selectedBrands.length > 0 && !selectedBrands.includes(outboard.brandId)) {
         return false
       }
-      // HP filter
-      if (engine.hp < hpRange[0] || engine.hp > hpRange[1]) {
+      if (outboard.hp < hpRange[0] || outboard.hp > hpRange[1]) {
         return false
       }
       return true
@@ -85,9 +82,8 @@ export default function EnginesPage() {
     setDisplayCount(ITEMS_PER_PAGE)
   }, [selectedBrands, hpRange])
 
-  // Get currently displayed engines
-  const displayedEngines = filteredEngines.slice(0, displayCount)
-  const hasMore = displayCount < filteredEngines.length
+  const displayedOutboards = filteredOutboards.slice(0, displayCount)
+  const hasMore = displayCount < filteredOutboards.length
 
   // Infinite scroll handler
   const loadMore = useCallback(() => {
@@ -95,10 +91,10 @@ export default function EnginesPage() {
     setIsLoading(true)
     // Simulate network delay for smooth UX
     setTimeout(() => {
-      setDisplayCount(prev => Math.min(prev + ITEMS_PER_PAGE, filteredEngines.length))
+      setDisplayCount(prev => Math.min(prev + ITEMS_PER_PAGE, filteredOutboards.length))
       setIsLoading(false)
     }, 300)
-  }, [isLoading, hasMore, filteredEngines.length])
+  }, [isLoading, hasMore, filteredOutboards.length])
 
   // Intersection observer for infinite scroll
   useEffect(() => {
@@ -180,22 +176,22 @@ export default function EnginesPage() {
                 Αρχική
               </Link>
               <ChevronRight className="h-4 w-4" />
-              <span className="text-primary-foreground">Εξωλέμβιες Μηχανές</span>
+              <span className="text-primary-foreground">Εξωλέμβιες</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
-              Εξωλέμβιες Μηχανές
+              Εξωλέμβιες
             </h1>
             <p className="text-xl text-primary-foreground/80 mb-6">
-              Ανακαλύψτε τη μεγαλύτερη γκάμα εξωλέμβιων μηχανών από τις κορυφαίες μάρκες. 
+              Ανακαλύψτε τη μεγαλύτερη γκάμα εξωλέμβιων από τις κορυφαίες μάρκες.
               Από 2.5HP έως 350HP για κάθε ανάγκη.
             </p>
             <div className="flex items-center gap-4 text-primary-foreground/70">
               <div className="flex items-center gap-2">
                 <Settings className="h-5 w-5" />
-                <span>{allEngines.length} μοντέλα</span>
+                <span>{allOutboards.length} μοντέλα</span>
               </div>
               <div className="flex items-center gap-2">
-                <span>{engineBrands.length} μάρκες</span>
+                <span>{outboardBrands.length} μάρκες</span>
               </div>
             </div>
           </div>
@@ -226,7 +222,7 @@ export default function EnginesPage() {
                 <div>
                   <h4 className="font-medium mb-3">Μάρκα</h4>
                   <div className="space-y-2">
-                    {engineBrands.map(brand => (
+                    {outboardBrands.map(brand => (
                       <label 
                         key={brand.id}
                         className="flex items-center gap-3 cursor-pointer group"
@@ -270,7 +266,7 @@ export default function EnginesPage() {
                 {/* Results count */}
                 <div className="pt-4 border-t border-border">
                   <p className="text-sm text-muted-foreground">
-                    {filteredEngines.length} {filteredEngines.length === 1 ? 'αποτέλεσμα' : 'αποτελέσματα'}
+                    {filteredOutboards.length} {filteredOutboards.length === 1 ? 'αποτέλεσμα' : 'αποτελέσματα'}
                   </p>
                 </div>
               </div>
@@ -279,7 +275,7 @@ export default function EnginesPage() {
             {/* Mobile Filter Toggle */}
             <div className="lg:hidden flex items-center justify-between mb-4">
               <p className="text-sm text-muted-foreground">
-                {filteredEngines.length} αποτελέσματα
+                {filteredOutboards.length} αποτελέσματα
               </p>
               <Button 
                 variant="outline" 
@@ -316,7 +312,7 @@ export default function EnginesPage() {
                   <div className="mb-6">
                     <h4 className="font-medium mb-3">Μάρκα</h4>
                     <div className="space-y-2">
-                      {engineBrands.map(brand => (
+                      {outboardBrands.map(brand => (
                         <label 
                           key={brand.id}
                           className="flex items-center gap-3 cursor-pointer"
@@ -374,12 +370,12 @@ export default function EnginesPage() {
               </div>
             )}
 
-            {/* Engine Grid */}
+            {/* Outboard grid */}
             <div className="flex-1">
-              {filteredEngines.length === 0 ? (
+              {filteredOutboards.length === 0 ? (
                 <div className="text-center py-16">
                   <Settings className="h-16 w-16 mx-auto text-muted-foreground/30 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Δεν βρέθηκαν μηχανές</h3>
+                  <h3 className="text-xl font-semibold mb-2">Δεν βρέθηκαν εξωλέμβιες</h3>
                   <p className="text-muted-foreground mb-4">
                     Δοκιμάστε να αλλάξετε τα φίλτρα αναζήτησης
                   </p>
@@ -390,66 +386,66 @@ export default function EnginesPage() {
               ) : (
                 <>
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                    {displayedEngines.map((engine) => (
+                    {displayedOutboards.map((outboard) => (
                       <Link
-                        key={`${engine.brandId}-${engine.id}`}
-                        href={`/outboards/${engine.brandId}/${engine.id}`}
+                        key={`${outboard.brandId}-${outboard.id}`}
+                        href={`/boats/${outboard.brandId}/${outboard.id}`}
                       >
                         <Card className="group h-full overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                           <div className="relative aspect-[4/3] bg-muted overflow-hidden">
                             <Image
-                              src={engine.image || '/images/placeholder-engine.jpg'}
-                              alt={engine.name}
+                              src={outboard.image || PLACEHOLDER_OUTBOARD}
+                              alt={outboard.name}
                               fill
                               className="object-cover group-hover:scale-105 transition-transform duration-500"
                               onError={(e) => {
                                 const target = e.target as HTMLImageElement
-                                target.src = '/images/placeholder-engine.jpg'
+                                target.src = PLACEHOLDER_OUTBOARD
                               }}
                             />
                             <div className="absolute top-3 left-3">
                               <Badge className="bg-accent text-accent-foreground font-bold">
-                                {engine.specs.power}
+                                {outboard.specs.power}
                               </Badge>
                             </div>
                             <div className="absolute top-3 right-3">
                               <Badge variant="secondary" className="bg-white/90 text-foreground">
-                                {engine.brandName}
+                                {outboard.brandName}
                               </Badge>
                             </div>
                           </div>
                           <CardContent className="p-4">
                             <h3 className="font-semibold text-lg mb-2 group-hover:text-accent transition-colors">
-                              {engine.name}
+                              {outboard.name}
                             </h3>
                             <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-                              {engine.description}
+                              {outboard.description}
                             </p>
                             
                             {/* Quick Specs */}
                             <div className="grid grid-cols-2 gap-2 text-xs">
-                              {engine.specs.cylinders && (
+                              {outboard.specs.cylinders && (
                                 <div className="flex justify-between">
                                   <span className="text-muted-foreground">Κύλινδροι:</span>
-                                  <span className="font-medium">{engine.specs.cylinders}</span>
+                                  <span className="font-medium">{outboard.specs.cylinders}</span>
                                 </div>
                               )}
-                              {engine.specs.displacement && (
+                              {outboard.specs.displacement && (
                                 <div className="flex justify-between">
                                   <span className="text-muted-foreground">Κυβικά:</span>
-                                  <span className="font-medium">{engine.specs.displacement}</span>
+                                  <span className="font-medium">{outboard.specs.displacement}</span>
                                 </div>
                               )}
-                              {engine.specs.weight && (
+                              {outboard.specs.weight && (
                                 <div className="flex justify-between">
                                   <span className="text-muted-foreground">Βάρος:</span>
-                                  <span className="font-medium">{engine.specs.weight}</span>
+                                  <span className="font-medium">{outboard.specs.weight}</span>
                                 </div>
                               )}
-                              {engine.specs.fuelSystem && (
+                              {outboard.specs.fuelSystem && (
                                 <div className="flex justify-between">
                                   <span className="text-muted-foreground">Τροφοδοσία:</span>
-                                  <span className="font-medium">{engine.specs.fuelSystem}</span>
+                                  <span className="font-medium">{outboard.specs.fuelSystem}</span>
                                 </div>
                               )}
                             </div>
@@ -483,7 +479,7 @@ export default function EnginesPage() {
                           onClick={loadMore}
                           className="px-8"
                         >
-                          Φόρτωση περισσότερων ({filteredEngines.length - displayCount} ακόμα)
+                          Φόρτωση περισσότερων ({filteredOutboards.length - displayCount} ακόμα)
                         </Button>
                       )}
                     </div>
@@ -502,7 +498,7 @@ export default function EnginesPage() {
             Χρειάζεστε βοήθεια στην επιλογή;
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-            Οι ειδικοί μας μπορούν να σας συμβουλεύσουν για την ιδανική μηχανή 
+            Οι ειδικοί μας μπορούν να σας συμβουλεύσουν για την ιδανική εξωλέμβια
             ανάλογα με το σκάφος σας και τις ανάγκες σας.
           </p>
           <Button size="lg" className="gap-2">

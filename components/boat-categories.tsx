@@ -21,11 +21,11 @@ const categories = [
     href: '/boats#fiberglass',
   },
   {
-    title: 'Εξωλέμβιες Μηχανές',
+    title: 'Εξωλέμβιες',
     description: 'Mercury, Yamaha, Honda, Tohatsu, Suzuki - Όλες οι ιπποδυνάμεις',
     icon: Anchor,
     image: 'https://images.unsplash.com/photo-1597431362048-94c8ded1a64d?w=600&q=80',
-    href: '/boats#engines',
+    href: '/outboards',
   },
   {
     title: 'Τρέιλερ ΔΡΟΜΕΥΣ',
@@ -141,7 +141,7 @@ export function BoatCategories() {
             href="/boats"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-semibold hover:bg-primary/90 transition-colors"
           >
-            Δείτε όλα τα Σκάφη & Μηχανές
+            Δείτε όλα τα σκάφη
             <ArrowRight className="h-5 w-5" />
           </Link>
         </div>

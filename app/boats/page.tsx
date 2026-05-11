@@ -22,10 +22,10 @@ import {
 } from 'lucide-react'
 import boatsData from '@/data/boats.json'
 
-// Boat categories (excluding engines)
+// Boat categories (excluding outboards — they live on `/outboards`)
 const boatCategoryIds = ['inflatable', 'fiberglass', 'jetski']
 
-// Get all boat brands from the data (excluding engines)
+// Get all boat brands from the data (excluding outboard brands)
 const boatBrands = boatsData.brands.filter(brand => boatCategoryIds.includes(brand.category))
 
 // Category labels in Greek

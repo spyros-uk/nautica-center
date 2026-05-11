@@ -4,7 +4,7 @@ Modern front-end for **[Nautica Center](https://www.nautica-center.gr/)** — th
 
 ## What’s in scope (vs. the live site)
 
-The production site emphasizes **boat and engine offers**, **brand categories** (Quicksilver, ZAR, MV Marine, Marinello, Eolo, etc.), **trailers (Dromeys)**, **services** (haul-out, engine service), and **contact** for the store (Αστέρια Αγριάς) and factory (ΒΙ.ΠΕ. Βόλου). This app currently focuses on a **marketing-style catalog** with filtering (length, HP, offers, availability) rather than e-commerce checkout.
+The production site emphasizes **boat and outboard offers**, **brand categories** (Quicksilver, ZAR, MV Marine, Marinello, Eolo, etc.), **trailers (Dromeys)**, **services** (haul-out, outboard service), and **contact** for the store (Αστέρια Αγριάς) and factory (ΒΙ.ΠΕ. Βόλου). This app currently focuses on a **marketing-style catalog** with filtering (length, HP, offers, availability) rather than e-commerce checkout.
 
 ## Tech stack
 
@@ -46,7 +46,7 @@ This site has no server APIs or ISR: everything is pre-rendered at build time, i
 | `app/boats/page.tsx` | Boat listing with filters and pagination (client) |
 | `app/boats/[brandId]/page.tsx` | Brand detail |
 | `app/boats/[brandId]/[modelId]/page.tsx` | Model detail |
-| `app/outboards/page.tsx` | Outboard listing (engines from JSON `category: "engines"`) |
+| `app/outboards/page.tsx` | Outboard listing (brands with JSON `category: "outboards"`) |
 | `data/boats.json` | Categories, brands, models, specs, images |
 | `lib/boats.ts` | Types and helpers for reading catalog data |
 | `components/` | Page sections (`header`, `hero`, `footer`, …) and `components/ui/` (shadcn) |
@@ -54,7 +54,7 @@ This site has no server APIs or ISR: everything is pre-rendered at build time, i
 
 ## Data model
 
-`data/boats.json` defines **categories** (e.g. inflatable, fiberglass, jetski, engines) and **brands**, each with **models** (`id`, `name`, `image`, `specs`, `features`, `description`). Some models include optional flags used by the boats listing (e.g. `isOffer`, `isAvailable`, `isUsed`) — see `app/boats/page.tsx`. `lib/boats.ts` documents core TypeScript interfaces and Greek labels for spec keys.
+`data/boats.json` defines **categories** (e.g. inflatable, fiberglass, jetski, outboards) and **brands**, each with **models** (`id`, `name`, `image`, `specs`, `features`, `description`). Some models include optional flags used by the boats listing (e.g. `isOffer`, `isAvailable`, `isUsed`) — see `app/boats/page.tsx`. `lib/boats.ts` documents core TypeScript interfaces and Greek labels for spec keys.
 
 ## Navigation notes (WIP)
 

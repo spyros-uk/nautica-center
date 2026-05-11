@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { getBrands, getBrandById, getCategoryName, getSpecLabel } from '@/lib/boats'
+import { getBrands, getBrandById, getCatalogBreadcrumb, getCategoryName, getSpecLabel } from '@/lib/boats'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Badge } from '@/components/ui/badge'
@@ -37,7 +37,8 @@ export default async function BrandPage({ params }: { params: Params }) {
     notFound()
   }
 
-  const isEngine = brand.category === 'engines'
+  const isOutboard = brand.category === 'outboards'
+  const catalogCrumb = getCatalogBreadcrumb(brand)
 
   return (
     <>
@@ -48,8 +49,8 @@ export default async function BrandPage({ params }: { params: Params }) {
           <div className="container mx-auto px-4">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-primary-foreground/60 mb-6">
-              <Link href="/boats" className="hover:text-primary-foreground transition-colors">
-                Σκάφη & Μηχανές
+              <Link href={catalogCrumb.href} className="hover:text-primary-foreground transition-colors">
+                {catalogCrumb.label}
               </Link>
               <span>/</span>
               <span className="text-primary-foreground">{brand.name}</span>
@@ -68,7 +69,7 @@ export default async function BrandPage({ params }: { params: Params }) {
                   <span>•</span>
                   <span>{getCategoryName(brand.category)}</span>
                   <span>•</span>
-                  <span>{brand.models.length} {isEngine ? 'μηχανές' : 'μοντέλα'}</span>
+                  <span>{brand.models.length} {isOutboard ? 'εξωλέμβιες' : 'μοντέλα'}</span>
                 </div>
                 <p className="text-lg text-primary-foreground/80 leading-relaxed">
                   {brand.description}
@@ -104,7 +105,7 @@ export default async function BrandPage({ params }: { params: Params }) {
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl md:text-3xl font-bold mb-8">
-              {isEngine ? 'Διαθέσιμες Μηχανές' : 'Διαθέσιμα Μοντέλα'}
+              {isOutboard ? 'Διαθέσιμες εξωλέμβιες' : 'Διαθέσιμα Μοντέλα'}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -134,7 +135,7 @@ export default async function BrandPage({ params }: { params: Params }) {
 
                     {/* Quick specs */}
                     <div className="grid grid-cols-3 gap-4 mb-4">
-                      {isEngine ? (
+                      {isOutboard ? (
                         <>
                           {model.specs.power && (
                             <div className="text-center p-2 bg-muted rounded-lg">
@@ -200,11 +201,11 @@ export default async function BrandPage({ params }: { params: Params }) {
         <section className="pb-16">
           <div className="container mx-auto px-4">
             <Link
-              href="/boats"
+              href={catalogCrumb.href}
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
-              Πίσω στα σκάφη
+              {isOutboard ? 'Πίσω στις εξωλέμβιες' : 'Πίσω στα σκάφη'}
             </Link>
           </div>
         </section>

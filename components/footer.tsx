@@ -5,7 +5,7 @@ const footerLinks = {
   products: [
     { name: 'Πολυεστερικά Σκάφη', href: '/boats' },
     { name: 'Φουσκωτά Σκάφη', href: '/boats' },
-    { name: 'Εξωλέμβιες Μηχανές', href: '/boats' },
+    { name: 'Εξωλέμβιες', href: '/outboards' },
     { name: 'Μεταχειρισμένα', href: '#' },
   ],
   watersports: [

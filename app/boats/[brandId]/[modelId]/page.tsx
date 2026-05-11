@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { getBrands, getBrandById, getModelById, getCategoryName, getSpecLabel } from '@/lib/boats'
+import { getBrands, getBrandById, getModelById, getCatalogBreadcrumb, getCategoryName, getSpecLabel } from '@/lib/boats'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Badge } from '@/components/ui/badge'
@@ -50,7 +50,8 @@ export default async function ModelPage({ params }: { params: Params }) {
     notFound()
   }
 
-  const isEngine = brand.category === 'engines'
+  const isOutboard = brand.category === 'outboards'
+  const catalogCrumb = getCatalogBreadcrumb(brand)
 
   // Convert specs object to array for display
   const specsArray = Object.entries(model.specs).filter(([_, value]) => value !== undefined)
@@ -63,8 +64,8 @@ export default async function ModelPage({ params }: { params: Params }) {
         <section className="bg-muted/50 border-b border-border">
           <div className="container mx-auto px-4 py-4">
             <nav className="flex items-center gap-2 text-sm text-muted-foreground overflow-x-auto whitespace-nowrap">
-              <Link href="/boats" className="hover:text-foreground transition-colors">
-                Σκάφη & Μηχανές
+              <Link href={catalogCrumb.href} className="hover:text-foreground transition-colors">
+                {catalogCrumb.label}
               </Link>
               <span>/</span>
               <Link href={`/boats/${brand.id}`} className="hover:text-foreground transition-colors">
@@ -109,7 +110,7 @@ export default async function ModelPage({ params }: { params: Params }) {
 
                 {/* Quick specs */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
-                  {isEngine ? (
+                  {isOutboard ? (
                     <>
                       {model.specs.power && (
                         <div className="bg-muted p-4 rounded-xl text-center">
@@ -277,10 +278,10 @@ export default async function ModelPage({ params }: { params: Params }) {
                 Πίσω στα {brand.name}
               </Link>
               <Link
-                href="/boats"
+                href={catalogCrumb.href}
                 className="text-muted-foreground hover:text-foreground transition-colors text-sm"
               >
-                Όλα τα σκάφη
+                {isOutboard ? 'Όλες οι εξωλέμβιες' : 'Όλα τα σκάφη'}
               </Link>
             </div>
           </div>

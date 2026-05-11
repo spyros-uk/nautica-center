@@ -19,10 +19,10 @@
       "description": "Jet Ski για αδρεναλίνη στη θάλασσα"
     },
     {
-      "id": "engines",
-      "name": "Εξωλέμβιες Μηχανές",
-      "nameEn": "Outboard Engines",
-      "description": "Μηχανές από τις κορυφαίες μάρκες"
+      "id": "outboards",
+      "name": "Εξωλέμβιες",
+      "nameEn": "Outboards",
+      "description": "Εξωλέμβιες από τις κορυφαίες μάρκες"
     }
   ],
   "brands": [
@@ -133,7 +133,7 @@
             "tubes": "58cm",
             "category": "CE B"
           },
-          "features": ["Μεγάλη καμπίνα", "WC", "T-Top", "Twin engine ready"],
+          "features": ["Μεγάλη καμπίνα", "WC", "T-Top", "Twin outboard ready"],
           "description": "Για όσους θέλουν το καλύτερο - απόλυτη πολυτέλεια στη θάλασσα."
         }
       ]
@@ -270,7 +270,7 @@
             "tubes": "58cm",
             "category": "CE B"
           },
-          "features": ["Twin engines", "Πλήρης καμπίνα", "Luxury interior"],
+          "features": ["Twin outboards", "Πλήρης καμπίνα", "Luxury interior"],
           "description": "Απόλυτη πολυτέλεια για μεγάλα ταξίδια."
         }
       ]
@@ -666,7 +666,7 @@
             "weight": "236kg",
             "passengers": 3,
             "maxPower": "100HP",
-            "engine": "TR-1 1049cc"
+            "motor": "TR-1 1049cc"
           },
           "features": ["Entry level", "Lightweight", "Fuel efficient"],
           "description": "Η ιδανική είσοδος στον κόσμο των Jet Ski.",
@@ -682,7 +682,7 @@
             "weight": "297kg",
             "passengers": 3,
             "maxPower": "125HP",
-            "engine": "TR-1 HO 1049cc"
+            "motor": "TR-1 HO 1049cc"
           },
           "features": ["RiDE system", "Cruise assist", "No wake mode"],
           "description": "Κορυφαία άνεση και τεχνολογία.",
@@ -698,7 +698,7 @@
             "weight": "361kg",
             "passengers": 3,
             "maxPower": "180HP",
-            "engine": "1.8L High Output"
+            "motor": "1.8L High Output"
           },
           "features": ["Luxury seat", "Touchscreen display", "GPS"],
           "description": "Πολυτέλεια και απόδοση σε απόλυτη αρμονία."
@@ -713,7 +713,7 @@
             "weight": "330kg",
             "passengers": 3,
             "maxPower": "250HP",
-            "engine": "1.8L Supercharged"
+            "motor": "1.8L Supercharged"
           },
           "features": ["Race ready", "Supercharged", "Competition hull"],
           "description": "Το απόλυτο performance Jet Ski για αγώνες.",
@@ -729,7 +729,7 @@
             "weight": "386kg",
             "passengers": 3,
             "maxPower": "250HP",
-            "engine": "1.8L Supercharged"
+            "motor": "1.8L Supercharged"
           },
           "features": ["Cruiser seat", "Audio system", "Extended range"],
           "description": "Το κορυφαίο touring Jet Ski."
@@ -740,16 +740,16 @@
       "id": "mercury",
       "name": "Mercury",
       "logo": "/images/brands/mercury.png",
-      "category": "engines",
+      "category": "outboards",
       "country": "USA",
-      "description": "Η νούμερο ένα μάρκα εξωλέμβιων μηχανών παγκοσμίως. Αξιοπιστία, απόδοση, καινοτομία.",
+      "description": "Η νούμερο ένα μάρκα εξωλέμβιων παγκοσμίως. Αξιοπιστία, απόδοση, καινοτομία.",
       "website": "https://www.mercurymarine.com/",
       "featured": true,
       "models": [
         {
           "id": "mercury-fourstroke-15",
           "name": "Mercury FourStroke 15HP",
-          "image": "/images/engines/mercury-15.jpg",
+          "image": "/images/outboards/mercury-15.jpg",
           "specs": {
             "power": "15HP",
             "cylinders": "2",
@@ -764,7 +764,7 @@
         {
           "id": "mercury-fourstroke-40",
           "name": "Mercury FourStroke 40HP",
-          "image": "/images/engines/mercury-40.jpg",
+          "image": "/images/outboards/mercury-40.jpg",
           "specs": {
             "power": "40HP",
             "cylinders": "3",
@@ -779,7 +779,7 @@
         {
           "id": "mercury-fourstroke-60",
           "name": "Mercury FourStroke 60HP",
-          "image": "/images/engines/mercury-60.jpg",
+          "image": "/images/outboards/mercury-60.jpg",
           "specs": {
             "power": "60HP",
             "cylinders": "4",
@@ -794,7 +794,7 @@
         {
           "id": "mercury-fourstroke-100",
           "name": "Mercury FourStroke 100HP",
-          "image": "/images/engines/mercury-100.jpg",
+          "image": "/images/outboards/mercury-100.jpg",
           "specs": {
             "power": "100HP",
             "cylinders": "4",
@@ -809,7 +809,7 @@
         {
           "id": "mercury-fourstroke-150",
           "name": "Mercury FourStroke 150HP",
-          "image": "/images/engines/mercury-150.jpg",
+          "image": "/images/outboards/mercury-150.jpg",
           "specs": {
             "power": "150HP",
             "cylinders": "4",
@@ -824,7 +824,7 @@
         {
           "id": "mercury-verado-250",
           "name": "Mercury Verado 250HP",
-          "image": "/images/engines/mercury-verado-250.jpg",
+          "image": "/images/outboards/mercury-verado-250.jpg",
           "specs": {
             "power": "250HP",
             "cylinders": "V6",
@@ -834,12 +834,12 @@
             "shaft": "XL/XXL"
           },
           "features": ["Supercharged", "Joystick Piloting", "Digital Throttle"],
-          "description": "Premium μηχανή για απαιτητικούς."
+          "description": "Premium εξωλέμβια για απαιτητικούς."
         },
         {
           "id": "mercury-verado-350",
           "name": "Mercury Verado 350HP",
-          "image": "/images/engines/mercury-verado-350.jpg",
+          "image": "/images/outboards/mercury-verado-350.jpg",
           "specs": {
             "power": "350HP",
             "cylinders": "V8",
@@ -857,7 +857,7 @@
       "id": "yamaha",
       "name": "Yamaha",
       "logo": "/images/brands/yamaha.png",
-      "category": "engines",
+      "category": "outboards",
       "country": "Japan",
       "description": "Ιαπωνική ποιότητα και αξιοπιστία. Από μικρές portable έως high-performance outboards.",
       "website": "https://www.yamaha-motor.eu/",
@@ -866,7 +866,7 @@
         {
           "id": "yamaha-f25",
           "name": "Yamaha F25",
-          "image": "/images/engines/yamaha-f25.jpg",
+          "image": "/images/outboards/yamaha-f25.jpg",
           "specs": {
             "power": "25HP",
             "cylinders": "2",
@@ -881,7 +881,7 @@
         {
           "id": "yamaha-f40",
           "name": "Yamaha F40",
-          "image": "/images/engines/yamaha-f40.jpg",
+          "image": "/images/outboards/yamaha-f40.jpg",
           "specs": {
             "power": "40HP",
             "cylinders": "3",
@@ -896,7 +896,7 @@
         {
           "id": "yamaha-f70",
           "name": "Yamaha F70",
-          "image": "/images/engines/yamaha-f70.jpg",
+          "image": "/images/outboards/yamaha-f70.jpg",
           "specs": {
             "power": "70HP",
             "cylinders": "4",
@@ -911,7 +911,7 @@
         {
           "id": "yamaha-f115",
           "name": "Yamaha F115",
-          "image": "/images/engines/yamaha-f115.jpg",
+          "image": "/images/outboards/yamaha-f115.jpg",
           "specs": {
             "power": "115HP",
             "cylinders": "4",
@@ -926,7 +926,7 @@
         {
           "id": "yamaha-f150",
           "name": "Yamaha F150",
-          "image": "/images/engines/yamaha-f150.jpg",
+          "image": "/images/outboards/yamaha-f150.jpg",
           "specs": {
             "power": "150HP",
             "cylinders": "4",
@@ -941,7 +941,7 @@
         {
           "id": "yamaha-f200",
           "name": "Yamaha F200",
-          "image": "/images/engines/yamaha-f200.jpg",
+          "image": "/images/outboards/yamaha-f200.jpg",
           "specs": {
             "power": "200HP",
             "cylinders": "V6",
@@ -959,7 +959,7 @@
       "id": "honda",
       "name": "Honda",
       "logo": "/images/brands/honda.png",
-      "category": "engines",
+      "category": "outboards",
       "country": "Japan",
       "description": "Θρυλική αξιοπιστία Honda. Καινοτόμες τεχνολογίες και χαμηλή κατανάλωση.",
       "website": "https://marine.honda.com/",
@@ -968,7 +968,7 @@
         {
           "id": "honda-bf15",
           "name": "Honda BF15",
-          "image": "/images/engines/honda-bf15.jpg",
+          "image": "/images/outboards/honda-bf15.jpg",
           "specs": {
             "power": "15HP",
             "cylinders": "2",
@@ -983,7 +983,7 @@
         {
           "id": "honda-bf50",
           "name": "Honda BF50",
-          "image": "/images/engines/honda-bf50.jpg",
+          "image": "/images/outboards/honda-bf50.jpg",
           "specs": {
             "power": "50HP",
             "cylinders": "3",
@@ -998,7 +998,7 @@
         {
           "id": "honda-bf100",
           "name": "Honda BF100",
-          "image": "/images/engines/honda-bf100.jpg",
+          "image": "/images/outboards/honda-bf100.jpg",
           "specs": {
             "power": "100HP",
             "cylinders": "4",
@@ -1016,16 +1016,16 @@
       "id": "suzuki",
       "name": "Suzuki",
       "logo": "/images/brands/suzuki.png",
-      "category": "engines",
+      "category": "outboards",
       "country": "Japan",
-      "description": "Ελαφριές, αθόρυβες και οικονομικές εξωλέμβιες μηχανές.",
+      "description": "Ελαφριές, αθόρυβες και οικονομικές εξωλέμβιες.",
       "website": "https://www.suzukimarine.com/",
       "featured": false,
       "models": [
         {
           "id": "suzuki-df30",
           "name": "Suzuki DF30A",
-          "image": "/images/engines/suzuki-df30.jpg",
+          "image": "/images/outboards/suzuki-df30.jpg",
           "specs": {
             "power": "30HP",
             "cylinders": "3",
@@ -1040,7 +1040,7 @@
         {
           "id": "suzuki-df90",
           "name": "Suzuki DF90A",
-          "image": "/images/engines/suzuki-df90.jpg",
+          "image": "/images/outboards/suzuki-df90.jpg",
           "specs": {
             "power": "90HP",
             "cylinders": "4",
@@ -1055,7 +1055,7 @@
         {
           "id": "suzuki-df140",
           "name": "Suzuki DF140BG",
-          "image": "/images/engines/suzuki-df140.jpg",
+          "image": "/images/outboards/suzuki-df140.jpg",
           "specs": {
             "power": "140HP",
             "cylinders": "4",
@@ -1073,7 +1073,7 @@
       "id": "tohatsu",
       "name": "Tohatsu",
       "logo": "/images/brands/tohatsu.png",
-      "category": "engines",
+      "category": "outboards",
       "country": "Japan",
       "description": "Ιαπωνική αξιοπιστία σε προσιτές τιμές. Ιδανικές για πρώτη αγορά.",
       "website": "https://www.tohatsu.com/",
@@ -1082,7 +1082,7 @@
         {
           "id": "tohatsu-mfs6",
           "name": "Tohatsu MFS6",
-          "image": "/images/engines/tohatsu-mfs6.jpg",
+          "image": "/images/outboards/tohatsu-mfs6.jpg",
           "specs": {
             "power": "6HP",
             "cylinders": "1",
@@ -1097,7 +1097,7 @@
         {
           "id": "tohatsu-mfs20",
           "name": "Tohatsu MFS20",
-          "image": "/images/engines/tohatsu-mfs20.jpg",
+          "image": "/images/outboards/tohatsu-mfs20.jpg",
           "specs": {
             "power": "20HP",
             "cylinders": "2",
@@ -1115,16 +1115,16 @@
       "id": "selva",
       "name": "Selva",
       "logo": "/images/brands/selva.png",
-      "category": "engines",
+      "category": "outboards",
       "country": "Italy",
-      "description": "Ιταλικές εξωλέμβιες μηχανές με μοναδικό design και κορυφαία ποιότητα κατασκευής.",
+      "description": "Ιταλικές εξωλέμβιες με μοναδικό design και κορυφαία ποιότητα κατασκευής.",
       "website": "https://www.selvamarine.com/",
       "featured": false,
       "models": [
         {
           "id": "selva-guppy-2.5",
           "name": "Selva Guppy 2.5",
-          "image": "/images/engines/selva-guppy.jpg",
+          "image": "/images/outboards/selva-guppy.jpg",
           "specs": {
             "power": "2.5HP",
             "cylinders": "1",
@@ -1139,7 +1139,7 @@
         {
           "id": "selva-piranha-9.9",
           "name": "Selva Piranha 9.9",
-          "image": "/images/engines/selva-piranha.jpg",
+          "image": "/images/outboards/selva-piranha.jpg",
           "specs": {
             "power": "9.9HP",
             "cylinders": "2",
@@ -1154,7 +1154,7 @@
         {
           "id": "selva-dorado-40",
           "name": "Selva Dorado 40",
-          "image": "/images/engines/selva-dorado-40.jpg",
+          "image": "/images/outboards/selva-dorado-40.jpg",
           "specs": {
             "power": "40HP",
             "cylinders": "3",
@@ -1169,7 +1169,7 @@
         {
           "id": "selva-killer-whale-150",
           "name": "Selva Killer Whale 150",
-          "image": "/images/engines/selva-killer-whale.jpg",
+          "image": "/images/outboards/selva-killer-whale.jpg",
           "specs": {
             "power": "150HP",
             "cylinders": "4",
@@ -1184,7 +1184,7 @@
         {
           "id": "selva-orca-250",
           "name": "Selva Orca 250",
-          "image": "/images/engines/selva-orca.jpg",
+          "image": "/images/outboards/selva-orca.jpg",
           "specs": {
             "power": "250HP",
             "cylinders": "V6",

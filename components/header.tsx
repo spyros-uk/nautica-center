@@ -77,7 +77,7 @@ export function Header() {
               href="/outboards"
               className="text-sm font-medium hover:text-accent transition-colors"
             >
-              Μηχανές
+              Εξωλέμβιες
             </Link>
 
             {/* Ανταλλακτικά */}
@@ -182,7 +182,7 @@ export function Header() {
                     onClick={() => setIsOpen(false)}
                     className="text-lg font-medium py-3 border-b border-primary-foreground/10 hover:text-accent transition-colors"
                   >
-                    Μηχανές
+                    Εξωλέμβιες
                   </Link>
 
                   <Link

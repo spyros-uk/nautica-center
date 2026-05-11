@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -57,8 +58,13 @@ export function Hero() {
               Δείτε τα Σκάφη μας
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button size="lg" variant="outline" className="w-full sm:w-auto text-base font-semibold px-8 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
-              Επικοινωνήστε μαζί μας
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="w-full sm:w-auto text-base font-semibold px-8 border-primary-foreground/50 bg-transparent text-primary-foreground hover:bg-primary-foreground/15 hover:text-primary-foreground"
+            >
+              <Link href="/#contact">Επικοινωνήστε μαζί μας</Link>
             </Button>
           </div>
 
