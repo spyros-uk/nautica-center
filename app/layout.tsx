@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   description: 'Αντιπροσωπεία σκαφών Quicksilver, ZAR, MV Marine. Τρέιλερ ΔΡΟΜΕΥΣ, εξωλέμβιες μηχανές Mercury, Yamaha, Honda. Ναυτιλιακός εξοπλισμός στον Βόλο.',
   keywords: ['σκάφη', 'τρέιλερ', 'εξωλέμβιες', 'Βόλος', 'Quicksilver', 'ZAR', 'MV Marine', 'Mercury', 'Yamaha', 'φουσκωτά σκάφη', 'ναυτιλιακός εξοπλισμός'],
   authors: [{ name: 'Nautica Center' }],
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
   openGraph: {
     type: 'website',
     locale: 'el_GR',

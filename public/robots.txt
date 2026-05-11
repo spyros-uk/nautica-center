@@ -1,0 +1,3 @@
+# Block crawlers (staging / preview). Remove or relax when going live.
+User-agent: *
+Disallow: /
