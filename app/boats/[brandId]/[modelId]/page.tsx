@@ -266,22 +266,22 @@ export default async function ModelPage({ params }: { params: Params }) {
           </div>
         </section>
 
-        {/* Navigation */}
+        {/* Navigation — primary back = full listing (matches /boats grid); brand hub is secondary */}
         <section className="pb-16">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <Link
-                href={`/boats/${brand.id}`}
+                href={catalogCrumb.href}
                 className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" />
-                Πίσω στα {brand.name}
+                {isOutboard ? 'Πίσω στις εξωλέμβιες' : 'Πίσω στα σκάφη'}
               </Link>
               <Link
-                href={catalogCrumb.href}
-                className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                href={`/boats/${brand.id}`}
+                className="text-muted-foreground hover:text-foreground transition-colors text-sm sm:text-right"
               >
-                {isOutboard ? 'Όλες οι εξωλέμβιες' : 'Όλα τα σκάφη'}
+                Όλα τα {brand.name}
               </Link>
             </div>
           </div>
