@@ -10,8 +10,8 @@ const footerLinks = {
   ],
   watersports: [
     { name: 'Jet Ski Yamaha', href: 'https://ewatersports.gr/', external: true },
-    { name: 'SUP Jobe', href: 'https://ewatersports.gr/', external: true },
-    { name: 'Kayak Seaflo & Cobo', href: 'https://ewatersports.gr/', external: true },
+    { name: 'SUP', href: 'https://ewatersports.gr/', external: true },
+    { name: 'Kayak', href: 'https://ewatersports.gr/', external: true },
     { name: 'Sea Scooters', href: 'https://ewatersports.gr/', external: true },
     { name: 'Ποδήλατα Θαλάσσης', href: 'https://ewatersports.gr/', external: true },
     { name: 'Σωσίβια & Γιλέκα', href: 'https://ewatersports.gr/', external: true },

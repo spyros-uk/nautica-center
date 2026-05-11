@@ -12,9 +12,8 @@ const brands = [
   { name: 'Eolo', type: 'Πολυεστερικά Σκάφη' },
   { name: 'BMA', type: 'Πολυεστερικά Σκάφη' },
   { name: 'Suzuki', type: 'Εξωλέμβιες' },
-  { name: 'Jobe', type: 'SUP & Water Sports' },
-  { name: 'Seaflo', type: 'Kayak' },
-  { name: 'Cobo', type: 'Kayak' },
+  { name: 'SUP', type: 'Θαλάσσια σπορ' },
+  { name: 'Kayak', type: 'Θαλάσσια σπορ' },
   { name: 'Aquablue', type: 'Ποδήλατα Θαλάσσης' },
   { name: 'ΔΡΟΜΕΥΣ', type: 'Τρέιλερ Σκαφών' },
   { name: 'Olympic', type: 'Πολυεστερικά Σκάφη' },
@@ -26,7 +25,7 @@ export function BrandsSection() {
     <section id="brands" className="py-20 md:py-32 bg-primary text-primary-foreground">
       <div className="container mx-auto px-4">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-16">
           <span className="text-sm font-semibold text-accent uppercase tracking-wider">Συνεργασίες</span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
             Επίσημοι Αντιπρόσωποι

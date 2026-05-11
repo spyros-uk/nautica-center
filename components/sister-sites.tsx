@@ -9,7 +9,7 @@ const sisterSites = [
     description: 'Θαλάσσια σπορ, Jet Ski Yamaha, SUP, Kayak, σωσίβια και αξεσουάρ',
     url: 'https://ewatersports.gr/',
     color: 'from-cyan-500 to-teal-600',
-    features: ['Jet Ski Yamaha', 'SUP Jobe', 'Kayak Seaflo & Cobo', 'Σωσίβια', 'Sea Scooters'],
+    features: ['Jet Ski Yamaha', 'SUP', 'Kayak', 'Σωσίβια', 'Sea Scooters'],
   },
   {
     name: 'Dromeys Trailers',
@@ -22,10 +22,10 @@ const sisterSites = [
 
 export function SisterSites() {
   return (
-    <section className="py-20 md:py-28 bg-muted/30">
+    <section id="companies" className="py-20 md:py-28 bg-muted/30 scroll-mt-28 md:scroll-mt-36">
       <div className="container mx-auto px-4">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-16">
           <span className="text-sm font-semibold text-accent uppercase tracking-wider">Οι Εταιρείες μας</span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 text-pretty">
             Ένας όμιλος, πλήρεις λύσεις

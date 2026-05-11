@@ -31,9 +31,9 @@ const contactInfo = [
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-20 md:py-32 bg-muted/30">
+    <section id="contact" className="py-20 md:py-32 bg-muted/30 scroll-mt-28 md:scroll-mt-36">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mb-12 md:mb-16">
+        <div className="max-w-4xl mb-12 md:mb-16">
           <span className="text-sm font-semibold text-accent uppercase tracking-wider">Επικοινωνία</span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
             Ελάτε να τα πούμε

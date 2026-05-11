@@ -32,7 +32,7 @@ export function TestimonialsSection() {
     <section className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-16">
           <span className="text-sm font-semibold text-accent uppercase tracking-wider">Μαρτυρίες</span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
             Τι λένε οι πελάτες μας

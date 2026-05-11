@@ -37,7 +37,7 @@ const categories = [
   },
   {
     title: 'Jet Ski & Θαλάσσια Σπορ',
-    description: 'Yamaha Jet Ski, SUP Jobe, Kayak Seaflo & Cobo, Sea Scooters',
+    description: 'Yamaha Jet Ski, SUP, Kayak, Sea Scooters',
     icon: Bike,
     image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80',
     href: 'https://ewatersports.gr/',
@@ -57,7 +57,7 @@ export function BoatCategories() {
     <section id="boats" className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4">
         {/* Section header */}
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-4xl mb-16">
           <span className="text-sm font-semibold text-accent uppercase tracking-wider">Κατηγορίες</span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 text-pretty">
             Όλα όσα χρειάζεστε για τη θάλασσα

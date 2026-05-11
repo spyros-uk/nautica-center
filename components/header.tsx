@@ -2,18 +2,12 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Menu, Phone, Mail, MapPin, ExternalLink, ChevronDown } from 'lucide-react'
+import { Menu, Phone, Mail, MapPin } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 
-const sisterSites = [
-  { name: 'EWater Sports', description: 'Jet Ski, SUP, Kayak', url: 'https://ewatersports.gr/' },
-  { name: 'Dromeys Trailers', description: 'Τρέιλερ Σκαφών', url: 'https://dromeys.gr/' },
-]
-
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
-  const [showSisterSites, setShowSisterSites] = useState(false)
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md text-primary-foreground">
@@ -94,48 +88,20 @@ export function Header() {
             >
               Υπηρεσίες
             </Link>
-            
+
+            <Link
+              href="/#companies"
+              className="text-sm font-medium hover:text-accent transition-colors"
+            >
+              Οι Εταιρείες μας
+            </Link>
+
             <Link
               href="/#contact"
               className="text-sm font-medium hover:text-accent transition-colors"
             >
               Επικοινωνία
             </Link>
-            
-            {/* Sister sites dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setShowSisterSites(true)}
-              onMouseLeave={() => setShowSisterSites(false)}
-            >
-              <button
-                className="flex items-center gap-1 text-sm font-medium hover:text-accent transition-colors py-2"
-              >
-                Οι Εταιρείες μας
-                <ChevronDown className={`h-4 w-4 transition-transform ${showSisterSites ? 'rotate-180' : ''}`} />
-              </button>
-              {showSisterSites && (
-                <div className="absolute top-full right-0 pt-2 w-64">
-                  <div className="bg-card rounded-lg shadow-xl border border-border overflow-hidden">
-                    {sisterSites.map((site) => (
-                      <a
-                        key={site.name}
-                        href={site.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between p-4 hover:bg-muted transition-colors text-foreground"
-                      >
-                        <div>
-                          <div className="font-semibold">{site.name}</div>
-                          <div className="text-sm text-muted-foreground">{site.description}</div>
-                        </div>
-                        <ExternalLink className="h-4 w-4 text-muted-foreground" />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
 
           {/* CTA Button */}
@@ -200,6 +166,15 @@ export function Header() {
                   >
                     Υπηρεσίες
                   </Link>
+
+                  <Link
+                    href="/#companies"
+                    onClick={() => setIsOpen(false)}
+                    className="text-lg font-medium py-3 border-b border-primary-foreground/10 hover:text-accent transition-colors"
+                  >
+                    Οι Εταιρείες μας
+                  </Link>
+
                   <Link
                     href="/#contact"
                     onClick={() => setIsOpen(false)}
@@ -207,26 +182,6 @@ export function Header() {
                   >
                     Επικοινωνία
                   </Link>
-                  
-                  {/* Sister sites in mobile menu */}
-                  <div className="pt-4 mt-2 border-t border-primary-foreground/20">
-                    <span className="text-sm text-primary-foreground/60 uppercase tracking-wider">Οι Εταιρείες μας</span>
-                    {sisterSites.map((site) => (
-                      <a
-                        key={site.name}
-                        href={site.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between py-3 text-base font-medium hover:text-accent transition-colors"
-                      >
-                        <div>
-                          <div>{site.name}</div>
-                          <div className="text-sm text-primary-foreground/60">{site.description}</div>
-                        </div>
-                        <ExternalLink className="h-4 w-4" />
-                      </a>
-                    ))}
-                  </div>
                 </nav>
                 <div className="mt-auto space-y-4 pt-8">
                   <a href="tel:+302428091700" className="flex items-center gap-3 text-sm">
