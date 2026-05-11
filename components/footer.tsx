@@ -186,13 +186,21 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
+        {/* Bottom bar: © | credit | legal */}
         <div className="mt-12 pt-8 border-t border-primary-foreground/10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-primary-foreground/50">
+          <div className="grid grid-cols-1 gap-3 text-center md:grid-cols-3 md:items-center md:gap-6 md:text-left">
+            <p className="text-sm text-primary-foreground/50 md:self-center">
               © {new Date().getFullYear()} Nautica Center. Όλα τα δικαιώματα κατοχυρωμένα.
             </p>
-            <div className="flex items-center gap-6">
+            <a
+              href="https://www.spyros.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-primary-foreground/50 hover:text-accent transition-colors md:justify-self-center md:text-center"
+            >
+              Design & Development by Spyros Papaioannou
+            </a>
+            <div className="flex items-center justify-center gap-6 md:justify-self-end">
               <Link href="#" className="text-sm text-primary-foreground/50 hover:text-accent transition-colors">
                 Όροι Χρήσης
               </Link>
@@ -200,19 +208,6 @@ export function Footer() {
                 Πολιτική Απορρήτου
               </Link>
             </div>
-          </div>
-          <div className="mt-6 text-center">
-            <p className="text-sm text-primary-foreground/40">
-              Designed & Developed by{' '}
-              <a 
-                href="https://www.spyros.uk" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary-foreground/60 hover:text-accent transition-colors"
-              >
-                Spyros Papaioannou
-              </a>
-            </p>
           </div>
         </div>
       </div>
