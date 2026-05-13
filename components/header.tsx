@@ -35,41 +35,41 @@ export function Header() {
 
       {/* Main navigation */}
       <nav className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center gap-3 xl:gap-6 h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex shrink-0 items-center gap-2 sm:gap-3">
             <div className="relative">
-              <svg viewBox="0 0 40 40" className="h-10 w-10 md:h-12 md:w-12" fill="none">
+              <svg viewBox="0 0 40 40" className="h-9 w-9 md:h-10 md:w-10 xl:h-12 xl:w-12" fill="none">
                 <circle cx="20" cy="20" r="18" stroke="currentColor" strokeWidth="2" />
                 <path d="M12 28 L20 10 L28 28 L20 24 Z" fill="currentColor" />
                 <path d="M20 28 L20 32" stroke="currentColor" strokeWidth="2" />
               </svg>
             </div>
             <div className="flex flex-col">
-              <span className="text-lg md:text-xl font-bold tracking-tight">NAUTICA</span>
-              <span className="text-xs md:text-sm font-medium tracking-widest opacity-80">CENTER</span>
+              <span className="text-base md:text-lg xl:text-xl font-bold tracking-tight">NAUTICA</span>
+              <span className="text-[10px] md:text-xs xl:text-sm font-medium tracking-widest opacity-80">CENTER</span>
             </div>
           </Link>
 
           {/* Desktop navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden xl:flex flex-1 items-center justify-center gap-x-3 2xl:gap-x-5 min-w-0 px-2 2xl:px-4">
             <Link
               href="/"
-              className="text-sm font-medium hover:text-accent transition-colors"
+              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
             >
               Αρχική
             </Link>
 
             <Link
               href="/boats"
-              className="text-sm font-medium hover:text-accent transition-colors"
+              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
             >
               Σκάφη
             </Link>
 
             <Link
               href="/outboards"
-              className="text-sm font-medium hover:text-accent transition-colors"
+              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
             >
               Εξωλέμβιες
             </Link>
@@ -77,37 +77,37 @@ export function Header() {
             {/* Ανταλλακτικά */}
             <Link
               href="/parts"
-              className="text-sm font-medium hover:text-accent transition-colors"
+              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
             >
               Ανταλλακτικά
             </Link>
 
             <Link
               href="/#services"
-              className="text-sm font-medium hover:text-accent transition-colors"
+              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
             >
               Υπηρεσίες
             </Link>
 
             <Link
               href="/#companies"
-              className="text-sm font-medium hover:text-accent transition-colors"
+              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
             >
               Οι Εταιρείες μας
             </Link>
 
             <Link
               href="/#contact"
-              className="text-sm font-medium hover:text-accent transition-colors"
+              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
             >
               Επικοινωνία
             </Link>
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden xl:block shrink-0">
             <Link href="/#contact">
-              <Button variant="secondary" className="font-semibold">
+              <Button variant="secondary" size="sm" className="font-semibold xl:text-sm 2xl:h-9 2xl:px-4">
                 Ζητήστε Προσφορά
               </Button>
             </Link>
@@ -115,7 +115,7 @@ export function Header() {
 
           {/* Mobile menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="md:hidden">
+            <SheetTrigger asChild className="ml-auto xl:hidden">
               <Button variant="ghost" size="icon" className="text-primary-foreground">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Άνοιγμα μενού</span>
