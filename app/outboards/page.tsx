@@ -23,6 +23,7 @@ import {
   loadOutboardsFilters,
   saveOutboardsFilters,
 } from '@/lib/product-filters-storage'
+import { useTranslation } from '@/lib/i18n/context'
 
 // Brands that sell outboards (see `data/boats.json` category `outboards`)
 const outboardBrands = boatsData.brands.filter(brand => brand.category === 'outboards')
@@ -45,6 +46,8 @@ const ITEMS_PER_PAGE = 12
 const validOutboardBrandIds = outboardBrands.map((brand) => brand.id)
 
 export default function OutboardsPage() {
+  const { t } = useTranslation()
+
   // Mount state to prevent hydration flash
   const [isMounted, setIsMounted] = useState(false)
   const filtersHydrated = useRef(false)
@@ -198,25 +201,24 @@ export default function OutboardsPage() {
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 text-primary-foreground/70 mb-4">
               <Link href="/" className="hover:text-primary-foreground transition-colors">
-                Αρχική
+                {t('catalog.home')}
               </Link>
               <ChevronRight className="h-4 w-4" />
-              <span className="text-primary-foreground">Εξωλέμβιες</span>
+              <span className="text-primary-foreground">{t('outboards.title')}</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
-              Εξωλέμβιες
+              {t('outboards.title')}
             </h1>
             <p className="text-xl text-primary-foreground/80 mb-6">
-              Ανακαλύψτε τη μεγαλύτερη γκάμα εξωλέμβιων από τις κορυφαίες μάρκες.
-              Από 2.5HP έως 350HP για κάθε ανάγκη.
+              {t('outboards.subtitle')} {t('outboards.heroSubtitle')}
             </p>
             <div className="flex items-center gap-4 text-primary-foreground/70">
               <div className="flex items-center gap-2">
                 <Settings className="h-5 w-5" />
-                <span>{allOutboards.length} μοντέλα</span>
+                <span>{allOutboards.length} {t('outboards.models')}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span>{outboardBrands.length} μάρκες</span>
+                <span>{outboardBrands.length} {t('outboards.brands')}</span>
               </div>
             </div>
           </div>
@@ -232,20 +234,20 @@ export default function OutboardsPage() {
             <aside className="hidden lg:block w-72 flex-shrink-0">
               <div className="sticky top-24 bg-card rounded-xl border border-border p-6 space-y-6">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-lg">Φίλτρα</h3>
+                  <h3 className="font-semibold text-lg">{t('catalog.filters')}</h3>
                   {hasActiveFilters && (
                     <button 
                       onClick={clearFilters}
                       className="text-sm text-accent hover:underline"
                     >
-                      Καθαρισμός
+                      {t('catalog.clear')}
                     </button>
                   )}
                 </div>
 
                 {/* Brand Filter */}
                 <div>
-                  <h4 className="font-medium mb-3">Μάρκα</h4>
+                  <h4 className="font-medium mb-3">{t('catalog.brand')}</h4>
                   <div className="space-y-2">
                     {outboardBrands.map(brand => (
                       <label 
@@ -271,7 +273,7 @@ export default function OutboardsPage() {
 
                 {/* HP Range Filter */}
                 <div>
-                  <h4 className="font-medium mb-3">Ιπποδύναμη (HP)</h4>
+                  <h4 className="font-medium mb-3">{t('outboards.hp')}</h4>
                   <div className="px-2">
                     <Slider
                       value={hpRange}
@@ -291,7 +293,7 @@ export default function OutboardsPage() {
                 {/* Results count */}
                 <div className="pt-4 border-t border-border">
                   <p className="text-sm text-muted-foreground">
-                    {filteredOutboards.length} {filteredOutboards.length === 1 ? 'αποτέλεσμα' : 'αποτελέσματα'}
+                    {filteredOutboards.length} {filteredOutboards.length === 1 ? t('catalog.result') : t('catalog.results')}
                   </p>
                 </div>
               </div>
@@ -300,7 +302,7 @@ export default function OutboardsPage() {
             {/* Mobile Filter Toggle */}
             <div className="lg:hidden flex items-center justify-between mb-4">
               <p className="text-sm text-muted-foreground">
-                {filteredOutboards.length} αποτελέσματα
+                {filteredOutboards.length} {t('catalog.results')}
               </p>
               <Button 
                 variant="outline" 
@@ -309,7 +311,7 @@ export default function OutboardsPage() {
                 className="gap-2"
               >
                 <Filter className="h-4 w-4" />
-                Φίλτρα
+                {t('catalog.filters')}
                 {hasActiveFilters && (
                   <Badge variant="secondary" className="ml-1">
                     {selectedBrands.length + (hpRange[0] > minHP || hpRange[1] < maxHP ? 1 : 0)}
@@ -327,7 +329,7 @@ export default function OutboardsPage() {
                 />
                 <div className="absolute right-0 top-0 bottom-0 w-80 bg-background p-6 overflow-y-auto">
                   <div className="flex items-center justify-between mb-6">
-                    <h3 className="font-semibold text-lg">Φίλτρα</h3>
+                    <h3 className="font-semibold text-lg">{t('catalog.filters')}</h3>
                     <button onClick={() => setShowFilters(false)}>
                       <X className="h-5 w-5" />
                     </button>
@@ -335,7 +337,7 @@ export default function OutboardsPage() {
                   
                   {/* Brand Filter */}
                   <div className="mb-6">
-                    <h4 className="font-medium mb-3">Μάρκα</h4>
+                    <h4 className="font-medium mb-3">{t('catalog.brand')}</h4>
                     <div className="space-y-2">
                       {outboardBrands.map(brand => (
                         <label 
@@ -359,7 +361,7 @@ export default function OutboardsPage() {
 
                   {/* HP Range Filter */}
                   <div className="mb-6">
-                    <h4 className="font-medium mb-3">Ιπποδύναμη (HP)</h4>
+                    <h4 className="font-medium mb-3">{t('outboards.hp')}</h4>
                     <div className="px-2">
                       <Slider
                         value={hpRange}
@@ -382,13 +384,13 @@ export default function OutboardsPage() {
                       onClick={clearFilters}
                       className="flex-1"
                     >
-                      Καθαρισμός
+                      {t('catalog.clear')}
                     </Button>
                     <Button 
                       onClick={() => setShowFilters(false)}
                       className="flex-1"
                     >
-                      Εφαρμογή
+                      {t('catalog.apply')}
                     </Button>
                   </div>
                 </div>
@@ -400,12 +402,12 @@ export default function OutboardsPage() {
               {filteredOutboards.length === 0 ? (
                 <div className="text-center py-16">
                   <Settings className="h-16 w-16 mx-auto text-muted-foreground/30 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Δεν βρέθηκαν εξωλέμβιες</h3>
+                  <h3 className="text-xl font-semibold mb-2">{t('outboards.empty')}</h3>
                   <p className="text-muted-foreground mb-4">
-                    Δοκιμάστε να αλλάξετε τα φίλτρα αναζήτησης
+                    {t('catalog.tryFilters')}
                   </p>
                   <Button variant="outline" onClick={clearFilters}>
-                    Καθαρισμός φίλτρων
+                    {t('catalog.clearFilters')}
                   </Button>
                 </div>
               ) : (
@@ -473,7 +475,7 @@ export default function OutboardsPage() {
 
                             <div className="mt-4 pt-3 border-t border-border flex items-center justify-between">
                               <span className="text-sm font-medium text-accent flex items-center gap-1">
-                                Λεπτομέρειες
+                                {t('catalog.details')}
                                 <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                               </span>
                             </div>
@@ -492,7 +494,7 @@ export default function OutboardsPage() {
                       {isLoading ? (
                         <div className="flex items-center gap-2 text-muted-foreground">
                           <Loader2 className="h-5 w-5 animate-spin" />
-                          <span>Φόρτωση...</span>
+                          <span>{t('catalog.loading')}</span>
                         </div>
                       ) : (
                         <Button
@@ -500,7 +502,7 @@ export default function OutboardsPage() {
                           onClick={loadMore}
                           className="px-8"
                         >
-                          Φόρτωση περισσότερων ({filteredOutboards.length - displayCount} ακόμα)
+                          {t('catalog.loadMore')} ({filteredOutboards.length - displayCount} {t('catalog.remaining')})
                         </Button>
                       )}
                     </div>
@@ -516,15 +518,14 @@ export default function OutboardsPage() {
       <section className="py-16 bg-muted">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Χρειάζεστε βοήθεια στην επιλογή;
+            {t('catalog.needHelp')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-            Οι ειδικοί μας μπορούν να σας συμβουλεύσουν για την ιδανική εξωλέμβια
-            ανάλογα με το σκάφος σας και τις ανάγκες σας.
+            {t('outboards.help')}
           </p>
           <Button size="lg" className="gap-2">
             <Phone className="h-5 w-5" />
-            Επικοινωνήστε μαζί μας
+            {t('catalog.contactUs')}
           </Button>
         </div>
       </section>

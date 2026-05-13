@@ -7,6 +7,7 @@ import { Footer } from '@/components/footer'
 import { ProductImage } from '@/components/product-image'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { TranslatedText } from '@/components/translated-text'
 import { ArrowLeft, ArrowRight, Globe, Phone, Users, Ruler, Gauge, ExternalLink } from 'lucide-react'
 
 type Params = Promise<{ brandId: string }>
@@ -53,7 +54,7 @@ export default async function BrandPage({ params }: { params: Params }) {
             <div className="mb-6 flex items-center justify-between gap-4">
               <nav className="flex min-w-0 items-center gap-2 overflow-x-auto whitespace-nowrap text-sm text-primary-foreground/60">
                 <Link href={catalogCrumb.href} className="hover:text-primary-foreground transition-colors">
-                  {catalogCrumb.label}
+                  <TranslatedText messageKey="nav.outboards" />
                 </Link>
                 <span>/</span>
                 <span className="text-primary-foreground">{brand.name}</span>
@@ -63,7 +64,7 @@ export default async function BrandPage({ params }: { params: Params }) {
                 className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" />
-                {isOutboard ? 'Πίσω στις εξωλέμβιες' : 'Πίσω στα σκάφη'}
+                <TranslatedText messageKey="catalog.backOutboards" />
               </Link>
             </div>
 
@@ -80,7 +81,10 @@ export default async function BrandPage({ params }: { params: Params }) {
                   <span>•</span>
                   <span>{getCategoryName(brand.category)}</span>
                   <span>•</span>
-                  <span>{brand.models.length} {isOutboard ? 'εξωλέμβιες' : 'μοντέλα'}</span>
+                  <span>
+                    {brand.models.length}{' '}
+                    <TranslatedText messageKey="catalog.outboardsCount" />
+                  </span>
                 </div>
                 <p className="text-lg text-primary-foreground/80 leading-relaxed">
                   {brand.description}
@@ -96,7 +100,7 @@ export default async function BrandPage({ params }: { params: Params }) {
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-primary-foreground/30 hover:bg-primary-foreground/10 transition-colors"
                   >
                     <Globe className="h-5 w-5" />
-                    Επίσημη Ιστοσελίδα
+                    <TranslatedText messageKey="catalog.officialSite" />
                     <ExternalLink className="h-4 w-4" />
                   </a>
                 )}
@@ -105,7 +109,7 @@ export default async function BrandPage({ params }: { params: Params }) {
                   className="inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full font-semibold hover:bg-accent/90 transition-colors"
                 >
                   <Phone className="h-5 w-5" />
-                  Επικοινωνία
+                  <TranslatedText messageKey="catalog.contact" />
                 </Link>
               </div>
             </div>
@@ -116,7 +120,7 @@ export default async function BrandPage({ params }: { params: Params }) {
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl md:text-3xl font-bold mb-8">
-              {isOutboard ? 'Διαθέσιμες εξωλέμβιες' : 'Διαθέσιμα Μοντέλα'}
+              <TranslatedText messageKey="boats.availableOutboards" />
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -193,7 +197,7 @@ export default async function BrandPage({ params }: { params: Params }) {
 
                     <div className="flex items-center justify-between pt-4 border-t border-border">
                       <span className="text-sm font-medium text-accent flex items-center gap-1 group-hover:gap-2 transition-all">
-                        Περισσότερα
+                        <TranslatedText messageKey="catalog.more" />
                         <ArrowRight className="h-4 w-4" />
                       </span>
                     </div>

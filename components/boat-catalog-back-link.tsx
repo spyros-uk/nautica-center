@@ -3,18 +3,19 @@
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
+import { useTranslation } from '@/lib/i18n/context'
 
 type BoatCatalogBackLinkProps = {
   catalogHref: string
-  catalogLabel: string
 }
 
-export function BoatCatalogBackLink({ catalogHref, catalogLabel }: BoatCatalogBackLinkProps) {
+export function BoatCatalogBackLink({ catalogHref }: BoatCatalogBackLinkProps) {
+  const { t } = useTranslation()
   const searchParams = useSearchParams()
   const fromHome = searchParams.get('from') === 'home'
 
   const href = fromHome ? '/#featured-boats' : catalogHref
-  const label = fromHome ? 'Πίσω στην αρχική' : catalogLabel
+  const label = fromHome ? t('catalog.backHome') : t('catalog.backBoats')
 
   return (
     <Link

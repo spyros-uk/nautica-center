@@ -3,15 +3,18 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useTranslation } from '@/lib/i18n/context'
 
 export function Hero() {
+  const { t } = useTranslation()
+
   return (
     <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <img 
           src="/images/hero-boat.jpg" 
-          alt="Σκάφος στην θάλασσα" 
+          alt={t('hero.imageAlt')} 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/70 to-primary/90" />
@@ -40,23 +43,22 @@ export function Hero() {
         <div className="max-w-4xl mx-auto text-center text-primary-foreground">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm text-sm font-medium mb-6">
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-            Από το 1985 στη θάλασσα
+            {t('hero.badge')}
           </div>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance mb-6">
-            Η Πύλη σας στη
-            <span className="block text-accent">Θάλασσα</span>
+            {t('hero.titleLine1')}
+            <span className="block text-accent">{t('hero.titleLine2')}</span>
           </h1>
           
           <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto mb-8 text-pretty">
-            Αντιπροσωπεία κορυφαίων σκαφών, κατασκευή τρέιλερ και πλήρης ναυτιλιακός εξοπλισμός. 
-            Η εμπιστοσύνη σας στη θάλασσα ξεκινά από εδώ.
+            {t('hero.subtitle')}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" variant="secondary" asChild className="w-full sm:w-auto text-base font-semibold px-8">
               <Link href="/boats">
-                Δείτε τα Σκάφη μας
+                {t('hero.ctaBoats')}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -66,7 +68,7 @@ export function Hero() {
               asChild
               className="w-full sm:w-auto text-base font-semibold px-8 border-primary-foreground/50 bg-transparent text-primary-foreground hover:bg-primary-foreground/15 hover:text-primary-foreground"
             >
-              <Link href="/#contact">Επικοινωνήστε μαζί μας</Link>
+              <Link href="/#contact">{t('hero.ctaContact')}</Link>
             </Button>
           </div>
 
@@ -74,19 +76,19 @@ export function Hero() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mt-16 md:mt-24 pt-8 border-t border-primary-foreground/20">
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold">40+</div>
-              <div className="text-sm text-primary-foreground/70 mt-1">Χρόνια Εμπειρίας</div>
+              <div className="text-sm text-primary-foreground/70 mt-1">{t('hero.statExperience')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold">15+</div>
-              <div className="text-sm text-primary-foreground/70 mt-1">Μάρκες Σκαφών</div>
+              <div className="text-sm text-primary-foreground/70 mt-1">{t('hero.statBrands')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold">500+</div>
-              <div className="text-sm text-primary-foreground/70 mt-1">Ικανοποιημένοι Πελάτες</div>
+              <div className="text-sm text-primary-foreground/70 mt-1">{t('hero.statCustomers')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold">100%</div>
-              <div className="text-sm text-primary-foreground/70 mt-1">Γνήσια Ανταλλακτικά</div>
+              <div className="text-sm text-primary-foreground/70 mt-1">{t('hero.statParts')}</div>
             </div>
           </div>
         </div>

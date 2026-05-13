@@ -8,6 +8,7 @@ import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { ProductGallery } from '@/components/product-gallery'
 import { BoatCatalogBackLink } from '@/components/boat-catalog-back-link'
+import { TranslatedText } from '@/components/translated-text'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -70,7 +71,7 @@ export default async function ModelPage({ params }: { params: Params }) {
             <div className="flex items-center justify-between gap-4">
               <nav className="flex min-w-0 items-center gap-2 overflow-x-auto whitespace-nowrap text-sm text-muted-foreground">
                 <Link href={catalogCrumb.href} className="hover:text-foreground transition-colors">
-                  {catalogCrumb.label}
+                  <TranslatedText messageKey="nav.boats" />
                 </Link>
                 <span>/</span>
                 <Link href={getBrandPath(brand)} className="hover:text-foreground transition-colors">
@@ -86,13 +87,12 @@ export default async function ModelPage({ params }: { params: Params }) {
                     className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                   >
                     <ArrowLeft className="h-4 w-4" />
-                    Πίσω στα σκάφη
+                    <TranslatedText messageKey="catalog.backBoats" />
                   </Link>
                 }
               >
                 <BoatCatalogBackLink
                   catalogHref={catalogCrumb.href}
-                  catalogLabel="Πίσω στα σκάφη"
                 />
               </Suspense>
             </div>
@@ -171,9 +171,11 @@ export default async function ModelPage({ params }: { params: Params }) {
                   <CardContent className="p-6">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                       <div>
-                        <p className="font-semibold text-lg mb-1">Ζητήστε Προσφορά</p>
+                        <p className="font-semibold text-lg mb-1">
+                          <TranslatedText messageKey="catalog.requestQuote" />
+                        </p>
                         <p className="text-sm text-muted-foreground">
-                          Επικοινωνήστε μαζί μας για την καλύτερη τιμή
+                          <TranslatedText messageKey="catalog.quoteSubtitle" />
                         </p>
                       </div>
                       <div className="flex flex-col sm:flex-row gap-3">
@@ -182,14 +184,14 @@ export default async function ModelPage({ params }: { params: Params }) {
                           className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold hover:bg-primary/90 transition-colors"
                         >
                           <Phone className="h-5 w-5" />
-                          Καλέστε μας
+                          <TranslatedText messageKey="catalog.callUs" />
                         </a>
                         <a
                           href="mailto:info@nautica-center.gr"
                           className="inline-flex items-center justify-center gap-2 border border-border px-6 py-3 rounded-full font-semibold hover:bg-muted transition-colors"
                         >
                           <Mail className="h-5 w-5" />
-                          Email
+                          <TranslatedText messageKey="catalog.email" />
                         </a>
                       </div>
                     </div>
@@ -199,7 +201,9 @@ export default async function ModelPage({ params }: { params: Params }) {
                 {/* Features */}
                 {model.features.length > 0 && (
                   <div className="mb-6">
-                    <h3 className="font-semibold mb-3">Χαρακτηριστικά</h3>
+                    <h3 className="font-semibold mb-3">
+                      <TranslatedText messageKey="catalog.features" />
+                    </h3>
                     <div className="flex flex-wrap gap-2">
                       {model.features.map((feature, index) => (
                         <span
@@ -221,7 +225,9 @@ export default async function ModelPage({ params }: { params: Params }) {
         {/* Full Specifications */}
         <section className="py-12 bg-muted/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-8">Τεχνικά Χαρακτηριστικά</h2>
+            <h2 className="text-2xl font-bold mb-8">
+              <TranslatedText messageKey="catalog.specs" />
+            </h2>
             
             <div className="bg-card rounded-2xl border border-border overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-2">
@@ -248,7 +254,9 @@ export default async function ModelPage({ params }: { params: Params }) {
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
-                    <h3 className="font-semibold text-lg mb-1">Σχετικά με την {brand.name}</h3>
+                    <h3 className="font-semibold text-lg mb-1">
+                      <TranslatedText messageKey="catalog.aboutBrand" as="span" /> {brand.name}
+                    </h3>
                     <p className="text-muted-foreground text-sm">{brand.description}</p>
                   </div>
                   <div className="flex items-center gap-3">
@@ -256,7 +264,7 @@ export default async function ModelPage({ params }: { params: Params }) {
                       href={getBrandPath(brand)}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-muted rounded-full text-sm font-medium hover:bg-accent/20 transition-colors"
                     >
-                      Όλα τα {brand.name}
+                      <TranslatedText messageKey="catalog.allBrand" as="span" /> {brand.name}
                     </Link>
                     {brand.website && (
                       <a
@@ -266,7 +274,7 @@ export default async function ModelPage({ params }: { params: Params }) {
                         className="inline-flex items-center gap-2 px-4 py-2 border border-border rounded-full text-sm font-medium hover:bg-muted transition-colors"
                       >
                         <Globe className="h-4 w-4" />
-                        Website
+                        <TranslatedText messageKey="catalog.website" />
                         <ExternalLink className="h-3 w-3" />
                       </a>
                     )}

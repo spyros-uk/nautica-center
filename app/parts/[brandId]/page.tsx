@@ -14,7 +14,9 @@ import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { ProductImage } from '@/components/product-image'
 import { Badge } from '@/components/ui/badge'
-import { ArrowLeft, ArrowRight, Globe, Phone, ExternalLink, Wrench, Tag } from 'lucide-react'
+import { TranslatedText } from '@/components/translated-text'
+import { PartsCatalogBackLink } from '@/components/parts-catalog-back-link'
+import { ArrowRight, Globe, Phone, ExternalLink, Wrench, Tag } from 'lucide-react'
 
 type Params = Promise<{ brandId: string }>
 
@@ -71,18 +73,15 @@ export default async function PartBrandPage({ params }: { params: Params }) {
             <div className="mb-6 flex items-center justify-between gap-4">
               <nav className="flex min-w-0 items-center gap-2 overflow-x-auto whitespace-nowrap text-sm text-primary-foreground/60">
                 <Link href={PARTS_CATALOG.href} className="hover:text-primary-foreground transition-colors">
-                  {PARTS_CATALOG.label}
+                  <TranslatedText messageKey="nav.parts" />
                 </Link>
                 <span>/</span>
                 <span className="text-primary-foreground">{brand.name}</span>
               </nav>
-              <Link
+              <PartsCatalogBackLink
                 href={PARTS_CATALOG.href}
                 className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                Πίσω στα ανταλλακτικά
-              </Link>
+              />
             </div>
 
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
@@ -96,10 +95,13 @@ export default async function PartBrandPage({ params }: { params: Params }) {
                 <div className="flex items-center gap-4 text-primary-foreground/70 mb-4">
                   {outboardBrand?.country && <span>{outboardBrand.country}</span>}
                   {outboardBrand?.country && <span>•</span>}
-                  <span>Ανταλλακτικά εξωλέμβιων</span>
+                  <TranslatedText messageKey="parts.outboardParts" />
                   <span>•</span>
                   <span>
-                    {parts.length} {parts.length === 1 ? 'προϊόν' : 'προϊόντα'}
+                    {parts.length}{' '}
+                    <TranslatedText
+                      messageKey={parts.length === 1 ? 'catalog.product' : 'catalog.products'}
+                    />
                   </span>
                 </div>
                 <p className="text-lg text-primary-foreground/80 leading-relaxed">
@@ -118,7 +120,7 @@ export default async function PartBrandPage({ params }: { params: Params }) {
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-primary-foreground/30 hover:bg-primary-foreground/10 transition-colors"
                   >
                     <Globe className="h-5 w-5" />
-                    Επίσημη Ιστοσελίδα
+                    <TranslatedText messageKey="catalog.officialSite" />
                     <ExternalLink className="h-4 w-4" />
                   </a>
                 )}
@@ -127,7 +129,7 @@ export default async function PartBrandPage({ params }: { params: Params }) {
                   className="inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full font-semibold hover:bg-accent/90 transition-colors"
                 >
                   <Phone className="h-5 w-5" />
-                  Επικοινωνία
+                  <TranslatedText messageKey="catalog.contact" />
                 </Link>
               </div>
             </div>
@@ -136,21 +138,25 @@ export default async function PartBrandPage({ params }: { params: Params }) {
 
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8">Διαθέσιμα ανταλλακτικά</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-8">
+              <TranslatedText messageKey="parts.available" />
+            </h2>
 
             {parts.length === 0 ? (
               <div className="text-center py-16 bg-muted/30 rounded-2xl border border-border">
                 <Wrench className="h-16 w-16 mx-auto text-muted-foreground/30 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Δεν υπάρχουν καταχωρημένα προϊόντα</h3>
+                <h3 className="text-xl font-semibold mb-2">
+                  <TranslatedText messageKey="parts.noProducts" />
+                </h3>
                 <p className="text-muted-foreground mb-6">
-                  Επικοινωνήστε μαζί μας για ανταλλακτικά {brand.name}.
+                  <TranslatedText messageKey="parts.noProductsHelp" as="span" /> {brand.name}.
                 </p>
                 <Link
                   href="/#contact"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-colors"
                 >
                   <Phone className="h-5 w-5" />
-                  Επικοινωνία
+                  <TranslatedText messageKey="catalog.contact" />
                 </Link>
               </div>
             ) : (
@@ -183,7 +189,11 @@ export default async function PartBrandPage({ params }: { params: Params }) {
                                 : 'bg-muted text-muted-foreground'
                             }
                           >
-                            {part.inStock ? 'Διαθέσιμο' : 'Κατόπιν παραγγελίας'}
+                            {part.inStock ? (
+                              <TranslatedText messageKey="catalog.inStock" />
+                            ) : (
+                              <TranslatedText messageKey="catalog.onOrder" />
+                            )}
                           </Badge>
                         </div>
                       </div>
@@ -207,7 +217,7 @@ export default async function PartBrandPage({ params }: { params: Params }) {
 
                         <div className="flex items-center justify-between pt-4 border-t border-border">
                           <span className="text-sm font-medium text-accent flex items-center gap-1 group-hover:gap-2 transition-all">
-                            Περισσότερα
+                            <TranslatedText messageKey="catalog.more" />
                             <ArrowRight className="h-4 w-4" />
                           </span>
                         </div>

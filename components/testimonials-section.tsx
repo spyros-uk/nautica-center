@@ -2,6 +2,7 @@
 
 import { Star, Quote } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
+import { useTranslation } from '@/lib/i18n/context'
 
 const testimonials = [
   {
@@ -28,18 +29,15 @@ const testimonials = [
 ]
 
 export function TestimonialsSection() {
+  const { t } = useTranslation()
+
   return (
     <section className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4">
-        {/* Section header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Μαρτυρίες</span>
-          <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
-            Τι λένε οι πελάτες μας
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Η εμπιστοσύνη των πελατών μας είναι η μεγαλύτερη επιβράβευσή μας.
-          </p>
+          <span className="text-sm font-semibold text-accent uppercase tracking-wider">{t('testimonials.eyebrow')}</span>
+          <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">{t('testimonials.title')}</h2>
+          <p className="text-lg text-muted-foreground">{t('testimonials.subtitle')}</p>
         </div>
 
         {/* Testimonials grid */}

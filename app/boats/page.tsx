@@ -29,19 +29,13 @@ import {
   saveBoatsFilters,
   type BoatsQuickFilter,
 } from '@/lib/product-filters-storage'
+import { useTranslation } from '@/lib/i18n/context'
 
 // Boat categories (excluding outboards — they live on `/outboards`)
 const boatCategoryIds = ['inflatable', 'fiberglass', 'jetski']
 
 // Get all boat brands from the data (excluding outboard brands)
 const boatBrands = boatsData.brands.filter(brand => boatCategoryIds.includes(brand.category))
-
-// Category labels in Greek
-const categoryLabels: Record<string, string> = {
-  inflatable: 'Φουσκωτά',
-  fiberglass: 'Πολυεστερικά',
-  jetski: 'Jet Ski'
-}
 
 // Flatten all boat models with brand info
 const allBoats = boatBrands.flatMap(brand => 
@@ -67,6 +61,8 @@ const ITEMS_PER_PAGE = 12
 const validBoatBrandIds = boatBrands.map((brand) => brand.id)
 
 export default function BoatsPage() {
+  const { t } = useTranslation()
+
   // Mount state to prevent hydration flash
   const [isMounted, setIsMounted] = useState(false)
   const filtersHydrated = useRef(false)
@@ -304,25 +300,24 @@ export default function BoatsPage() {
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 text-primary-foreground/70 mb-4">
               <Link href="/" className="hover:text-primary-foreground transition-colors">
-                Αρχική
+                {t('catalog.home')}
               </Link>
               <ChevronRight className="h-4 w-4" />
-              <span className="text-primary-foreground">Σκάφη</span>
+              <span className="text-primary-foreground">{t('boats.title')}</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
-              Σκάφη
+              {t('boats.title')}
             </h1>
             <p className="text-xl text-primary-foreground/80 mb-6">
-              Ανακαλύψτε τη μεγαλύτερη γκάμα σκαφών στην Ελλάδα. 
-              Φουσκωτά, πολυεστερικά και Jet Ski από τις κορυφαίες μάρκες.
+              {t('boats.subtitle')} {t('boats.heroSubtitle')}
             </p>
             <div className="flex items-center gap-4 text-primary-foreground/70">
               <div className="flex items-center gap-2">
                 <Anchor className="h-5 w-5" />
-                <span>{allBoats.length} μοντέλα</span>
+                <span>{allBoats.length} {t('catalog.models')}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span>{boatBrands.length} μάρκες</span>
+                <span>{boatBrands.length} {t('outboards.brands')}</span>
               </div>
             </div>
           </div>
@@ -339,7 +334,7 @@ export default function BoatsPage() {
               onClick={() => applyQuickFilter('all')}
               className="gap-2"
             >
-              Όλα
+              {t('catalog.all')}
               <Badge variant="secondary" className="ml-1 bg-background/50">
                 {allBoats.length}
               </Badge>
@@ -351,7 +346,7 @@ export default function BoatsPage() {
               className="gap-2"
             >
               <Tag className="h-4 w-4" />
-              Προσφορές
+              {t('catalog.offers')}
               <Badge variant="secondary" className="ml-1 bg-background/50">
                 {offerCount}
               </Badge>
@@ -363,7 +358,7 @@ export default function BoatsPage() {
               className="gap-2"
             >
               <Sparkles className="h-4 w-4" />
-              Ετοιμοπαράδοτα
+              {t('catalog.available')}
               <Badge variant="secondary" className="ml-1 bg-background/50">
                 {availableCount}
               </Badge>
@@ -375,7 +370,7 @@ export default function BoatsPage() {
               className="gap-2"
             >
               <Clock className="h-4 w-4" />
-              Μεταχειρισμένα
+              {t('catalog.used')}
               <Badge variant="secondary" className="ml-1 bg-background/50">
                 {usedCount}
               </Badge>
@@ -393,20 +388,20 @@ export default function BoatsPage() {
             <aside className="hidden lg:block w-72 flex-shrink-0">
               <div className="sticky top-24 bg-card rounded-xl border border-border p-6 space-y-6">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-lg">Φίλτρα</h3>
+                  <h3 className="font-semibold text-lg">{t('catalog.filters')}</h3>
                   {hasActiveFilters && (
                     <button 
                       onClick={clearFilters}
                       className="text-sm text-accent hover:underline"
                     >
-                      Καθαρισμός
+                      {t('catalog.clear')}
                     </button>
                   )}
                 </div>
 
                 {/* Type Filter */}
                 <div>
-                  <h4 className="font-medium mb-3">Τύπος</h4>
+                  <h4 className="font-medium mb-3">{t('catalog.category')}</h4>
                   <div className="space-y-2">
                     {boatCategoryIds.map(categoryId => {
                       const count = boatBrands.filter(b => b.category === categoryId).reduce((acc, b) => acc + b.models.length, 0)
@@ -422,7 +417,7 @@ export default function BoatsPage() {
                             className="w-4 h-4 rounded border-border text-accent focus:ring-accent"
                           />
                           <span className="text-sm group-hover:text-accent transition-colors">
-                            {categoryLabels[categoryId]}
+                            {t(`catalog.categories.${categoryId}`)}
                           </span>
                           <span className="text-xs text-muted-foreground ml-auto">
                             ({count})
@@ -435,7 +430,7 @@ export default function BoatsPage() {
 
                 {/* Brand Filter */}
                 <div>
-                  <h4 className="font-medium mb-3">Μάρκες</h4>
+                  <h4 className="font-medium mb-3">{t('catalog.brand')}</h4>
                   <div className="space-y-2">
                     {boatBrands.map(brand => (
                       <label 
@@ -461,7 +456,7 @@ export default function BoatsPage() {
 
                 {/* Length Range Filter */}
                 <div>
-                  <h4 className="font-medium mb-3">Μήκος (m)</h4>
+                  <h4 className="font-medium mb-3">{t('catalog.length')} (m)</h4>
                   <div className="px-2">
                     <Slider
                       value={lengthRange}
@@ -484,7 +479,7 @@ export default function BoatsPage() {
                 {/* Results count */}
                 <div className="pt-4 border-t border-border">
                   <p className="text-sm text-muted-foreground">
-                    {filteredBoats.length} {filteredBoats.length === 1 ? 'αποτέλεσμα' : 'αποτελέσματα'}
+                    {filteredBoats.length} {filteredBoats.length === 1 ? t('catalog.result') : t('catalog.results')}
                   </p>
                 </div>
               </div>
@@ -493,7 +488,7 @@ export default function BoatsPage() {
             {/* Mobile Filter Toggle */}
             <div className="lg:hidden flex items-center justify-between mb-4">
               <p className="text-sm text-muted-foreground">
-                {filteredBoats.length} αποτελέσματα
+                {filteredBoats.length} {t('catalog.results')}
               </p>
               <Button 
                 variant="outline" 
@@ -502,7 +497,7 @@ export default function BoatsPage() {
                 className="gap-2"
               >
                 <Filter className="h-4 w-4" />
-                Φίλτρα
+                {t('catalog.filters')}
                 {hasActiveFilters && (
                   <Badge variant="secondary" className="ml-1">
                     {selectedBrands.length + selectedCategories.length + (lengthRange[0] > minLength || lengthRange[1] < maxLength ? 1 : 0)}
@@ -520,7 +515,7 @@ export default function BoatsPage() {
                 />
                 <div className="absolute right-0 top-0 bottom-0 w-80 bg-background p-6 overflow-y-auto">
                   <div className="flex items-center justify-between mb-6">
-                    <h3 className="font-semibold text-lg">Φίλτρα</h3>
+                    <h3 className="font-semibold text-lg">{t('catalog.filters')}</h3>
                     <button onClick={() => setShowFilters(false)}>
                       <X className="h-5 w-5" />
                     </button>
@@ -528,7 +523,7 @@ export default function BoatsPage() {
                   
                   {/* Type Filter */}
                   <div className="mb-6">
-                    <h4 className="font-medium mb-3">Τύπος</h4>
+                    <h4 className="font-medium mb-3">{t('catalog.category')}</h4>
                     <div className="space-y-2">
                       {boatCategoryIds.map(categoryId => (
                         <label 
@@ -541,7 +536,7 @@ export default function BoatsPage() {
                             onChange={() => toggleCategory(categoryId)}
                             className="w-4 h-4 rounded border-border text-accent focus:ring-accent"
                           />
-                          <span className="text-sm">{categoryLabels[categoryId]}</span>
+                          <span className="text-sm">{t(`catalog.categories.${categoryId}`)}</span>
                         </label>
                       ))}
                     </div>
@@ -549,7 +544,7 @@ export default function BoatsPage() {
 
                   {/* Brand Filter */}
                   <div className="mb-6">
-                    <h4 className="font-medium mb-3">Μάρκα</h4>
+                    <h4 className="font-medium mb-3">{t('catalog.brand')}</h4>
                     <div className="space-y-2">
                       {boatBrands.map(brand => (
                         <label 
@@ -573,7 +568,7 @@ export default function BoatsPage() {
 
                   {/* Length Range Filter */}
                   <div className="mb-6">
-                    <h4 className="font-medium mb-3">Μήκος (m)</h4>
+                    <h4 className="font-medium mb-3">{t('catalog.length')} (m)</h4>
                     <div className="px-2">
                       <Slider
                         value={lengthRange}
@@ -599,13 +594,13 @@ export default function BoatsPage() {
                       onClick={clearFilters}
                       className="flex-1"
                     >
-                      Καθαρισμός
+                      {t('catalog.clear')}
                     </Button>
                     <Button 
                       onClick={() => setShowFilters(false)}
                       className="flex-1"
                     >
-                      Εφαρμογή
+                      {t('catalog.apply')}
                     </Button>
                   </div>
                 </div>
@@ -617,12 +612,12 @@ export default function BoatsPage() {
               {filteredBoats.length === 0 ? (
                 <div className="text-center py-16">
                   <Anchor className="h-16 w-16 mx-auto text-muted-foreground/30 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Δεν βρέθηκαν σκάφη</h3>
+                  <h3 className="text-xl font-semibold mb-2">{t('boats.empty')}</h3>
                   <p className="text-muted-foreground mb-4">
-                    Δοκιμάστε να αλλάξετε τα φίλτρα αναζήτησης
+                    {t('catalog.tryFilters')}
                   </p>
                   <Button variant="outline" onClick={clearFilters}>
-                    Καθαρισμός φίλτρων
+                    {t('catalog.clearFilters')}
                   </Button>
                 </div>
               ) : (
@@ -658,19 +653,19 @@ export default function BoatsPage() {
                               {boat.isOffer && (
                                 <Badge className="bg-red-500 text-white">
                                   <Tag className="h-3 w-3 mr-1" />
-                                  Προσφορά
+                                  {t('catalog.offer')}
                                 </Badge>
                               )}
                               {boat.isAvailable && (
                                 <Badge className="bg-green-500 text-white">
                                   <Sparkles className="h-3 w-3 mr-1" />
-                                  Ετοιμοπαράδοτο
+                                  {t('catalog.ready')}
                                 </Badge>
                               )}
                               {boat.isUsed && (
                                 <Badge className="bg-amber-500 text-white">
                                   <Clock className="h-3 w-3 mr-1" />
-                                  Μεταχειρισμένο
+                                  {t('catalog.used')}
                                 </Badge>
                               )}
                             </div>
@@ -678,7 +673,7 @@ export default function BoatsPage() {
                           <CardContent className="p-4">
                             <div className="flex items-center gap-2 mb-1">
                               <Badge variant="outline" className="text-xs">
-                                {categoryLabels[boat.boatCategory]}
+                                {t(`catalog.categories.${boat.boatCategory}`)}
                               </Badge>
                             </div>
                             <h3 className="font-semibold text-lg mb-2 group-hover:text-accent transition-colors">
@@ -718,7 +713,7 @@ export default function BoatsPage() {
 
                             <div className="mt-4 pt-3 border-t border-border flex items-center justify-between">
                               <span className="text-sm font-medium text-accent flex items-center gap-1">
-                                Λεπτομέρειες
+                                {t('catalog.details')}
                                 <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                               </span>
                             </div>
@@ -737,7 +732,7 @@ export default function BoatsPage() {
                       {isLoading ? (
                         <div className="flex items-center gap-2 text-muted-foreground">
                           <Loader2 className="h-5 w-5 animate-spin" />
-                          <span>Φόρτωση...</span>
+                          <span>{t('catalog.loading')}</span>
                         </div>
                       ) : (
                         <Button
@@ -745,7 +740,7 @@ export default function BoatsPage() {
                           onClick={loadMore}
                           className="px-8"
                         >
-                          Φόρτωση περισσότερων ({filteredBoats.length - displayCount} ακόμα)
+                          {t('catalog.loadMore')} ({filteredBoats.length - displayCount} {t('catalog.remaining')})
                         </Button>
                       )}
                     </div>
@@ -761,7 +756,7 @@ export default function BoatsPage() {
       <section className="py-16 bg-muted">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Χρειάζεστε βοήθεια στην επιλογή;
+            {t('catalog.needHelp')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
             Οι ειδικοί μας μπορούν να σας συμβουλεύσουν για το ιδανικό σκάφος 
@@ -769,7 +764,7 @@ export default function BoatsPage() {
           </p>
           <Button size="lg" className="gap-2">
             <Phone className="h-5 w-5" />
-            Επικοινωνήστε μαζί μας
+            {t('catalog.contactUs')}
           </Button>
         </div>
       </section>

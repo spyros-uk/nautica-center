@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import { AppProviders } from '@/components/app-providers'
 import './globals.css'
 
 const inter = Inter({ 
@@ -59,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="el" className="bg-background">
       <body className={`${inter.variable} font-sans antialiased`}>
-        {children}
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   )

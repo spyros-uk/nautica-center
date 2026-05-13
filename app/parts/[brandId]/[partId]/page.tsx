@@ -19,8 +19,9 @@ import { ProductGallery } from '@/components/product-gallery'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { ProductImage } from '@/components/product-image'
+import { TranslatedText } from '@/components/translated-text'
+import { PartsCatalogBackLink } from '@/components/parts-catalog-back-link'
 import {
-  ArrowLeft,
   Phone,
   Mail,
   Check,
@@ -72,7 +73,7 @@ export default async function PartDetailPage({ params }: { params: Params }) {
             <div className="flex items-center justify-between gap-4">
               <nav className="flex min-w-0 items-center gap-2 overflow-x-auto whitespace-nowrap text-sm text-muted-foreground">
                 <Link href={PARTS_CATALOG.href} className="hover:text-foreground transition-colors">
-                  {PARTS_CATALOG.label}
+                  <TranslatedText messageKey="nav.parts" />
                 </Link>
                 <span>/</span>
                 <Link href={getPartBrandPath(brandId)} className="hover:text-foreground transition-colors">
@@ -81,13 +82,7 @@ export default async function PartDetailPage({ params }: { params: Params }) {
                 <span>/</span>
                 <span className="text-foreground font-medium">{part.name}</span>
               </nav>
-              <Link
-                href={getPartBrandPath(brandId)}
-                className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                Πίσω στα {brand.name}
-              </Link>
+              <PartsCatalogBackLink href={getPartBrandPath(brandId)} brandName={brand.name} />
             </div>
           </div>
         </section>
@@ -112,7 +107,11 @@ export default async function PartDetailPage({ params }: { params: Params }) {
                         : 'bg-muted text-muted-foreground'
                     }
                   >
-                    {part.inStock ? 'Διαθέσιμο' : 'Κατόπιν παραγγελίας'}
+                    {part.inStock ? (
+                      <TranslatedText messageKey="catalog.inStock" />
+                    ) : (
+                      <TranslatedText messageKey="catalog.onOrder" />
+                    )}
                   </Badge>
                 </div>
 
@@ -140,9 +139,11 @@ export default async function PartDetailPage({ params }: { params: Params }) {
                   <CardContent className="p-6">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                       <div>
-                        <p className="font-semibold text-lg mb-1">Ζητήστε Τιμή & Διαθεσιμότητα</p>
+                        <p className="font-semibold text-lg mb-1">
+                          <TranslatedText messageKey="catalog.requestPrice" />
+                        </p>
                         <p className="text-sm text-muted-foreground">
-                          Καλέστε ή στείλτε email με τον κωδικό {part.sku}
+                          <TranslatedText messageKey="catalog.quoteSubtitleSku" as="span" /> {part.sku}
                         </p>
                       </div>
                       <div className="flex flex-col sm:flex-row gap-3">
@@ -151,14 +152,14 @@ export default async function PartDetailPage({ params }: { params: Params }) {
                           className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold hover:bg-primary/90 transition-colors"
                         >
                           <Phone className="h-5 w-5" />
-                          Καλέστε μας
+                          <TranslatedText messageKey="catalog.callUs" />
                         </a>
                         <a
                           href={`mailto:info@nautica-center.gr?subject=${encodeURIComponent(`Αίτημα για ${part.name} (${part.sku})`)}`}
                           className="inline-flex items-center justify-center gap-2 border border-border px-6 py-3 rounded-full font-semibold hover:bg-muted transition-colors"
                         >
                           <Mail className="h-5 w-5" />
-                          Email
+                          <TranslatedText messageKey="catalog.email" />
                         </a>
                       </div>
                     </div>
@@ -169,7 +170,7 @@ export default async function PartDetailPage({ params }: { params: Params }) {
                   <div className="mb-6">
                     <h3 className="font-semibold mb-3 flex items-center gap-2">
                       <Package className="h-4 w-4 text-accent" />
-                      Συμβατότητα
+                      <TranslatedText messageKey="catalog.compatibility" />
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {part.compatibility.map((engine) => (
@@ -192,7 +193,9 @@ export default async function PartDetailPage({ params }: { params: Params }) {
         {specsArray.length > 0 && (
           <section className="py-12 bg-muted/30">
             <div className="container mx-auto px-4">
-              <h2 className="text-2xl font-bold mb-8">Τεχνικά Χαρακτηριστικά</h2>
+              <h2 className="text-2xl font-bold mb-8">
+                <TranslatedText messageKey="catalog.specs" />
+              </h2>
 
               <div className="bg-card rounded-2xl border border-border overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-2">
@@ -216,7 +219,9 @@ export default async function PartDetailPage({ params }: { params: Params }) {
         {relatedParts.length > 0 && (
           <section className="py-12">
             <div className="container mx-auto px-4">
-              <h2 className="text-2xl font-bold mb-8">Άλλα {brand.name}</h2>
+              <h2 className="text-2xl font-bold mb-8">
+                <TranslatedText messageKey="parts.otherBrand" as="span" /> {brand.name}
+              </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {relatedParts.map((related) => (
                   <Link key={related.id} href={getPartPath(related.brandId, related.id)}>
@@ -239,7 +244,7 @@ export default async function PartDetailPage({ params }: { params: Params }) {
                           {related.name}
                         </h3>
                         <span className="text-sm font-medium text-accent flex items-center gap-1">
-                          Λεπτομέρειες
+                          <TranslatedText messageKey="catalog.details" />
                           <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                         </span>
                       </CardContent>
@@ -257,16 +262,18 @@ export default async function PartDetailPage({ params }: { params: Params }) {
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
-                    <h3 className="font-semibold text-lg mb-1">Ανταλλακτικά {brand.name}</h3>
+                    <h3 className="font-semibold text-lg mb-1">
+                      <TranslatedText messageKey="parts.partsFor" as="span" /> {brand.name}
+                    </h3>
                     <p className="text-muted-foreground text-sm">
-                      Δείτε όλα τα διαθέσιμα ανταλλακτικά για κινητήρες {brand.name} στον κατάλογό μας.
+                      <TranslatedText messageKey="parts.partsForSubtitle" as="span" /> {brand.name}
                     </p>
                   </div>
                   <Link
                     href={getPartBrandPath(brandId)}
                     className="inline-flex items-center gap-2 px-4 py-2 bg-muted rounded-full text-sm font-medium hover:bg-accent/20 transition-colors"
                   >
-                    Όλα τα {brand.name}
+                    <TranslatedText messageKey="catalog.allBrand" as="span" /> {brand.name}
                     <ChevronRight className="h-4 w-4" />
                   </Link>
                 </div>

@@ -5,78 +5,80 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent } from '@/components/ui/card'
+import { useTranslation } from '@/lib/i18n/context'
 
 type ContactLine = {
   text: string
   href?: string
 }
 
-const contactInfo: {
-  icon: typeof MapPin
-  title: string
-  lines: ContactLine[]
-}[] = [
-  {
-    icon: MapPin,
-    title: 'Κατάστημα',
-    lines: [
-      { text: 'Αστέρια Αγριάς' },
-      { text: 'Βόλος, Τ.Κ. 37300' },
-    ],
-  },
-  {
-    icon: Phone,
-    title: 'Τηλέφωνα',
-    lines: [
-      { text: '+30 24280 91700', href: 'tel:+302428091700' },
-      { text: '+30 6957 046616 (Χρήστος)', href: 'tel:+306957046616' },
-    ],
-  },
-  {
-    icon: MapPin,
-    title: 'Εργοστάσιο Τρέιλερ',
-    lines: [
-      { text: "Α' ΒΙ.ΠΕ. Βόλου" },
-      { text: '+30 24210 96888', href: 'tel:+302421096888' },
-    ],
-  },
-  {
-    icon: Clock,
-    title: 'Ωράριο',
-    lines: [
-      { text: 'Δευ - Παρ: 09:00 - 18:00' },
-      { text: 'Σάβ: 09:00 - 14:00' },
-    ],
-  },
-]
-
 export function ContactSection() {
+  const { t } = useTranslation()
+
+  const contactInfo: {
+    icon: typeof MapPin
+    titleKey: string
+    lines: ContactLine[]
+  }[] = [
+    {
+      icon: MapPin,
+      titleKey: 'contact.store',
+      lines: [
+        { text: 'Αστέρια Αγριάς' },
+        { text: 'Βόλος, Τ.Κ. 37300' },
+      ],
+    },
+    {
+      icon: Phone,
+      titleKey: 'contact.phones',
+      lines: [
+        { text: '+30 24280 91700', href: 'tel:+302428091700' },
+        { text: '+30 6957 046616 (Χρήστος)', href: 'tel:+306957046616' },
+      ],
+    },
+    {
+      icon: MapPin,
+      titleKey: 'contact.trailerFactory',
+      lines: [
+        { text: "Α' ΒΙ.ΠΕ. Βόλου" },
+        { text: '+30 24210 96888', href: 'tel:+302421096888' },
+      ],
+    },
+    {
+      icon: Clock,
+      titleKey: 'contact.hours',
+      lines: [
+        { text: t('contact.hoursWeek') },
+        { text: t('contact.hoursSat') },
+      ],
+    },
+  ]
+
   return (
     <section id="contact" className="py-20 md:py-32 bg-muted/30 scroll-mt-28 md:scroll-mt-36">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mb-12 md:mb-16">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Επικοινωνία</span>
+          <span className="text-sm font-semibold text-accent uppercase tracking-wider">{t('contact.eyebrow')}</span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
-            Ελάτε να τα πούμε
+            {t('contact.title')}
           </h2>
           <p className="text-lg text-muted-foreground">
-            Επισκεφθείτε το κατάστημά μας στον Βόλο ή επικοινωνήστε μαζί μας για οποιαδήποτε πληροφορία.
+            {t('contact.subtitle')}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Contact details + map */}
           <div>
             <div className="grid sm:grid-cols-2 gap-4">
               {contactInfo.map((item) => (
-                <Card key={item.title} className="bg-card border-0 shadow-sm">
+                <Card key={item.titleKey} className="bg-card border-0 shadow-sm">
                   <CardContent className="p-5">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
                         <item.icon className="h-5 w-5 text-accent" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
+                        <h4 className="font-semibold text-foreground mb-1">{t(item.titleKey)}</h4>
                         {item.lines.map((line) =>
                           line.href ? (
                             <a
@@ -108,50 +110,49 @@ export function ContactSection() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Nautica Center Location"
+                title={t('contact.mapTitle')}
               />
             </div>
           </div>
 
-          {/* Form */}
           <div>
             <Card className="bg-card border-0 shadow-xl">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-2">Στείλτε μας μήνυμα</h3>
+                <h3 className="text-2xl font-bold mb-2">{t('contact.formTitle')}</h3>
                 <p className="text-muted-foreground mb-6">
-                  Συμπληρώστε τη φόρμα και θα επικοινωνήσουμε μαζί σας σύντομα.
+                  {t('contact.formSubtitle')}
                 </p>
 
                 <form className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">Όνομα</label>
-                      <Input id="name" placeholder="Το όνομά σας" />
+                      <label htmlFor="name" className="text-sm font-medium">{t('contact.name')}</label>
+                      <Input id="name" placeholder={t('contact.namePlaceholder')} />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="phone" className="text-sm font-medium">Τηλέφωνο</label>
-                      <Input id="phone" placeholder="Το τηλέφωνό σας" />
+                      <label htmlFor="phone" className="text-sm font-medium">{t('contact.phone')}</label>
+                      <Input id="phone" placeholder={t('contact.phonePlaceholder')} />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">Email</label>
-                    <Input id="email" type="email" placeholder="Το email σας" />
+                    <label htmlFor="email" className="text-sm font-medium">{t('contact.email')}</label>
+                    <Input id="email" type="email" placeholder={t('contact.emailPlaceholder')} />
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm font-medium">Θέμα</label>
-                    <Input id="subject" placeholder="πχ. Ενδιαφέρομαι για σκάφος" />
+                    <label htmlFor="subject" className="text-sm font-medium">{t('contact.subject')}</label>
+                    <Input id="subject" placeholder={t('contact.subjectPlaceholder')} />
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">Μήνυμα</label>
-                    <Textarea id="message" placeholder="Γράψτε το μήνυμά σας..." rows={5} />
+                    <label htmlFor="message" className="text-sm font-medium">{t('contact.message')}</label>
+                    <Textarea id="message" placeholder={t('contact.messagePlaceholder')} rows={5} />
                   </div>
 
                   <Button type="submit" size="lg" className="w-full">
                     <Send className="h-4 w-4 mr-2" />
-                    Αποστολή Μηνύματος
+                    {t('contact.submit')}
                   </Button>
                 </form>
               </CardContent>

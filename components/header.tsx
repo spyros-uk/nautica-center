@@ -5,13 +5,25 @@ import Link from 'next/link'
 import { Menu, Phone, Mail, MapPin } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { LanguageToggle } from '@/components/language-toggle'
+import { useTranslation } from '@/lib/i18n/context'
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const { t } = useTranslation()
+
+  const navLinks = [
+    { href: '/', label: t('nav.home') },
+    { href: '/boats', label: t('nav.boats') },
+    { href: '/outboards', label: t('nav.outboards') },
+    { href: '/parts', label: t('nav.parts') },
+    { href: '/#services', label: t('nav.services') },
+    { href: '/#companies', label: t('nav.companies') },
+    { href: '/#contact', label: t('nav.contact') },
+  ]
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md text-primary-foreground">
-      {/* Top bar with contact info */}
       <div className="hidden md:block border-b border-primary-foreground/10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between text-sm">
@@ -27,16 +39,14 @@ export function Header() {
             </div>
             <div className="flex items-center gap-2 text-primary-foreground/70">
               <MapPin className="h-3.5 w-3.5" />
-              <span>Αστέρια Αγριάς, Βόλος</span>
+              <span>{t('header.location')}</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main navigation */}
       <nav className="container mx-auto px-4">
         <div className="flex items-center gap-3 xl:gap-6 h-16 md:h-20">
-          {/* Logo */}
           <Link href="/" className="flex shrink-0 items-center gap-2 sm:gap-3">
             <div className="relative">
               <svg viewBox="0 0 40 40" className="h-9 w-9 md:h-10 md:w-10 xl:h-12 xl:w-12" fill="none">
@@ -51,140 +61,55 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Desktop navigation */}
           <div className="hidden xl:flex flex-1 items-center justify-center gap-x-3 2xl:gap-x-5 min-w-0 px-2 2xl:px-4">
-            <Link
-              href="/"
-              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
-            >
-              Αρχική
-            </Link>
-
-            <Link
-              href="/boats"
-              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
-            >
-              Σκάφη
-            </Link>
-
-            <Link
-              href="/outboards"
-              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
-            >
-              Εξωλέμβιες
-            </Link>
-
-            {/* Ανταλλακτικά */}
-            <Link
-              href="/parts"
-              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
-            >
-              Ανταλλακτικά
-            </Link>
-
-            <Link
-              href="/#services"
-              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
-            >
-              Υπηρεσίες
-            </Link>
-
-            <Link
-              href="/#companies"
-              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
-            >
-              Οι Εταιρείες μας
-            </Link>
-
-            <Link
-              href="/#contact"
-              className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
-            >
-              Επικοινωνία
-            </Link>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium whitespace-nowrap hover:text-accent transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden xl:block shrink-0">
+          <div className="hidden xl:flex shrink-0 items-center gap-3">
+            <LanguageToggle variant="header" />
             <Link href="/#contact">
               <Button variant="secondary" size="sm" className="font-semibold xl:text-sm 2xl:h-9 2xl:px-4">
-                Ζητήστε Προσφορά
+                {t('nav.requestQuote')}
               </Button>
             </Link>
           </div>
 
-          {/* Mobile menu */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="ml-auto xl:hidden">
-              <Button variant="ghost" size="icon" className="text-primary-foreground">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Άνοιγμα μενού</span>
-              </Button>
-            </SheetTrigger>
+          <div className="ml-auto flex items-center gap-2 xl:hidden">
+            <LanguageToggle variant="header" />
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-primary-foreground">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">{t('nav.openMenu')}</span>
+                </Button>
+              </SheetTrigger>
             <SheetContent
               side="right"
               className="flex w-[min(100vw-1rem,20rem)] flex-col gap-0 border-primary-foreground/10 bg-primary px-6 pb-8 pt-14 text-primary-foreground sm:max-w-xs [&_[data-slot=sheet-close]]:text-primary-foreground [&_[data-slot=sheet-close]]:opacity-80 [&_[data-slot=sheet-close]]:hover:opacity-100"
             >
               <div className="flex h-full min-h-0 flex-col">
                 <div className="mb-6 pr-10">
-                  <span className="text-lg font-bold">Μενού</span>
+                  <span className="text-lg font-bold">{t('nav.menu')}</span>
                 </div>
                 <nav className="flex flex-col">
-                  <Link
-                    href="/"
-                    onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
-                  >
-                    Αρχική
-                  </Link>
-
-                  <Link
-                    href="/boats"
-                    onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
-                  >
-                    Σκάφη
-                  </Link>
-
-                  <Link
-                    href="/outboards"
-                    onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
-                  >
-                    Εξωλέμβιες
-                  </Link>
-
-                  <Link
-                    href="/parts"
-                    onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
-                  >
-                    Ανταλλακτικά
-                  </Link>
-
-                  <Link
-                    href="/#services"
-                    onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
-                  >
-                    Υπηρεσίες
-                  </Link>
-
-                  <Link
-                    href="/#companies"
-                    onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
-                  >
-                    Οι Εταιρείες μας
-                  </Link>
-
-                  <Link
-                    href="/#contact"
-                    onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
-                  >
-                    Επικοινωνία
-                  </Link>
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                 </nav>
                 <div className="mt-auto space-y-4 border-t border-primary-foreground/10 pt-8">
                   <a href="tel:+302428091700" className="flex items-center gap-3 text-sm text-primary-foreground/90">
@@ -197,13 +122,14 @@ export function Header() {
                   </a>
                   <Link href="/#contact" onClick={() => setIsOpen(false)}>
                     <Button variant="secondary" className="w-full mt-4">
-                      Ζητήστε Προσφορά
+                      {t('nav.requestQuote')}
                     </Button>
                   </Link>
                 </div>
               </div>
             </SheetContent>
-          </Sheet>
+            </Sheet>
+          </div>
         </div>
       </nav>
     </header>

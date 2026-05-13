@@ -1,52 +1,46 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, Sailboat, Anchor, Waves, Car, Wrench, Shield, Bike, LifeBuoy, ExternalLink } from 'lucide-react'
+import { ArrowRight, Sailboat, Anchor, Waves, Car, Wrench, Bike, ExternalLink } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
 import { getBoatsPageHref } from '@/lib/product-filters-storage'
+import { useTranslation } from '@/lib/i18n/context'
 
 const categories = [
   {
-    title: 'Φουσκωτά Σκάφη',
-    description: 'ZAR Formenti, ZAR Mini, MV Marine, YAM - Ιταλικής κατασκευής RIB',
+    key: 'inflatable' as const,
     icon: Waves,
     image: 'https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=600&q=80',
     href: getBoatsPageHref({ category: 'inflatable' }),
   },
   {
-    title: 'Πολυεστερικά Σκάφη',
-    description: 'Quicksilver, Marinello, Eolo, BMA, Olympic - από 4.5 έως 9 μέτρα',
+    key: 'fiberglass' as const,
     icon: Sailboat,
     image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80',
     href: getBoatsPageHref({ category: 'fiberglass' }),
   },
   {
-    title: 'Εξωλέμβιες',
-    description: 'Mercury, Yamaha, Honda, Tohatsu, Suzuki - Όλες οι ιπποδυνάμεις',
+    key: 'outboards' as const,
     icon: Anchor,
     image: '/images/placeholder-engine.jpg',
     href: '/outboards',
   },
   {
-    title: 'Τρέιλερ ΔΡΟΜΕΥΣ',
-    description: 'Ελληνική κατασκευή - Για κάθε τύπο σκάφους',
+    key: 'dromeys' as const,
     icon: Car,
     image: 'https://images.unsplash.com/photo-1600320254374-ce2d293c324e?w=600&q=80',
     href: 'https://dromeys.gr/',
     external: true,
   },
   {
-    title: 'Jet Ski & Θαλάσσια Σπορ',
-    description: 'Yamaha Jet Ski, SUP, Kayak, Sea Scooters',
+    key: 'watersports' as const,
     icon: Bike,
     image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80',
     href: 'https://ewatersports.gr/',
     external: true,
   },
   {
-    title: 'Συνεργείο & Service',
-    description: 'Εξειδικευμένο προσωπικό - Σύγχρονος εξοπλισμός - Ανταλλακτικά',
+    key: 'workshop' as const,
     icon: Wrench,
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
     href: '/#services',
@@ -54,17 +48,19 @@ const categories = [
 ]
 
 export function BoatCategories() {
+  const { t } = useTranslation()
+
   return (
     <section id="boats" className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4">
         {/* Section header */}
         <div className="max-w-4xl mb-16">
-          <span className="text-sm font-semibold text-accent uppercase tracking-wider">Κατηγορίες</span>
+          <span className="text-sm font-semibold text-accent uppercase tracking-wider">{t('homeCategories.eyebrow')}</span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 text-pretty">
-            Όλα όσα χρειάζεστε για τη θάλασσα
+            {t('homeCategories.title')}
           </h2>
           <p className="text-lg text-muted-foreground">
-            Από μικρά φουσκωτά μέχρι πολυτελή σκάφη αναψυχής, jet ski, SUP, kayak και όλα τα αξεσουάρ για κάθε θαλασσόφιλο.
+            {t('homeCategories.subtitle')}
           </p>
         </div>
 
@@ -72,13 +68,15 @@ export function BoatCategories() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category) => {
             const isExternal = 'external' in category && category.external
-            
+            const title = t(`homeCategories.${category.key}.title`)
+            const description = t(`homeCategories.${category.key}.description`)
+
             const CardInner = (
               <>
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={category.image}
-                    alt={category.title}
+                    alt={title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
@@ -88,19 +86,19 @@ export function BoatCategories() {
                   {isExternal && (
                     <div className="absolute top-4 right-4 px-2 py-1 rounded bg-accent text-accent-foreground text-xs font-semibold flex items-center gap-1">
                       <ExternalLink className="h-3 w-3" />
-                      Εξειδικευμένο Site
+                      {t('homeCategories.externalSite')}
                     </div>
                   )}
                 </div>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-xl">{category.title}</CardTitle>
+                  <CardTitle className="text-xl">{title}</CardTitle>
                   <CardDescription className="text-muted-foreground">
-                    {category.description}
+                    {description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <span className="inline-flex items-center text-accent font-semibold group-hover:gap-3 gap-2 transition-all">
-                    {isExternal ? 'Επισκεφθείτε' : 'Περισσότερα'}
+                    {isExternal ? t('homeCategories.visit') : t('homeCategories.more')}
                     <ArrowRight className="h-4 w-4" />
                   </span>
                 </CardContent>
@@ -110,7 +108,7 @@ export function BoatCategories() {
             if (isExternal) {
               return (
                 <a
-                  key={category.title}
+                  key={category.key}
                   href={category.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -125,7 +123,7 @@ export function BoatCategories() {
 
             return (
               <Link
-                key={category.title}
+                key={category.key}
                 href={category.href}
               >
                 <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-card h-full">
@@ -142,7 +140,7 @@ export function BoatCategories() {
             href="/boats"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-semibold hover:bg-primary/90 transition-colors"
           >
-            Δείτε όλα τα σκάφη
+            {t('homeCategories.viewAllBoats')}
             <ArrowRight className="h-5 w-5" />
           </Link>
         </div>

@@ -20,9 +20,9 @@ import {
   getPartBrands,
   getParts,
   getPartPath,
-  getPartCategoryLabel,
   type Part,
 } from '@/lib/parts'
+import { useTranslation } from '@/lib/i18n/context'
 import {
   clearPartsFiltersStorage,
   loadPartsFilters,
@@ -63,6 +63,8 @@ function getQuickSpecs(part: Part): { label: string; value: string }[] {
 }
 
 export default function PartsPage() {
+  const { t } = useTranslation()
+
   const [isMounted, setIsMounted] = useState(false)
   const filtersHydrated = useRef(false)
 
@@ -206,25 +208,24 @@ export default function PartsPage() {
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 text-primary-foreground/70 mb-4">
               <Link href="/" className="hover:text-primary-foreground transition-colors">
-                Αρχική
+                {t('catalog.home')}
               </Link>
               <ChevronRight className="h-4 w-4" />
-              <span className="text-primary-foreground">Ανταλλακτικά</span>
+              <span className="text-primary-foreground">{t('nav.parts')}</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
-              Ανταλλακτικά Εξωλέμβιων
+              {t('parts.title')}
             </h1>
             <p className="text-xl text-primary-foreground/80 mb-6">
-              Γνήσια και συμβατά ανταλλακτικά για Mercury, Yamaha, Honda, Suzuki, Tohatsu και Selva.
-              Προπέλες, φίλτρα, ψύξη, ανάφλεξη και πολλά άλλα.
+              {t('parts.subtitle')}
             </p>
             <div className="flex items-center gap-4 text-primary-foreground/70">
               <div className="flex items-center gap-2">
                 <Wrench className="h-5 w-5" />
-                <span>{allParts.length} προϊόντα</span>
+                <span>{allParts.length} {t('catalog.products')}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span>{partBrands.length} μάρκες</span>
+                <span>{partBrands.length} {t('outboards.brands')}</span>
               </div>
             </div>
           </div>
@@ -237,33 +238,33 @@ export default function PartsPage() {
             <aside className="hidden lg:block w-72 flex-shrink-0">
               <div className="sticky top-24 bg-card rounded-xl border border-border p-6 space-y-6">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-lg">Φίλτρα</h3>
+                  <h3 className="font-semibold text-lg">{t('catalog.filters')}</h3>
                   {hasActiveFilters && (
                     <button onClick={clearFilters} className="text-sm text-accent hover:underline">
-                      Καθαρισμός
+                      {t('catalog.clear')}
                     </button>
                   )}
                 </div>
 
                 <div>
-                  <h4 className="font-medium mb-3">Μάρκα</h4>
+                  <h4 className="font-medium mb-3">{t('catalog.brand')}</h4>
                   {brandFilter}
                 </div>
 
                 <div className="pt-4 border-t border-border">
                   <p className="text-sm text-muted-foreground">
                     {filteredParts.length}{' '}
-                    {filteredParts.length === 1 ? 'αποτέλεσμα' : 'αποτελέσματα'}
+                    {filteredParts.length === 1 ? t('catalog.result') : t('catalog.results')}
                   </p>
                 </div>
               </div>
             </aside>
 
             <div className="lg:hidden flex items-center justify-between mb-4">
-              <p className="text-sm text-muted-foreground">{filteredParts.length} αποτελέσματα</p>
+              <p className="text-sm text-muted-foreground">{filteredParts.length} {t('catalog.results')}</p>
               <Button variant="outline" size="sm" onClick={() => setShowFilters(true)} className="gap-2">
                 <Filter className="h-4 w-4" />
-                Φίλτρα
+                {t('catalog.filters')}
                 {hasActiveFilters && (
                   <Badge variant="secondary" className="ml-1">
                     {selectedBrands.length}
@@ -280,23 +281,23 @@ export default function PartsPage() {
                 />
                 <div className="absolute right-0 top-0 bottom-0 w-80 bg-background p-6 overflow-y-auto">
                   <div className="flex items-center justify-between mb-6">
-                    <h3 className="font-semibold text-lg">Φίλτρα</h3>
+                    <h3 className="font-semibold text-lg">{t('catalog.filters')}</h3>
                     <button onClick={() => setShowFilters(false)}>
                       <X className="h-5 w-5" />
                     </button>
                   </div>
 
                   <div className="mb-6">
-                    <h4 className="font-medium mb-3">Μάρκα</h4>
+                    <h4 className="font-medium mb-3">{t('catalog.brand')}</h4>
                     {brandFilter}
                   </div>
 
                   <div className="flex gap-3">
                     <Button variant="outline" onClick={clearFilters} className="flex-1">
-                      Καθαρισμός
+                      {t('catalog.clear')}
                     </Button>
                     <Button onClick={() => setShowFilters(false)} className="flex-1">
-                      Εφαρμογή
+                      {t('catalog.apply')}
                     </Button>
                   </div>
                 </div>
@@ -307,12 +308,12 @@ export default function PartsPage() {
               {filteredParts.length === 0 ? (
                 <div className="text-center py-16">
                   <Wrench className="h-16 w-16 mx-auto text-muted-foreground/30 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Δεν βρέθηκαν ανταλλακτικά</h3>
+                  <h3 className="text-xl font-semibold mb-2">{t('parts.empty')}</h3>
                   <p className="text-muted-foreground mb-4">
-                    Δοκιμάστε να αλλάξετε τα φίλτρα αναζήτησης
+                    {t('catalog.tryFilters')}
                   </p>
                   <Button variant="outline" onClick={clearFilters}>
-                    Καθαρισμός φίλτρων
+                    {t('catalog.clearFilters')}
                   </Button>
                 </div>
               ) : (
@@ -332,7 +333,7 @@ export default function PartsPage() {
                               />
                               <div className="absolute top-3 left-3">
                                 <Badge variant="secondary" className="bg-white/90 text-foreground">
-                                  {getPartCategoryLabel(part.category)}
+                                  {t(`catalog.partCategories.${part.category}`)}
                                 </Badge>
                               </div>
                               <div className="absolute top-3 right-3">
@@ -343,7 +344,7 @@ export default function PartsPage() {
                                       : 'bg-muted text-muted-foreground'
                                   }
                                 >
-                                  {part.inStock ? 'Διαθέσιμο' : 'Κατόπιν παραγγελίας'}
+                                  {part.inStock ? t('catalog.inStock') : t('catalog.onOrder')}
                                 </Badge>
                               </div>
                             </div>
@@ -370,7 +371,7 @@ export default function PartsPage() {
 
                               <div className="mt-4 pt-3 border-t border-border flex items-center justify-between">
                                 <span className="text-sm font-medium text-accent flex items-center gap-1">
-                                  Λεπτομέρειες
+                                  {t('catalog.details')}
                                   <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                                 </span>
                               </div>
@@ -386,11 +387,11 @@ export default function PartsPage() {
                       {isLoading ? (
                         <div className="flex items-center gap-2 text-muted-foreground">
                           <Loader2 className="h-5 w-5 animate-spin" />
-                          <span>Φόρτωση...</span>
+                          <span>{t('catalog.loading')}</span>
                         </div>
                       ) : (
                         <Button variant="outline" onClick={loadMore} className="px-8">
-                          Φόρτωση περισσότερων ({filteredParts.length - displayCount} ακόμα)
+                          {t('catalog.loadMore')} ({filteredParts.length - displayCount} {t('catalog.remaining')})
                         </Button>
                       )}
                     </div>
@@ -404,14 +405,14 @@ export default function PartsPage() {
 
       <section className="py-16 bg-muted">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Δεν βρίσκετε το ανταλλακτικό που χρειάζεστε;</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">{t('parts.notFound')}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-            Στείλτε μας τον κωδικό ή τη μάρκα του κινητήρα και θα ελέγξουμε διαθεσιμότητα και τιμή.
+            {t('parts.help')}
           </p>
           <Button size="lg" className="gap-2" asChild>
             <a href="tel:+302428091700">
               <Phone className="h-5 w-5" />
-              Επικοινωνήστε μαζί μας
+              {t('catalog.contactUs')}
             </a>
           </Button>
         </div>

@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
@@ -5,15 +7,20 @@ import { Button } from '@/components/ui/button'
 import { ProductImage } from '@/components/product-image'
 import { ArrowRight, Ruler, Users, Gauge } from 'lucide-react'
 import { getBoatsPageHref } from '@/lib/product-filters-storage'
-import {
-  getHighlightedBoats,
-  getModelHighlightBadge,
-  getModelPathFromHome,
-} from '@/lib/boats'
+import { getHighlightedBoats, getModelPathFromHome } from '@/lib/boats'
+import type { BoatModel } from '@/lib/boats'
+import { useTranslation } from '@/lib/i18n/context'
 
 const boatsCatalogHref = getBoatsPageHref('available')
 
+function getFeaturedBadge(model: BoatModel, t: (key: string) => string): string {
+  if (model.isOffer) return t('featured.badgeOffer')
+  if (model.isUsed) return t('featured.badgeUsed')
+  return t('featured.badgeReady')
+}
+
 export function FeaturedBoats() {
+  const { t } = useTranslation()
   const highlightedBoats = getHighlightedBoats()
 
   if (highlightedBoats.length === 0) {
@@ -25,12 +32,12 @@ export function FeaturedBoats() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
           <div>
-            <span className="text-sm font-semibold text-accent uppercase tracking-wider">Ετοιμοπαράδοτα</span>
-            <h2 className="text-3xl md:text-5xl font-bold mt-3 text-pretty">Διαθέσιμα Σκάφη</h2>
+            <span className="text-sm font-semibold text-accent uppercase tracking-wider">{t('featured.eyebrow')}</span>
+            <h2 className="text-3xl md:text-5xl font-bold mt-3 text-pretty">{t('featured.title')}</h2>
           </div>
           <Button variant="outline" className="self-start md:self-auto" asChild>
             <Link href={boatsCatalogHref}>
-              Δείτε όλα τα ετοιμοπαράδοτα σκάφη
+              {t('featured.viewAll')}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
@@ -39,7 +46,7 @@ export function FeaturedBoats() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {highlightedBoats.map(({ brand, model }) => {
             const detailHref = getModelPathFromHome(brand, model)
-            const badge = getModelHighlightBadge(model)
+            const badge = getFeaturedBadge(model, t)
             const power = model.specs.maxPower ?? model.specs.motor
 
             return (
@@ -55,17 +62,15 @@ export function FeaturedBoats() {
                       category={brand.category}
                       className="transition-transform duration-500 group-hover:scale-105"
                     />
-                    {badge && (
-                      <div className="absolute top-3 left-3">
-                        <Badge variant="secondary" className="font-semibold">
-                          {badge}
-                        </Badge>
-                      </div>
-                    )}
+                    <div className="absolute top-3 left-3">
+                      <Badge variant="secondary" className="font-semibold">
+                        {badge}
+                      </Badge>
+                    </div>
                     <div className="absolute top-3 right-3">
                       <span className="flex items-center gap-1.5 text-xs font-medium bg-green-500/90 text-white px-2 py-1 rounded-full">
                         <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-                        Διαθέσιμο
+                        {t('featured.available')}
                       </span>
                     </div>
                   </Link>
@@ -114,7 +119,7 @@ export function FeaturedBoats() {
                 </CardContent>
                 <CardFooter className="p-4 pt-0">
                   <Button className="w-full" variant="default" asChild>
-                    <Link href={detailHref}>Περισσότερα</Link>
+                    <Link href={detailHref}>{t('featured.more')}</Link>
                   </Button>
                 </CardFooter>
               </Card>
