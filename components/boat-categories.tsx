@@ -24,7 +24,7 @@ const categories = [
     title: 'Εξωλέμβιες',
     description: 'Mercury, Yamaha, Honda, Tohatsu, Suzuki - Όλες οι ιπποδυνάμεις',
     icon: Anchor,
-    image: 'https://images.unsplash.com/photo-1597431362048-94c8ded1a64d?w=600&q=80',
+    image: '/images/placeholder-engine.jpg',
     href: '/outboards',
   },
   {

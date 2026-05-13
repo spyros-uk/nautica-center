@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect, useCallback } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+import { ProductImage } from '@/components/product-image'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
@@ -18,8 +18,6 @@ import {
   Loader2 
 } from 'lucide-react'
 import boatsData from '@/data/boats.json'
-
-const PLACEHOLDER_OUTBOARD = '/placeholder.svg'
 
 // Brands that sell outboards (see `data/boats.json` category `outboards`)
 const outboardBrands = boatsData.brands.filter(brand => brand.category === 'outboards')
@@ -389,19 +387,15 @@ export default function OutboardsPage() {
                     {displayedOutboards.map((outboard) => (
                       <Link
                         key={`${outboard.brandId}-${outboard.id}`}
-                        href={`/boats/${outboard.brandId}/${outboard.id}`}
+                        href={`/outboards/${outboard.brandId}/${outboard.id}`}
                       >
                         <Card className="group h-full overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                           <div className="relative aspect-[4/3] bg-muted overflow-hidden">
-                            <Image
-                              src={outboard.image || PLACEHOLDER_OUTBOARD}
+                            <ProductImage
+                              src={outboard.image}
                               alt={outboard.name}
-                              fill
-                              className="object-cover group-hover:scale-105 transition-transform duration-500"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement
-                                target.src = PLACEHOLDER_OUTBOARD
-                              }}
+                              category="outboards"
+                              className="group-hover:scale-105 transition-transform duration-500"
                             />
                             <div className="absolute top-3 left-3">
                               <Badge className="bg-accent text-accent-foreground font-bold">

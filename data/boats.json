@@ -39,7 +39,12 @@
         {
           "id": "zar-43",
           "name": "ZAR 43",
-          "image": "/images/boats/zar-43.jpg",
+          "image": "/images/placeholder-boat.jpg",
+          "images": [
+            "/images/placeholder-boat.jpg",
+            "/images/hero-boat.jpg",
+            "/placeholder.jpg"
+          ],
           "specs": {
             "length": "4.30m",
             "beam": "1.95m",
@@ -151,7 +156,12 @@
         {
           "id": "zar-mini-rib-10",
           "name": "ZAR Mini RIB 10",
-          "image": "/images/boats/zar-mini-10.jpg",
+          "image": "/images/hero-boat.jpg",
+          "images": [
+            "/images/hero-boat.jpg",
+            "/images/placeholder-boat.jpg",
+            "/placeholder.jpg"
+          ],
           "specs": {
             "length": "3.10m",
             "beam": "1.55m",
@@ -749,7 +759,12 @@
         {
           "id": "mercury-fourstroke-15",
           "name": "Mercury FourStroke 15HP",
-          "image": "/images/outboards/mercury-15.jpg",
+          "image": "/images/placeholder-engine.jpg",
+          "images": [
+            "/images/placeholder-engine.jpg",
+            "/images/placeholder-engine.jpg",
+            "/images/placeholder-engine.jpg"
+          ],
           "specs": {
             "power": "15HP",
             "cylinders": "2",
@@ -1124,7 +1139,12 @@
         {
           "id": "selva-guppy-2.5",
           "name": "Selva Guppy 2.5",
-          "image": "/images/outboards/selva-guppy.jpg",
+          "image": "/images/placeholder-engine.jpg",
+          "images": [
+            "/images/placeholder-engine.jpg",
+            "/images/placeholder-engine.jpg",
+            "/images/placeholder-engine.jpg"
+          ],
           "specs": {
             "power": "2.5HP",
             "cylinders": "1",

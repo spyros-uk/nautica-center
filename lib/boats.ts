@@ -22,6 +22,8 @@ export interface BoatModel {
   id: string
   name: string
   image: string
+  /** Optional gallery; falls back to `image` when omitted. */
+  images?: string[]
   specs: BoatSpec
   features: string[]
   description: string
@@ -88,6 +90,27 @@ export function getCatalogBreadcrumb(brand: Brand): { href: string; label: strin
     return { href: '/outboards', label: 'Εξωλέμβιες' }
   }
   return { href: '/boats', label: 'Σκάφη' }
+}
+
+export type CatalogSlug = 'boats' | 'outboards'
+
+export function getCatalogSlug(brand: Pick<Brand, 'category'>): CatalogSlug {
+  return brand.category === 'outboards' ? 'outboards' : 'boats'
+}
+
+export function getCatalogPath(brand: Pick<Brand, 'category'>): `/${CatalogSlug}` {
+  return `/${getCatalogSlug(brand)}`
+}
+
+export function getBrandPath(brand: Pick<Brand, 'id' | 'category'>): string {
+  return `${getCatalogPath(brand)}/${brand.id}`
+}
+
+export function getModelPath(
+  brand: Pick<Brand, 'id' | 'category'>,
+  model: Pick<BoatModel, 'id'>,
+): string {
+  return `${getBrandPath(brand)}/${model.id}`
 }
 
 export function getCategoryName(categoryId: string): string {

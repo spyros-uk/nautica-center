@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect, useCallback } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+import { ProductImage } from '@/components/product-image'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
@@ -555,15 +555,11 @@ export default function BoatsPage() {
                       >
                         <Card className="group h-full overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                           <div className="relative aspect-[4/3] bg-muted overflow-hidden">
-                            <Image
-                              src={boat.image || '/images/placeholder-boat.jpg'}
+                            <ProductImage
+                              src={boat.image}
                               alt={boat.name}
-                              fill
-                              className="object-cover group-hover:scale-105 transition-transform duration-500"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement
-                                target.src = '/images/placeholder-boat.jpg'
-                              }}
+                              category={boat.boatCategory}
+                              className="group-hover:scale-105 transition-transform duration-500"
                             />
                             {/* Length Badge */}
                             <div className="absolute top-3 left-3">

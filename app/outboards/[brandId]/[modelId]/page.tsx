@@ -18,7 +18,7 @@ export async function generateStaticParams() {
   const params: { brandId: string; modelId: string }[] = []
   
   for (const brand of brands) {
-    if (brand.category === 'outboards') continue
+    if (brand.category !== 'outboards') continue
     for (const model of brand.models) {
       params.push({
         brandId: brand.id,
@@ -48,7 +48,7 @@ export default async function ModelPage({ params }: { params: Params }) {
   const brand = getBrandById(brandId)
   const model = getModelById(brandId, modelId)
   
-  if (!brand || !model || brand.category === 'outboards') {
+  if (!brand || !model || brand.category !== 'outboards') {
     notFound()
   }
 

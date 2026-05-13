@@ -14,7 +14,7 @@ type Params = Promise<{ brandId: string }>
 export async function generateStaticParams() {
   const brands = getBrands()
   return brands
-    .filter((brand) => brand.category !== 'outboards')
+    .filter((brand) => brand.category === 'outboards')
     .map((brand) => ({
     brandId: brand.id,
   }))
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!brand) return { title: 'Μάρκα δεν βρέθηκε' }
   
   return {
-    title: `${brand.name} - Σκάφη & Μοντέλα | Nautica Center`,
+    title: `${brand.name} - Εξωλέμβιες | Nautica Center`,
     description: brand.description,
   }
 }
@@ -35,7 +35,7 @@ export default async function BrandPage({ params }: { params: Params }) {
   const { brandId } = await params
   const brand = getBrandById(brandId)
   
-  if (!brand || brand.category === 'outboards') {
+  if (!brand || brand.category !== 'outboards') {
     notFound()
   }
 
