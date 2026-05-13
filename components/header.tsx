@@ -121,16 +121,19 @@ export function Header() {
                 <span className="sr-only">Άνοιγμα μενού</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] bg-primary text-primary-foreground">
-              <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between mb-8">
+            <SheetContent
+              side="right"
+              className="flex w-[min(100vw-1rem,20rem)] flex-col gap-0 border-primary-foreground/10 bg-primary px-6 pb-8 pt-14 text-primary-foreground sm:max-w-xs [&_[data-slot=sheet-close]]:text-primary-foreground [&_[data-slot=sheet-close]]:opacity-80 [&_[data-slot=sheet-close]]:hover:opacity-100"
+            >
+              <div className="flex h-full min-h-0 flex-col">
+                <div className="mb-6 pr-10">
                   <span className="text-lg font-bold">Μενού</span>
                 </div>
-                <nav className="flex flex-col gap-2">
+                <nav className="flex flex-col">
                   <Link
                     href="/"
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3 border-b border-primary-foreground/10 hover:text-accent transition-colors"
+                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
                   >
                     Αρχική
                   </Link>
@@ -138,7 +141,7 @@ export function Header() {
                   <Link
                     href="/boats"
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3 border-b border-primary-foreground/10 hover:text-accent transition-colors"
+                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
                   >
                     Σκάφη
                   </Link>
@@ -146,7 +149,7 @@ export function Header() {
                   <Link
                     href="/outboards"
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3 border-b border-primary-foreground/10 hover:text-accent transition-colors"
+                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
                   >
                     Εξωλέμβιες
                   </Link>
@@ -154,7 +157,7 @@ export function Header() {
                   <Link
                     href="/parts"
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3 border-b border-primary-foreground/10 hover:text-accent transition-colors"
+                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
                   >
                     Ανταλλακτικά
                   </Link>
@@ -162,7 +165,7 @@ export function Header() {
                   <Link
                     href="/#services"
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3 border-b border-primary-foreground/10 hover:text-accent transition-colors"
+                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
                   >
                     Υπηρεσίες
                   </Link>
@@ -170,7 +173,7 @@ export function Header() {
                   <Link
                     href="/#companies"
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3 border-b border-primary-foreground/10 hover:text-accent transition-colors"
+                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
                   >
                     Οι Εταιρείες μας
                   </Link>
@@ -178,17 +181,17 @@ export function Header() {
                   <Link
                     href="/#contact"
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium py-3 border-b border-primary-foreground/10 hover:text-accent transition-colors"
+                    className="text-lg font-medium py-3.5 border-b border-primary-foreground/10 hover:text-accent transition-colors"
                   >
                     Επικοινωνία
                   </Link>
                 </nav>
-                <div className="mt-auto space-y-4 pt-8">
-                  <a href="tel:+302428091700" className="flex items-center gap-3 text-sm">
+                <div className="mt-auto space-y-4 border-t border-primary-foreground/10 pt-8">
+                  <a href="tel:+302428091700" className="flex items-center gap-3 text-sm text-primary-foreground/90">
                     <Phone className="h-4 w-4" />
                     <span>+30 24280 91700</span>
                   </a>
-                  <a href="mailto:info@nautica-center.gr" className="flex items-center gap-3 text-sm">
+                  <a href="mailto:info@nautica-center.gr" className="flex items-center gap-3 text-sm text-primary-foreground/90 break-all">
                     <Mail className="h-4 w-4" />
                     <span>info@nautica-center.gr</span>
                   </a>
