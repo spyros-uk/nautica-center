@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useEffect, useCallback } from 'react'
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react'
 import Link from 'next/link'
 import { ProductImage } from '@/components/product-image'
 import { Header } from '@/components/header'
@@ -21,6 +21,12 @@ import {
   Tag
 } from 'lucide-react'
 import boatsData from '@/data/boats.json'
+import {
+  clearBoatsFiltersStorage,
+  loadBoatsFilters,
+  saveBoatsFilters,
+  type BoatsQuickFilter,
+} from '@/lib/product-filters-storage'
 
 // Boat categories (excluding outboards — they live on `/outboards`)
 const boatCategoryIds = ['inflatable', 'fiberglass', 'jetski']
@@ -56,38 +62,60 @@ const maxLength = Math.ceil(Math.max(...allBoats.map(b => b.length)))
 
 const ITEMS_PER_PAGE = 12
 
-// Quick filter types
-type QuickFilter = 'all' | 'offers' | 'available' | 'used'
+const validBoatBrandIds = boatBrands.map((brand) => brand.id)
 
 export default function BoatsPage() {
   // Mount state to prevent hydration flash
   const [isMounted, setIsMounted] = useState(false)
+  const filtersHydrated = useRef(false)
   
   // Filter state
   const [selectedBrands, setSelectedBrands] = useState<string[]>([])
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [lengthRange, setLengthRange] = useState<[number, number]>([minLength, maxLength])
-  const [quickFilter, setQuickFilter] = useState<QuickFilter>('all')
+  const [quickFilter, setQuickFilter] = useState<BoatsQuickFilter>('all')
   const [showFilters, setShowFilters] = useState(false)
   
   // Pagination state
   const [displayCount, setDisplayCount] = useState(ITEMS_PER_PAGE)
   const [isLoading, setIsLoading] = useState(false)
   
-  // Set mounted on client and reset state
+  // Restore persisted filters on mount
   useEffect(() => {
-    // Reset all filter state on mount to ensure clean state
-    setSelectedBrands([])
-    setSelectedCategories([])
-    setLengthRange([minLength, maxLength])
-    setQuickFilter('all')
-    setDisplayCount(ITEMS_PER_PAGE)
-    setIsMounted(true)
-    
-    return () => {
-      setIsMounted(false)
+    const saved = loadBoatsFilters(validBoatBrandIds, boatCategoryIds, minLength, maxLength)
+    if (saved) {
+      setSelectedBrands(saved.selectedBrands)
+      setSelectedCategories(saved.selectedCategories)
+      setLengthRange(saved.lengthRange)
+      setQuickFilter(saved.quickFilter)
     }
+    filtersHydrated.current = true
+    setIsMounted(true)
   }, [])
+
+  // Persist filters when they change (only while filters are active)
+  useEffect(() => {
+    if (!filtersHydrated.current) return
+
+    const isDefault =
+      selectedBrands.length === 0 &&
+      selectedCategories.length === 0 &&
+      lengthRange[0] === minLength &&
+      lengthRange[1] === maxLength &&
+      quickFilter === 'all'
+
+    if (isDefault) {
+      clearBoatsFiltersStorage()
+      return
+    }
+
+    saveBoatsFilters({
+      selectedBrands,
+      selectedCategories,
+      lengthRange,
+      quickFilter,
+    })
+  }, [selectedBrands, selectedCategories, lengthRange, quickFilter])
 
   // Filter boats based on selections
   const filteredBoats = useMemo(() => {
@@ -180,6 +208,7 @@ export default function BoatsPage() {
     setSelectedCategories([])
     setLengthRange([minLength, maxLength])
     setQuickFilter('all')
+    clearBoatsFiltersStorage()
   }
 
   const hasActiveFilters = selectedBrands.length > 0 || selectedCategories.length > 0 || lengthRange[0] > minLength || lengthRange[1] < maxLength || quickFilter !== 'all'

@@ -65,17 +65,26 @@ export default async function ModelPage({ params }: { params: Params }) {
         {/* Breadcrumb */}
         <section className="bg-muted/50 border-b border-border">
           <div className="container mx-auto px-4 py-4">
-            <nav className="flex items-center gap-2 text-sm text-muted-foreground overflow-x-auto whitespace-nowrap">
-              <Link href={catalogCrumb.href} className="hover:text-foreground transition-colors">
-                {catalogCrumb.label}
+            <div className="flex items-center justify-between gap-4">
+              <nav className="flex min-w-0 items-center gap-2 overflow-x-auto whitespace-nowrap text-sm text-muted-foreground">
+                <Link href={catalogCrumb.href} className="hover:text-foreground transition-colors">
+                  {catalogCrumb.label}
+                </Link>
+                <span>/</span>
+                <Link href={getBrandPath(brand)} className="hover:text-foreground transition-colors">
+                  {brand.name}
+                </Link>
+                <span>/</span>
+                <span className="text-foreground font-medium">{model.name}</span>
+              </nav>
+              <Link
+                href={catalogCrumb.href}
+                className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                {isOutboard ? 'Πίσω στις εξωλέμβιες' : 'Πίσω στα σκάφη'}
               </Link>
-              <span>/</span>
-              <Link href={getBrandPath(brand)} className="hover:text-foreground transition-colors">
-                {brand.name}
-              </Link>
-              <span>/</span>
-              <span className="text-foreground font-medium">{model.name}</span>
-            </nav>
+            </div>
           </div>
         </section>
 
@@ -257,26 +266,6 @@ export default async function ModelPage({ params }: { params: Params }) {
           </div>
         </section>
 
-        {/* Navigation — primary back = full listing (matches /boats grid); brand hub is secondary */}
-        <section className="pb-16">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <Link
-                href={catalogCrumb.href}
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                {isOutboard ? 'Πίσω στις εξωλέμβιες' : 'Πίσω στα σκάφη'}
-              </Link>
-              <Link
-                href={getBrandPath(brand)}
-                className="text-muted-foreground hover:text-foreground transition-colors text-sm sm:text-right"
-              >
-                Όλα τα {brand.name}
-              </Link>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

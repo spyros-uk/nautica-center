@@ -50,13 +50,22 @@ export default async function BrandPage({ params }: { params: Params }) {
         <section className="bg-primary text-primary-foreground py-12 md:py-20">
           <div className="container mx-auto px-4">
             {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-sm text-primary-foreground/60 mb-6">
-              <Link href={catalogCrumb.href} className="hover:text-primary-foreground transition-colors">
-                {catalogCrumb.label}
+            <div className="mb-6 flex items-center justify-between gap-4">
+              <nav className="flex min-w-0 items-center gap-2 overflow-x-auto whitespace-nowrap text-sm text-primary-foreground/60">
+                <Link href={catalogCrumb.href} className="hover:text-primary-foreground transition-colors">
+                  {catalogCrumb.label}
+                </Link>
+                <span>/</span>
+                <span className="text-primary-foreground">{brand.name}</span>
+              </nav>
+              <Link
+                href={catalogCrumb.href}
+                className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                {isOutboard ? 'Πίσω στις εξωλέμβιες' : 'Πίσω στα σκάφη'}
               </Link>
-              <span>/</span>
-              <span className="text-primary-foreground">{brand.name}</span>
-            </nav>
+            </div>
 
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
               <div className="max-w-2xl">
@@ -195,18 +204,6 @@ export default async function BrandPage({ params }: { params: Params }) {
           </div>
         </section>
 
-        {/* Back link */}
-        <section className="pb-16">
-          <div className="container mx-auto px-4">
-            <Link
-              href={catalogCrumb.href}
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              {isOutboard ? 'Πίσω στις εξωλέμβιες' : 'Πίσω στα σκάφη'}
-            </Link>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

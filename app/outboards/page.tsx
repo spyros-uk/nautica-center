@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useEffect, useCallback } from 'react'
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react'
 import Link from 'next/link'
 import { ProductImage } from '@/components/product-image'
 import { Header } from '@/components/header'
@@ -18,6 +18,11 @@ import {
   Loader2 
 } from 'lucide-react'
 import boatsData from '@/data/boats.json'
+import {
+  clearOutboardsFiltersStorage,
+  loadOutboardsFilters,
+  saveOutboardsFilters,
+} from '@/lib/product-filters-storage'
 
 // Brands that sell outboards (see `data/boats.json` category `outboards`)
 const outboardBrands = boatsData.brands.filter(brand => brand.category === 'outboards')
@@ -37,9 +42,12 @@ const maxHP = Math.max(...allOutboards.map((o) => o.hp))
 
 const ITEMS_PER_PAGE = 12
 
+const validOutboardBrandIds = outboardBrands.map((brand) => brand.id)
+
 export default function OutboardsPage() {
   // Mount state to prevent hydration flash
   const [isMounted, setIsMounted] = useState(false)
+  const filtersHydrated = useRef(false)
   
   // Filter state
   const [selectedBrands, setSelectedBrands] = useState<string[]>([])
@@ -50,18 +58,36 @@ export default function OutboardsPage() {
   const [displayCount, setDisplayCount] = useState(ITEMS_PER_PAGE)
   const [isLoading, setIsLoading] = useState(false)
   
-  // Set mounted on client and reset state
+  // Restore persisted filters on mount
   useEffect(() => {
-    // Reset all filter state on mount to ensure clean state
-    setSelectedBrands([])
-    setHpRange([minHP, maxHP])
-    setDisplayCount(ITEMS_PER_PAGE)
-    setIsMounted(true)
-    
-    return () => {
-      setIsMounted(false)
+    const saved = loadOutboardsFilters(validOutboardBrandIds, minHP, maxHP)
+    if (saved) {
+      setSelectedBrands(saved.selectedBrands)
+      setHpRange(saved.hpRange)
     }
+    filtersHydrated.current = true
+    setIsMounted(true)
   }, [])
+
+  // Persist filters when they change (only while filters are active)
+  useEffect(() => {
+    if (!filtersHydrated.current) return
+
+    const isDefault =
+      selectedBrands.length === 0 &&
+      hpRange[0] === minHP &&
+      hpRange[1] === maxHP
+
+    if (isDefault) {
+      clearOutboardsFiltersStorage()
+      return
+    }
+
+    saveOutboardsFilters({
+      selectedBrands,
+      hpRange,
+    })
+  }, [selectedBrands, hpRange])
 
   const filteredOutboards = useMemo(() => {
     return allOutboards.filter((outboard) => {
@@ -126,6 +152,7 @@ export default function OutboardsPage() {
   const clearFilters = () => {
     setSelectedBrands([])
     setHpRange([minHP, maxHP])
+    clearOutboardsFiltersStorage()
   }
 
   const hasActiveFilters = selectedBrands.length > 0 || hpRange[0] > minHP || hpRange[1] < maxHP
