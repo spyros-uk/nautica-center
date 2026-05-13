@@ -12,8 +12,8 @@ const brands = [
   { name: 'Eolo', type: 'Πολυεστερικά Σκάφη' },
   { name: 'BMA', type: 'Πολυεστερικά Σκάφη' },
   { name: 'Suzuki', type: 'Εξωλέμβιες' },
-  { name: 'SUP', type: 'Θαλάσσια σπορ' },
-  { name: 'Kayak', type: 'Θαλάσσια σπορ' },
+  { name: 'Jobe', type: 'SUP' },
+  { name: 'SeaFlow', type: 'SUP & Kayak' },
   { name: 'Aquablue', type: 'Ποδήλατα Θαλάσσης' },
   { name: 'ΔΡΟΜΕΥΣ', type: 'Τρέιλερ Σκαφών' },
   { name: 'Olympic', type: 'Πολυεστερικά Σκάφη' },
@@ -24,7 +24,6 @@ export function BrandsSection() {
   return (
     <section id="brands" className="py-20 md:py-32 bg-primary text-primary-foreground">
       <div className="container mx-auto px-4">
-        {/* Section header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <span className="text-sm font-semibold text-accent uppercase tracking-wider">Συνεργασίες</span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
@@ -35,7 +34,6 @@ export function BrandsSection() {
           </p>
         </div>
 
-        {/* Brands grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
           {brands.map((brand) => (
             <div
@@ -48,7 +46,6 @@ export function BrandsSection() {
           ))}
         </div>
 
-        {/* Additional info */}
         <div className="mt-16 grid md:grid-cols-3 gap-8 text-center">
           <div className="p-6">
             <div className="text-4xl font-bold text-accent mb-2">100%</div>

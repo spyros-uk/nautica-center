@@ -1,15 +1,17 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
 import { getBrands, getBrandById, getModelById, getCatalogBreadcrumb, getBrandPath, getCategoryName, getSpecLabel } from '@/lib/boats'
 import { getModelImages } from '@/lib/product-images'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { ProductGallery } from '@/components/product-gallery'
+import { BoatCatalogBackLink } from '@/components/boat-catalog-back-link'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { ArrowLeft, Phone, Mail, Check, Globe, ExternalLink, MessageCircle } from 'lucide-react'
+import { ArrowLeft, Phone, Mail, Check, Globe, ExternalLink } from 'lucide-react'
 
 type Params = Promise<{ brandId: string; modelId: string }>
 
@@ -77,13 +79,22 @@ export default async function ModelPage({ params }: { params: Params }) {
                 <span>/</span>
                 <span className="text-foreground font-medium">{model.name}</span>
               </nav>
-              <Link
-                href={catalogCrumb.href}
-                className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              <Suspense
+                fallback={
+                  <Link
+                    href={catalogCrumb.href}
+                    className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <ArrowLeft className="h-4 w-4" />
+                    Πίσω στα σκάφη
+                  </Link>
+                }
               >
-                <ArrowLeft className="h-4 w-4" />
-                {isOutboard ? 'Πίσω στις εξωλέμβιες' : 'Πίσω στα σκάφη'}
-              </Link>
+                <BoatCatalogBackLink
+                  catalogHref={catalogCrumb.href}
+                  catalogLabel="Πίσω στα σκάφη"
+                />
+              </Suspense>
             </div>
           </div>
         </section>

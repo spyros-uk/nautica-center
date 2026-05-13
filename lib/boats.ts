@@ -27,6 +27,16 @@ export interface BoatModel {
   specs: BoatSpec
   features: string[]
   description: string
+  isOffer?: boolean
+  isAvailable?: boolean
+  isUsed?: boolean
+  /** Show on homepage «Ετοιμοπαράδοτα» section (also set `highlightOrder`). */
+  isHighlighted?: boolean
+  /** Sort order on homepage; lower numbers appear first. */
+  highlightOrder?: number
+  /** Optional price line for homepage cards. */
+  price?: string
+  priceNote?: string
 }
 
 export interface Brand {
@@ -84,6 +94,26 @@ export function getAllModels(): { brand: Brand; model: BoatModel }[] {
   return result
 }
 
+const BOAT_CATALOG_CATEGORIES = new Set<Brand['category']>(['inflatable', 'fiberglass', 'jetski'])
+
+/** Boats featured on the homepage, sorted by `highlightOrder`. */
+export function getHighlightedBoats(): { brand: Brand; model: BoatModel }[] {
+  return getAllModels()
+    .filter(
+      ({ brand, model }) =>
+        BOAT_CATALOG_CATEGORIES.has(brand.category) &&
+        model.isHighlighted === true &&
+        model.isAvailable === true,
+    )
+    .sort((a, b) => (a.model.highlightOrder ?? 999) - (b.model.highlightOrder ?? 999))
+}
+
+export function getModelHighlightBadge(model: BoatModel): string | null {
+  if (model.isOffer) return 'Προσφορά'
+  if (model.isUsed) return 'Μεταχειρισμένο'
+  return 'Ετοιμοπαράδοτο'
+}
+
 /** Breadcrumb back to the listing that actually lists this brand (boats vs outboards). */
 export function getCatalogBreadcrumb(brand: Brand): { href: string; label: string } {
   if (brand.category === 'outboards') {
@@ -111,6 +141,13 @@ export function getModelPath(
   model: Pick<BoatModel, 'id'>,
 ): string {
   return `${getBrandPath(brand)}/${model.id}`
+}
+
+export function getModelPathFromHome(
+  brand: Pick<Brand, 'id' | 'category'>,
+  model: Pick<BoatModel, 'id'>,
+): string {
+  return `${getModelPath(brand, model)}?from=home`
 }
 
 export function getCategoryName(categoryId: string): string {

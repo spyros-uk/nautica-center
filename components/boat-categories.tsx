@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowRight, Sailboat, Anchor, Waves, Car, Wrench, Shield, Bike, LifeBuoy, ExternalLink } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { getBoatsPageHref } from '@/lib/product-filters-storage'
 
 const categories = [
   {
@@ -11,14 +12,14 @@ const categories = [
     description: 'ZAR Formenti, ZAR Mini, MV Marine, YAM - Ιταλικής κατασκευής RIB',
     icon: Waves,
     image: 'https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=600&q=80',
-    href: '/boats#inflatable',
+    href: getBoatsPageHref({ category: 'inflatable' }),
   },
   {
     title: 'Πολυεστερικά Σκάφη',
     description: 'Quicksilver, Marinello, Eolo, BMA, Olympic - από 4.5 έως 9 μέτρα',
     icon: Sailboat,
     image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80',
-    href: '/boats#fiberglass',
+    href: getBoatsPageHref({ category: 'fiberglass' }),
   },
   {
     title: 'Εξωλέμβιες',

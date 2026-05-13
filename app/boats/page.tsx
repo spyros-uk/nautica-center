@@ -24,6 +24,8 @@ import boatsData from '@/data/boats.json'
 import {
   clearBoatsFiltersStorage,
   loadBoatsFilters,
+  parseBoatsCategoryFilter,
+  parseBoatsQuickFilter,
   saveBoatsFilters,
   type BoatsQuickFilter,
 } from '@/lib/product-filters-storage'
@@ -68,6 +70,7 @@ export default function BoatsPage() {
   // Mount state to prevent hydration flash
   const [isMounted, setIsMounted] = useState(false)
   const filtersHydrated = useRef(false)
+  const filtersFromUrl = useRef(false)
   
   // Filter state
   const [selectedBrands, setSelectedBrands] = useState<string[]>([])
@@ -80,22 +83,61 @@ export default function BoatsPage() {
   const [displayCount, setDisplayCount] = useState(ITEMS_PER_PAGE)
   const [isLoading, setIsLoading] = useState(false)
   
-  // Restore persisted filters on mount
+  // Restore persisted filters on mount (URL params take precedence for matching fields)
   useEffect(() => {
+    const search =
+      typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams()
+    const urlFilter = parseBoatsQuickFilter(search.get('filter'))
+    const urlCategory = parseBoatsCategoryFilter(search.get('category'))
     const saved = loadBoatsFilters(validBoatBrandIds, boatCategoryIds, minLength, maxLength)
-    if (saved) {
+
+    if (urlFilter || urlCategory) {
+      filtersFromUrl.current = true
+      if (urlFilter) {
+        setQuickFilter(urlFilter)
+      }
+      if (urlCategory) {
+        setSelectedCategories([urlCategory])
+      }
+      if (saved) {
+        if (!urlFilter) {
+          setQuickFilter(saved.quickFilter)
+        }
+        if (!urlCategory) {
+          setSelectedCategories(saved.selectedCategories)
+        }
+        setSelectedBrands(saved.selectedBrands)
+        setLengthRange(saved.lengthRange)
+      }
+    } else if (saved) {
       setSelectedBrands(saved.selectedBrands)
       setSelectedCategories(saved.selectedCategories)
       setLengthRange(saved.lengthRange)
       setQuickFilter(saved.quickFilter)
     }
+
     filtersHydrated.current = true
     setIsMounted(true)
+  }, [])
+
+  // Drop homepage URL-initiated filters when leaving the boats page
+  useEffect(() => {
+    return () => {
+      if (filtersFromUrl.current) {
+        clearBoatsFiltersStorage()
+      }
+    }
+  }, [])
+
+  const applyQuickFilter = useCallback((filter: BoatsQuickFilter) => {
+    filtersFromUrl.current = false
+    setQuickFilter(filter)
   }, [])
 
   // Persist filters when they change (only while filters are active)
   useEffect(() => {
     if (!filtersHydrated.current) return
+    if (filtersFromUrl.current) return
 
     const isDefault =
       selectedBrands.length === 0 &&
@@ -186,6 +228,7 @@ export default function BoatsPage() {
 
   // Toggle brand filter
   const toggleBrand = (brandId: string) => {
+    filtersFromUrl.current = false
     setSelectedBrands(prev => 
       prev.includes(brandId) 
         ? prev.filter(id => id !== brandId)
@@ -195,6 +238,7 @@ export default function BoatsPage() {
 
   // Toggle category filter
   const toggleCategory = (categoryId: string) => {
+    filtersFromUrl.current = false
     setSelectedCategories(prev => 
       prev.includes(categoryId) 
         ? prev.filter(id => id !== categoryId)
@@ -204,6 +248,7 @@ export default function BoatsPage() {
 
   // Clear all filters
   const clearFilters = () => {
+    filtersFromUrl.current = false
     setSelectedBrands([])
     setSelectedCategories([])
     setLengthRange([minLength, maxLength])
@@ -291,7 +336,7 @@ export default function BoatsPage() {
             <Button
               variant={quickFilter === 'all' ? 'default' : 'outline'}
               size="sm"
-              onClick={() => setQuickFilter('all')}
+              onClick={() => applyQuickFilter('all')}
               className="gap-2"
             >
               Όλα
@@ -302,7 +347,7 @@ export default function BoatsPage() {
             <Button
               variant={quickFilter === 'offers' ? 'default' : 'outline'}
               size="sm"
-              onClick={() => setQuickFilter('offers')}
+              onClick={() => applyQuickFilter('offers')}
               className="gap-2"
             >
               <Tag className="h-4 w-4" />
@@ -314,7 +359,7 @@ export default function BoatsPage() {
             <Button
               variant={quickFilter === 'available' ? 'default' : 'outline'}
               size="sm"
-              onClick={() => setQuickFilter('available')}
+              onClick={() => applyQuickFilter('available')}
               className="gap-2"
             >
               <Sparkles className="h-4 w-4" />
@@ -326,7 +371,7 @@ export default function BoatsPage() {
             <Button
               variant={quickFilter === 'used' ? 'default' : 'outline'}
               size="sm"
-              onClick={() => setQuickFilter('used')}
+              onClick={() => applyQuickFilter('used')}
               className="gap-2"
             >
               <Clock className="h-4 w-4" />
@@ -420,7 +465,10 @@ export default function BoatsPage() {
                   <div className="px-2">
                     <Slider
                       value={lengthRange}
-                      onValueChange={(value) => setLengthRange(value as [number, number])}
+                      onValueChange={(value) => {
+                        filtersFromUrl.current = false
+                        setLengthRange(value as [number, number])
+                      }}
                       min={minLength}
                       max={maxLength}
                       step={0.5}
@@ -529,7 +577,10 @@ export default function BoatsPage() {
                     <div className="px-2">
                       <Slider
                         value={lengthRange}
-                        onValueChange={(value) => setLengthRange(value as [number, number])}
+                        onValueChange={(value) => {
+                        filtersFromUrl.current = false
+                        setLengthRange(value as [number, number])
+                      }}
                         min={minLength}
                         max={maxLength}
                         step={0.5}

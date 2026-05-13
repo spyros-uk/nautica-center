@@ -57,7 +57,11 @@
           "features": ["Αυτοκένωση", "Console κεντρική", "Inox καταπέλτης"],
           "description": "Το ZAR 43 είναι ένα compact και ευέλικτο RIB ιδανικό για ημερήσιες εκδρομές.",
           "isOffer": true,
-          "isAvailable": true
+          "isAvailable": true,
+          "isHighlighted": true,
+          "highlightOrder": 1,
+          "price": "Κατόπιν επικοινωνίας",
+          "priceNote": "Ετοιμοπαράδοτο"
         },
         {
           "id": "zar-47",
@@ -355,7 +359,11 @@
           "features": ["Μικρή καμπίνα", "Cuddy cabin", "Bimini top"],
           "description": "Compact cabin boat για ημερήσιες εξορμήσεις.",
           "isAvailable": true,
-          "isOffer": true
+          "isOffer": true,
+          "isHighlighted": true,
+          "highlightOrder": 2,
+          "price": "Κατόπιν επικοινωνίας",
+          "priceNote": "Cuddy cabin · Bimini top"
         },
         {
           "id": "activ-505-cabin",
@@ -636,7 +644,11 @@
           },
           "features": ["Center console", "Greek built", "Value for money"],
           "description": "Ελληνικής κατασκευής center console.",
-          "isAvailable": true
+          "isAvailable": true,
+          "isHighlighted": true,
+          "highlightOrder": 3,
+          "price": "Κατόπιν επικοινωνίας",
+          "priceNote": "Ελληνικής κατασκευής"
         },
         {
           "id": "olympic-520br",
@@ -680,7 +692,11 @@
           },
           "features": ["Entry level", "Lightweight", "Fuel efficient"],
           "description": "Η ιδανική είσοδος στον κόσμο των Jet Ski.",
-          "isAvailable": true
+          "isAvailable": true,
+          "isHighlighted": true,
+          "highlightOrder": 4,
+          "price": "Κατόπιν επικοινωνίας",
+          "priceNote": "Entry level · TR-1"
         },
         {
           "id": "yamaha-vx",

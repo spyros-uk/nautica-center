@@ -22,6 +22,49 @@ export type PartsFiltersState = {
 
 const BOATS_QUICK_FILTERS: BoatsQuickFilter[] = ['all', 'offers', 'available', 'used']
 
+export const BOAT_CATALOG_CATEGORY_IDS = ['inflatable', 'fiberglass', 'jetski'] as const
+export type BoatsCategoryFilter = (typeof BOAT_CATALOG_CATEGORY_IDS)[number]
+
+export function parseBoatsQuickFilter(value: string | null | undefined): BoatsQuickFilter | null {
+  if (!value || !BOATS_QUICK_FILTERS.includes(value as BoatsQuickFilter)) return null
+  return value as BoatsQuickFilter
+}
+
+export function parseBoatsCategoryFilter(value: string | null | undefined): BoatsCategoryFilter | null {
+  if (!value || !BOAT_CATALOG_CATEGORY_IDS.includes(value as BoatsCategoryFilter)) return null
+  return value as BoatsCategoryFilter
+}
+
+type BoatsPageHrefOptions = {
+  quickFilter?: BoatsQuickFilter
+  category?: BoatsCategoryFilter
+}
+
+function buildBoatsPageHref({ quickFilter, category }: BoatsPageHrefOptions = {}): string {
+  const params = new URLSearchParams()
+  if (quickFilter && quickFilter !== 'all') {
+    params.set('filter', quickFilter)
+  }
+  if (category) {
+    params.set('category', category)
+  }
+  const query = params.toString()
+  return query ? `/boats?${query}` : '/boats'
+}
+
+/** Build `/boats` URL with optional quick filter and/or category (from homepage links). */
+export function getBoatsPageHref(
+  quickFilterOrOptions?: BoatsQuickFilter | BoatsPageHrefOptions,
+): string {
+  if (quickFilterOrOptions === undefined) {
+    return buildBoatsPageHref()
+  }
+  if (typeof quickFilterOrOptions === 'string') {
+    return buildBoatsPageHref({ quickFilter: quickFilterOrOptions })
+  }
+  return buildBoatsPageHref(quickFilterOrOptions)
+}
+
 function readJson<T>(key: string): T | null {
   if (typeof window === 'undefined') return null
   try {
