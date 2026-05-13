@@ -6,26 +6,47 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent } from '@/components/ui/card'
 
-const contactInfo = [
+type ContactLine = {
+  text: string
+  href?: string
+}
+
+const contactInfo: {
+  icon: typeof MapPin
+  title: string
+  lines: ContactLine[]
+}[] = [
   {
     icon: MapPin,
     title: 'Κατάστημα',
-    lines: ['Αστέρια Αγριάς', 'Βόλος, Τ.Κ. 37300'],
+    lines: [
+      { text: 'Αστέρια Αγριάς' },
+      { text: 'Βόλος, Τ.Κ. 37300' },
+    ],
   },
   {
     icon: Phone,
     title: 'Τηλέφωνα',
-    lines: ['+30 24280 91700', '+30 6957 046616 (Χρήστος)'],
+    lines: [
+      { text: '+30 24280 91700', href: 'tel:+302428091700' },
+      { text: '+30 6957 046616 (Χρήστος)', href: 'tel:+306957046616' },
+    ],
   },
   {
     icon: MapPin,
     title: 'Εργοστάσιο Τρέιλερ',
-    lines: ["Α' ΒΙ.ΠΕ. Βόλου", '+30 24210 96888'],
+    lines: [
+      { text: "Α' ΒΙ.ΠΕ. Βόλου" },
+      { text: '+30 24210 96888', href: 'tel:+302421096888' },
+    ],
   },
   {
     icon: Clock,
     title: 'Ωράριο',
-    lines: ['Δευ - Παρ: 09:00 - 18:00', 'Σάβ: 09:00 - 14:00'],
+    lines: [
+      { text: 'Δευ - Παρ: 09:00 - 18:00' },
+      { text: 'Σάβ: 09:00 - 14:00' },
+    ],
   },
 ]
 
@@ -56,9 +77,21 @@ export function ContactSection() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
-                        {item.lines.map((line) => (
-                          <p key={line} className="text-sm text-muted-foreground">{line}</p>
-                        ))}
+                        {item.lines.map((line) =>
+                          line.href ? (
+                            <a
+                              key={line.text}
+                              href={line.href}
+                              className="block text-sm text-muted-foreground hover:text-accent transition-colors"
+                            >
+                              {line.text}
+                            </a>
+                          ) : (
+                            <p key={line.text} className="text-sm text-muted-foreground">
+                              {line.text}
+                            </p>
+                          )
+                        )}
                       </div>
                     </div>
                   </CardContent>
