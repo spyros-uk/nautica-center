@@ -1,5 +1,6 @@
 export const BOATS_FILTERS_STORAGE_KEY = 'nautica-center:boats-filters'
 export const OUTBOARDS_FILTERS_STORAGE_KEY = 'nautica-center:outboards-filters'
+export const PARTS_FILTERS_STORAGE_KEY = 'nautica-center:parts-filters'
 
 export type BoatsQuickFilter = 'all' | 'offers' | 'available' | 'used'
 
@@ -13,6 +14,10 @@ export type BoatsFiltersState = {
 export type OutboardsFiltersState = {
   selectedBrands: string[]
   hpRange: [number, number]
+}
+
+export type PartsFiltersState = {
+  selectedBrands: string[]
 }
 
 const BOATS_QUICK_FILTERS: BoatsQuickFilter[] = ['all', 'offers', 'available', 'used']
@@ -118,4 +123,21 @@ export function saveOutboardsFilters(state: OutboardsFiltersState) {
 
 export function clearOutboardsFiltersStorage() {
   removeKey(OUTBOARDS_FILTERS_STORAGE_KEY)
+}
+
+export function loadPartsFilters(validBrandIds: string[]): PartsFiltersState | null {
+  const saved = readJson<Partial<PartsFiltersState>>(PARTS_FILTERS_STORAGE_KEY)
+  if (!saved) return null
+
+  return {
+    selectedBrands: sanitizeStringArray(saved.selectedBrands, new Set(validBrandIds)),
+  }
+}
+
+export function savePartsFilters(state: PartsFiltersState) {
+  writeJson(PARTS_FILTERS_STORAGE_KEY, state)
+}
+
+export function clearPartsFiltersStorage() {
+  removeKey(PARTS_FILTERS_STORAGE_KEY)
 }

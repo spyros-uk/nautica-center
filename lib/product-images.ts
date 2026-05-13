@@ -2,11 +2,14 @@ import type { Brand } from '@/lib/boats'
 
 export const PLACEHOLDER_BOAT_IMAGE = '/images/placeholder-boat.jpg'
 export const PLACEHOLDER_OUTBOARD_IMAGE = '/images/placeholder-engine.jpg'
+export const PLACEHOLDER_PARTS_IMAGE = '/images/placeholder-engine.jpg'
 /** Generic last-resort fallback for boats only (always present in /public). */
 export const PLACEHOLDER_PRODUCT_IMAGE = '/placeholder.jpg'
 
 export function getProductPlaceholder(category?: Brand['category'] | string): string {
-  return category === 'outboards' ? PLACEHOLDER_OUTBOARD_IMAGE : PLACEHOLDER_BOAT_IMAGE
+  if (category === 'parts') return PLACEHOLDER_PARTS_IMAGE
+  if (category === 'outboards') return PLACEHOLDER_OUTBOARD_IMAGE
+  return PLACEHOLDER_BOAT_IMAGE
 }
 
 export function getProductFallbackImage(
