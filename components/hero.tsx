@@ -54,9 +54,11 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" variant="secondary" className="w-full sm:w-auto text-base font-semibold px-8">
-              Δείτε τα Σκάφη μας
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button size="lg" variant="secondary" asChild className="w-full sm:w-auto text-base font-semibold px-8">
+              <Link href="/boats">
+                Δείτε τα Σκάφη μας
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
             <Button
               size="lg"
