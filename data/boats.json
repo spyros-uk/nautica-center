@@ -41,7 +41,9 @@
           "name": "ZAR 43",
           "image": "/images/placeholder/ribs-category.jpeg",
           "images": [
-            "/images/placeholder/ribs-category.jpeg"
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
           ],
           "specs": {
             "length": "4.30m",
@@ -84,7 +86,12 @@
             "Console κεντρική"
           ],
           "description": "Ιδανικό για οικογένειες που αναζητούν άνεση και απόδοση.",
-          "isAvailable": true
+          "isAvailable": true,
+          "images": [
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
+          ]
         },
         {
           "id": "zar-53",
@@ -104,7 +111,12 @@
             "Τιμόνι με καθίσματα",
             "Ντους"
           ],
-          "description": "Το ZAR 53 συνδυάζει χώρο, άνεση και κορυφαίες επιδόσεις."
+          "description": "Το ZAR 53 συνδυάζει χώρο, άνεση και κορυφαίες επιδόσεις.",
+          "images": [
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
+          ]
         },
         {
           "id": "zar-57",
@@ -125,7 +137,12 @@
             "Sundeck"
           ],
           "description": "Πολυτελές RIB για απαιτητικούς ιδιοκτήτες.",
-          "isUsed": true
+          "isUsed": true,
+          "images": [
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
+          ]
         },
         {
           "id": "zar-61",
@@ -146,7 +163,12 @@
             "T-Top",
             "Sundeck πλώρης και πρύμνης"
           ],
-          "description": "Το κορυφαίο μοντέλο της σειράς με πλήρη εξοπλισμό."
+          "description": "Το κορυφαίο μοντέλο της σειράς με πλήρη εξοπλισμό.",
+          "images": [
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
+          ]
         },
         {
           "id": "zar-65",
@@ -167,7 +189,12 @@
             "T-Top",
             "Twin outboard ready"
           ],
-          "description": "Για όσους θέλουν το καλύτερο - απόλυτη πολυτέλεια στη θάλασσα."
+          "description": "Για όσους θέλουν το καλύτερο - απόλυτη πολυτέλεια στη θάλασσα.",
+          "images": [
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
+          ]
         }
       ]
     },
@@ -186,7 +213,9 @@
           "name": "ZAR Mini RIB 10",
           "image": "/images/placeholder/ribs-category.jpeg",
           "images": [
-            "/images/placeholder/ribs-category.jpeg"
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
           ],
           "specs": {
             "length": "3.10m",
@@ -221,7 +250,12 @@
             "Compact",
             "Εύκολη φόρτωση σε τρέιλερ"
           ],
-          "description": "Ιδανικό για ψάρεμα και κοντινές εκδρομές."
+          "description": "Ιδανικό για ψάρεμα και κοντινές εκδρομές.",
+          "images": [
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
+          ]
         },
         {
           "id": "zar-mini-rib-14",
@@ -241,7 +275,12 @@
             "Console",
             "Αποθηκευτικοί χώροι"
           ],
-          "description": "Το μεγαλύτερο της σειράς Mini με πλήρεις δυνατότητες."
+          "description": "Το μεγαλύτερο της σειράς Mini με πλήρεις δυνατότητες.",
+          "images": [
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
+          ]
         }
       ]
     },
@@ -274,7 +313,12 @@
             "Sundeck"
           ],
           "description": "Κομψό και αποδοτικό RIB για απαιτητικούς.",
-          "isOffer": true
+          "isOffer": true,
+          "images": [
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
+          ]
         },
         {
           "id": "mv-550",
@@ -294,7 +338,12 @@
             "Sundeck πλώρης",
             "Ντουζιέρα"
           ],
-          "description": "Η χρυσή τομή μεταξύ μεγέθους και απόδοσης."
+          "description": "Η χρυσή τομή μεταξύ μεγέθους και απόδοσης.",
+          "images": [
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
+          ]
         },
         {
           "id": "mv-650",
@@ -315,7 +364,12 @@
             "WC",
             "Premium εξοπλισμός"
           ],
-          "description": "Το flagship της MV Marine με απαράμιλλη πολυτέλεια."
+          "description": "Το flagship της MV Marine με απαράμιλλη πολυτέλεια.",
+          "images": [
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
+          ]
         },
         {
           "id": "mv-700",
@@ -335,7 +389,12 @@
             "Πλήρης καμπίνα",
             "Luxury interior"
           ],
-          "description": "Απόλυτη πολυτέλεια για μεγάλα ταξίδια."
+          "description": "Απόλυτη πολυτέλεια για μεγάλα ταξίδια.",
+          "images": [
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
+          ]
         }
       ]
     },
@@ -367,7 +426,12 @@
             "Ελαφρύ",
             "Εύκολη αποθήκευση"
           ],
-          "description": "Ιδανικό για tender ή ψάρεμα."
+          "description": "Ιδανικό για tender ή ψάρεμα.",
+          "images": [
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
+          ]
         },
         {
           "id": "yam-380s",
@@ -386,7 +450,12 @@
             "Αλουμινένιο πάτωμα",
             "Στιβαρή κατασκευή"
           ],
-          "description": "Σταθερό και αξιόπιστο για κάθε χρήση."
+          "description": "Σταθερό και αξιόπιστο για κάθε χρήση.",
+          "images": [
+            "/images/placeholder/ribs-category.jpeg",
+            "/images/placeholder/rib-1.jpeg",
+            "/images/placeholder/rib-2.jpeg"
+          ]
         }
       ]
     },
@@ -424,7 +493,12 @@
           "isHighlighted": true,
           "highlightOrder": 2,
           "price": "Κατόπιν επικοινωνίας",
-          "priceNote": "Cuddy cabin · Bimini top"
+          "priceNote": "Cuddy cabin · Bimini top",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         },
         {
           "id": "activ-505-cabin",
@@ -444,7 +518,12 @@
             "Τέντα",
             "Χώρος αποσκευών"
           ],
-          "description": "Πολυχρηστικό cabin boat με άνετη καμπίνα."
+          "description": "Πολυχρηστικό cabin boat με άνετη καμπίνα.",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         },
         {
           "id": "activ-555-cabin",
@@ -464,7 +543,12 @@
             "WC χώρος",
             "Sundeck"
           ],
-          "description": "Ιδανικό για weekends στη θάλασσα."
+          "description": "Ιδανικό για weekends στη θάλασσα.",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         },
         {
           "id": "activ-605-cruiser",
@@ -486,7 +570,12 @@
             "Berths for 2"
           ],
           "description": "Cruiser για μεγαλύτερα ταξίδια με άνεση.",
-          "isUsed": true
+          "isUsed": true,
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         },
         {
           "id": "activ-675-cruiser",
@@ -507,7 +596,12 @@
             "Galley",
             "Berths for 4"
           ],
-          "description": "Το κορυφαίο cruiser της σειράς Activ."
+          "description": "Το κορυφαίο cruiser της σειράς Activ.",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         },
         {
           "id": "activ-505-open",
@@ -527,7 +621,12 @@
             "Sundeck πλώρης",
             "Σκιάδιο"
           ],
-          "description": "Ανοιχτό σκάφος για water sports και βόλτες."
+          "description": "Ανοιχτό σκάφος για water sports και βόλτες.",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         },
         {
           "id": "activ-555-open",
@@ -547,7 +646,12 @@
             "T-Top option",
             "Ski pylon"
           ],
-          "description": "Ευρύχωρο open για οικογένειες."
+          "description": "Ευρύχωρο open για οικογένειες.",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         }
       ]
     },
@@ -578,7 +682,12 @@
             "Open bow",
             "Sundeck"
           ],
-          "description": "Κομψό open με ιταλικό design."
+          "description": "Κομψό open με ιταλικό design.",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         },
         {
           "id": "eden-20",
@@ -597,7 +706,12 @@
             "Fishing ready",
             "Bimini"
           ],
-          "description": "Πολυχρηστικό σκάφος για ψάρεμα και βόλτα."
+          "description": "Πολυχρηστικό σκάφος για ψάρεμα και βόλτα.",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         },
         {
           "id": "eden-22",
@@ -616,7 +730,12 @@
             "Cabin",
             "Premium finish"
           ],
-          "description": "Το κορυφαίο Eden με πλήρη εξοπλισμό."
+          "description": "Το κορυφαίο Eden με πλήρη εξοπλισμό.",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         }
       ]
     },
@@ -647,7 +766,12 @@
             "Italian craftsmanship",
             "Classic lines"
           ],
-          "description": "Κλασικό cabin boat με ιταλική φινέτσα."
+          "description": "Κλασικό cabin boat με ιταλική φινέτσα.",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         },
         {
           "id": "eolo-590",
@@ -666,7 +790,12 @@
             "WC ready",
             "Sundeck"
           ],
-          "description": "Η ιδανική επιλογή για weekends."
+          "description": "Η ιδανική επιλογή για weekends.",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         },
         {
           "id": "eolo-650",
@@ -686,7 +815,12 @@
             "Galley",
             "4 berths"
           ],
-          "description": "Day cruiser με πλήρεις ανέσεις."
+          "description": "Day cruiser με πλήρεις ανέσεις.",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         }
       ]
     },
@@ -717,7 +851,12 @@
             "Fishing ready",
             "Large cockpit"
           ],
-          "description": "Ιδανικό για ψάρεμα με μεγάλο κατάστρωμα."
+          "description": "Ιδανικό για ψάρεμα με μεγάλο κατάστρωμα.",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         },
         {
           "id": "bma-x222",
@@ -736,7 +875,12 @@
             "Rod holders",
             "Live well"
           ],
-          "description": "Professional fishing boat με premium εξοπλισμό."
+          "description": "Professional fishing boat με premium εξοπλισμό.",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         }
       ]
     },
@@ -772,7 +916,12 @@
           "isHighlighted": true,
           "highlightOrder": 3,
           "price": "Κατόπιν επικοινωνίας",
-          "priceNote": "Ελληνικής κατασκευής"
+          "priceNote": "Ελληνικής κατασκευής",
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         },
         {
           "id": "olympic-520br",
@@ -792,7 +941,12 @@
             "Family friendly"
           ],
           "description": "Bow rider για οικογενειακές βόλτες.",
-          "isOffer": true
+          "isOffer": true,
+          "images": [
+            "/images/placeholder/fiberglass-category.jpeg",
+            "/images/placeholder/fiberglass-1.jpeg",
+            "/images/placeholder/fiberglass-2.jpeg"
+          ]
         }
       ]
     },
@@ -924,11 +1078,6 @@
           "id": "mercury-fourstroke-15",
           "name": "Mercury FourStroke 15HP",
           "image": "/images/placeholder-engine.jpg",
-          "images": [
-            "/images/placeholder-engine.jpg",
-            "/images/placeholder-engine.jpg",
-            "/images/placeholder-engine.jpg"
-          ],
           "specs": {
             "power": "15HP",
             "cylinders": "2",
@@ -1379,11 +1528,6 @@
           "id": "selva-guppy-2.5",
           "name": "Selva Guppy 2.5",
           "image": "/images/placeholder-engine.jpg",
-          "images": [
-            "/images/placeholder-engine.jpg",
-            "/images/placeholder-engine.jpg",
-            "/images/placeholder-engine.jpg"
-          ],
           "specs": {
             "power": "2.5HP",
             "cylinders": "1",
