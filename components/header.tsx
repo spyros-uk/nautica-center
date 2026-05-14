@@ -49,7 +49,7 @@ export function Header() {
         <div className="flex items-center gap-3 xl:gap-6 h-16 md:h-20">
           <Link href="/" className="flex shrink-0 items-center">
             <img
-              src="/logo.jpeg"
+              src="/logo.png"
               alt="Nautica Center"
               className="h-12 w-auto md:h-14 xl:h-16 object-contain"
             />

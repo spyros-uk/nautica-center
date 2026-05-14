@@ -65,7 +65,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center mb-6">
               <img
-                src="/logo.jpeg"
+                src="/logo.png"
                 alt="Nautica Center"
                 className="h-14 w-auto md:h-16 object-contain"
               />
