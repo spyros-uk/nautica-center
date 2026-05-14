@@ -351,13 +351,13 @@ export const messages = {
       eyebrow: 'Categories',
       title: 'Everything you need for the sea',
       subtitle:
-        'From compact inflatables to premium leisure boats, jet skis, SUP, kayaks, and accessories for every sea lover.',
+        'From compact RIBs to premium leisure boats, jet skis, SUP, kayaks, and accessories for every sea lover.',
       viewAllBoats: 'View all boats',
       more: 'Learn more',
       visit: 'Visit',
       externalSite: 'Specialist site',
       inflatable: {
-        title: 'Inflatable Boats',
+        title: 'RIBs',
         description: 'ZAR Formenti, ZAR Mini, MV Marine, YAM — Italian-built RIBs',
       },
       fiberglass: {
@@ -414,7 +414,7 @@ export const messages = {
       sales: {
         title: 'Boat sales',
         description: 'Exclusive representation of leading manufacturers. New and pre-owned boats of all types.',
-        features: ['Fiberglass boats', 'Inflatable boats', 'Jet Ski', 'Sea bikes'],
+        features: ['Fiberglass boats', 'RIBs', 'Jet Ski', 'Sea bikes'],
       },
       trailers: {
         title: 'Trailer manufacturing',
@@ -445,7 +445,7 @@ export const messages = {
       supportBadge: 'Fast',
       types: {
         fiberglass: 'Fiberglass boats',
-        inflatable: 'Inflatable boats',
+        inflatable: 'RIBs',
         outboards: 'Outboards',
         outboardsJetski: 'Outboards & Jet Ski',
         sup: 'SUP',
@@ -495,7 +495,7 @@ export const messages = {
       credit: 'Design & Development by Spyros Papaioannou',
       products: {
         fiberglass: 'Fiberglass boats',
-        inflatable: 'Inflatable boats',
+        inflatable: 'RIBs',
         outboards: 'Outboards',
         used: 'Pre-owned',
       },
@@ -569,7 +569,7 @@ export const messages = {
       products: 'products',
       product: 'product',
       categories: {
-        inflatable: 'Inflatable',
+        inflatable: 'RIBs',
         fiberglass: 'Fiberglass',
         jetski: 'Jet Ski',
       },
@@ -587,7 +587,7 @@ export const messages = {
     boats: {
       title: 'Boats',
       subtitle: 'Discover the widest range of boats from leading brands.',
-      heroSubtitle: 'Inflatable, fiberglass, and Jet Ski models from top brands.',
+      heroSubtitle: 'RIBs, fiberglass, and Jet Ski models from top brands.',
       empty: 'No boats found',
       availableModels: 'Available models',
       availableOutboards: 'Available outboards',

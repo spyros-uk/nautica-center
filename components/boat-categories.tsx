@@ -10,13 +10,13 @@ const categories = [
   {
     key: 'inflatable' as const,
     icon: Waves,
-    image: 'https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=600&q=80',
+    image: '/images/placeholder/ribs-category.jpeg',
     href: getBoatsPageHref({ category: 'inflatable' }),
   },
   {
     key: 'fiberglass' as const,
     icon: Sailboat,
-    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80',
+    image: '/images/placeholder/fiberglass-category.jpeg',
     href: getBoatsPageHref({ category: 'fiberglass' }),
   },
   {
@@ -28,14 +28,14 @@ const categories = [
   {
     key: 'dromeys' as const,
     icon: Car,
-    image: 'https://images.unsplash.com/photo-1600320254374-ce2d293c324e?w=600&q=80',
+    image: '/images/placeholder/trailers-category-hero.jpeg',
     href: 'https://dromeys.gr/',
     external: true,
   },
   {
     key: 'watersports' as const,
     icon: Bike,
-    image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80',
+    image: '/images/placeholder/jetskis-sup-category.jpeg',
     href: 'https://ewatersports.gr/',
     external: true,
   },

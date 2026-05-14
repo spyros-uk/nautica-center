@@ -7,10 +7,10 @@ import { useTranslation } from '@/lib/i18n/context'
 const serviceKeys = ['sales', 'trailers', 'workshop', 'storage'] as const
 
 const serviceImages = [
-  'https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2?w=800&q=80',
-  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
-  'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80',
-  'https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&q=80',
+  '/images/placeholder/boat-sales.png',
+  '/images/placeholder/trailers-category-hero.jpeg',
+  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
+  '/images/placeholder/parking-category.jpeg',
 ]
 
 export function ServicesSection() {

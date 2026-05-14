@@ -1,6 +1,9 @@
 import type { Brand } from '@/lib/boats'
 
 export const PLACEHOLDER_BOAT_IMAGE = '/images/placeholder-boat.jpg'
+export const PLACEHOLDER_RIB_IMAGE = '/images/placeholder/ribs-category.jpeg'
+export const PLACEHOLDER_FIBERGLASS_IMAGE = '/images/placeholder/fiberglass-category.jpeg'
+export const PLACEHOLDER_JETSKI_IMAGE = '/images/placeholder/jetskis-category.jpg'
 export const PLACEHOLDER_OUTBOARD_IMAGE = '/images/placeholder-engine.jpg'
 export const PLACEHOLDER_PARTS_IMAGE = '/images/placeholder-engine.jpg'
 /** Generic last-resort fallback for boats only (always present in /public). */
@@ -9,6 +12,9 @@ export const PLACEHOLDER_PRODUCT_IMAGE = '/placeholder.jpg'
 export function getProductPlaceholder(category?: Brand['category'] | string): string {
   if (category === 'parts') return PLACEHOLDER_PARTS_IMAGE
   if (category === 'outboards') return PLACEHOLDER_OUTBOARD_IMAGE
+  if (category === 'inflatable') return PLACEHOLDER_RIB_IMAGE
+  if (category === 'fiberglass') return PLACEHOLDER_FIBERGLASS_IMAGE
+  if (category === 'jetski') return PLACEHOLDER_JETSKI_IMAGE
   return PLACEHOLDER_BOAT_IMAGE
 }
 
