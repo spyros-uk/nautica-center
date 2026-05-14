@@ -47,18 +47,12 @@ export function Header() {
 
       <nav className="container mx-auto px-4">
         <div className="flex items-center gap-3 xl:gap-6 h-16 md:h-20">
-          <Link href="/" className="flex shrink-0 items-center gap-2 sm:gap-3">
-            <div className="relative">
-              <svg viewBox="0 0 40 40" className="h-9 w-9 md:h-10 md:w-10 xl:h-12 xl:w-12" fill="none">
-                <circle cx="20" cy="20" r="18" stroke="currentColor" strokeWidth="2" />
-                <path d="M12 28 L20 10 L28 28 L20 24 Z" fill="currentColor" />
-                <path d="M20 28 L20 32" stroke="currentColor" strokeWidth="2" />
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-base md:text-lg xl:text-xl font-bold tracking-tight">NAUTICA</span>
-              <span className="text-[10px] md:text-xs xl:text-sm font-medium tracking-widest opacity-80">CENTER</span>
-            </div>
+          <Link href="/" className="flex shrink-0 items-center">
+            <img
+              src="/logo.jpeg"
+              alt="Nautica Center"
+              className="h-12 w-auto md:h-14 xl:h-16 object-contain"
+            />
           </Link>
 
           <div className="hidden xl:flex flex-1 items-center justify-center gap-x-3 2xl:gap-x-5 min-w-0 px-2 2xl:px-4">

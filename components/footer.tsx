@@ -63,18 +63,12 @@ export function Footer() {
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="relative">
-                <svg viewBox="0 0 40 40" className="h-12 w-12" fill="none">
-                  <circle cx="20" cy="20" r="18" stroke="currentColor" strokeWidth="2" />
-                  <path d="M12 28 L20 10 L28 28 L20 24 Z" fill="currentColor" />
-                  <path d="M20 28 L20 32" stroke="currentColor" strokeWidth="2" />
-                </svg>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight">NAUTICA</span>
-                <span className="text-sm font-medium tracking-widest opacity-80">CENTER</span>
-              </div>
+            <Link href="/" className="flex items-center mb-6">
+              <img
+                src="/logo.jpeg"
+                alt="Nautica Center"
+                className="h-14 w-auto md:h-16 object-contain"
+              />
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-sm">
               {t('footer.about')}
