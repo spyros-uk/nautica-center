@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
@@ -36,14 +36,61 @@ function useResolvedImages(images: string[], category?: Brand['category'] | stri
   return { resolved, markFailed, fallback }
 }
 
+const SWIPE_THRESHOLD_PX = 48
+
+function useSwipeNavigation(
+  onPrev: () => void,
+  onNext: () => void,
+  enabled: boolean,
+) {
+  const touchStart = useRef<{ x: number; y: number } | null>(null)
+
+  const onTouchStart = useCallback(
+    (event: React.TouchEvent) => {
+      if (!enabled) return
+      const touch = event.touches[0]
+      if (!touch) return
+      touchStart.current = { x: touch.clientX, y: touch.clientY }
+    },
+    [enabled],
+  )
+
+  const onTouchEnd = useCallback(
+    (event: React.TouchEvent) => {
+      if (!enabled || !touchStart.current) return
+      const touch = event.changedTouches[0]
+      if (!touch) return
+
+      const deltaX = touch.clientX - touchStart.current.x
+      const deltaY = touch.clientY - touchStart.current.y
+      touchStart.current = null
+
+      if (Math.abs(deltaX) < SWIPE_THRESHOLD_PX || Math.abs(deltaX) <= Math.abs(deltaY)) {
+        return
+      }
+
+      if (deltaX < 0) {
+        onNext()
+      } else {
+        onPrev()
+      }
+    },
+    [enabled, onNext, onPrev],
+  )
+
+  return { onTouchStart, onTouchEnd }
+}
+
 function GalleryNavButton({
   direction,
   onClick,
   className,
+  minimal = false,
 }: {
   direction: 'prev' | 'next'
   onClick: () => void
   className?: string
+  minimal?: boolean
 }) {
   const Icon = direction === 'prev' ? ChevronLeft : ChevronRight
   const label = direction === 'prev' ? 'Προηγούμενη εικόνα' : 'Επόμενη εικόνα'
@@ -59,12 +106,37 @@ function GalleryNavButton({
         onClick()
       }}
       className={cn(
-        'h-10 w-10 rounded-full bg-background/90 shadow-md backdrop-blur-sm hover:bg-background',
+        minimal
+          ? 'h-7 w-7 rounded-full border-0 bg-white/10 text-white shadow-none backdrop-blur-[2px] hover:bg-white/20 md:h-10 md:w-10 md:bg-background/90 md:text-foreground md:shadow-md md:backdrop-blur-sm md:hover:bg-background'
+          : 'h-10 w-10 rounded-full bg-background/90 shadow-md backdrop-blur-sm hover:bg-background',
         className,
       )}
     >
-      <Icon className="h-5 w-5" />
+      <Icon className={cn(minimal ? 'h-3.5 w-3.5 md:h-5 md:w-5' : 'h-5 w-5')} />
     </Button>
+  )
+}
+
+function GalleryIndexIndicator({
+  current,
+  total,
+  className,
+}: {
+  current: number
+  total: number
+  className?: string
+}) {
+  return (
+    <div
+      className={cn(
+        'pointer-events-none absolute left-1/2 z-10 -translate-x-1/2 rounded-full text-xs font-medium',
+        'bottom-3 bg-black/25 px-2 py-0.5 text-white backdrop-blur-[2px]',
+        'md:bottom-3 md:bg-background/85 md:px-3 md:py-1 md:text-foreground md:shadow-sm md:backdrop-blur-sm',
+        className,
+      )}
+    >
+      {current} / {total}
+    </div>
   )
 }
 
@@ -128,6 +200,8 @@ export function ProductGallery({ images, alt, category }: ProductGalleryProps) {
     setIndex((current) => (current + 1) % resolved.length)
   }, [resolved.length])
 
+  const swipe = useSwipeNavigation(goPrev, goNext, hasMultiple)
+
   useEffect(() => {
     if (!lightboxOpen) return
 
@@ -148,7 +222,11 @@ export function ProductGallery({ images, alt, category }: ProductGalleryProps) {
   return (
     <>
       <div className="space-y-3">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted">
+        <div
+          className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted touch-pan-y"
+          onTouchStart={swipe.onTouchStart}
+          onTouchEnd={swipe.onTouchEnd}
+        >
           <GalleryFrame
             src={resolved[safeIndex]}
             alt={`${alt} — εικόνα ${safeIndex + 1} από ${resolved.length}`}
@@ -162,16 +240,16 @@ export function ProductGallery({ images, alt, category }: ProductGalleryProps) {
               <GalleryNavButton
                 direction="prev"
                 onClick={goPrev}
-                className="absolute left-3 top-1/2 z-10 -translate-y-1/2"
+                minimal
+                className="absolute left-2 top-1/2 z-10 -translate-y-1/2 md:left-3"
               />
               <GalleryNavButton
                 direction="next"
                 onClick={goNext}
-                className="absolute right-3 top-1/2 z-10 -translate-y-1/2"
+                minimal
+                className="absolute right-2 top-1/2 z-10 -translate-y-1/2 md:right-3"
               />
-              <div className="pointer-events-none absolute bottom-3 left-1/2 z-10 -translate-x-1/2 rounded-full bg-background/85 px-3 py-1 text-xs font-medium shadow-sm backdrop-blur-sm">
-                {safeIndex + 1} / {resolved.length}
-              </div>
+              <GalleryIndexIndicator current={safeIndex + 1} total={resolved.length} />
             </>
           )}
         </div>
@@ -229,7 +307,11 @@ export function ProductGallery({ images, alt, category }: ProductGalleryProps) {
             </Button>
           </div>
 
-          <div className="relative min-h-0 flex-1">
+          <div
+            className="relative min-h-0 flex-1 touch-pan-y"
+            onTouchStart={swipe.onTouchStart}
+            onTouchEnd={swipe.onTouchEnd}
+          >
             <GalleryFrame
               src={resolved[safeIndex]}
               alt={`${alt} — εικόνα ${safeIndex + 1} από ${resolved.length}`}
@@ -244,12 +326,14 @@ export function ProductGallery({ images, alt, category }: ProductGalleryProps) {
                 <GalleryNavButton
                   direction="prev"
                   onClick={goPrev}
-                  className="absolute left-4 top-1/2 z-10 -translate-y-1/2"
+                  minimal
+                  className="absolute left-2 top-1/2 z-10 -translate-y-1/2 md:left-4"
                 />
                 <GalleryNavButton
                   direction="next"
                   onClick={goNext}
-                  className="absolute right-4 top-1/2 z-10 -translate-y-1/2"
+                  minimal
+                  className="absolute right-2 top-1/2 z-10 -translate-y-1/2 md:right-4"
                 />
               </>
             )}
