@@ -36,6 +36,31 @@ npm start   # serves ./out locally (requires build first)
 
 This site has no server APIs or ISR: everything is pre-rendered at build time, including `/boats/[brandId]` and `/boats/[brandId]/[modelId]` via `generateStaticParams`.
 
+### Demo password protection
+
+Auth is **HTTP Basic** (the browser’s own sign-in dialog — not a page inside the site). It runs on **Cloudflare Pages** via `functions/_middleware.ts`.
+
+**`npm run dev` does not enable auth** (static export cannot use Next.js proxy/middleware).
+
+#### Test auth locally
+
+```bash
+npm run dev:protected
+```
+
+Open [http://localhost:8788](http://localhost:8788). Credentials are read from **`.dev.vars`** (not `.env.local`):
+
+- **Username:** `demo`
+- **Password:** value in `.dev.vars` → `DEMO_PASSWORD`
+
+#### Cloudflare Pages (production / preview)
+
+1. **Settings → Variables** → add `DEMO_USER` and `DEMO_PASSWORD` (encrypt password).
+2. **Redeploy** (variables apply on new deployments).
+3. Open the `*.pages.dev` URL — the browser should prompt for username/password.
+
+If you open the site and there is **no** prompt, the variables are missing on that environment or the deploy predates setting them.
+
 `package.json` still uses the placeholder name `my-project`; the app metadata and UI copy target **Nautica Center**.
 
 ## Project structure
