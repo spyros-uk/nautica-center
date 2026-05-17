@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { AppProviders } from '@/components/app-providers'
+import { HERO_IMAGE_SRC, HERO_VIDEO_MEDIA_QUERY, HERO_VIDEO_SRC } from '@/lib/hero-media'
 import './globals.css'
 
 const inter = Inter({ 
@@ -55,6 +56,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="el" className="bg-background">
+      <head>
+        <link rel="preload" href={HERO_IMAGE_SRC} as="image" />
+        <link
+          rel="preload"
+          href={HERO_VIDEO_SRC}
+          as="video"
+          type="video/mp4"
+          media={HERO_VIDEO_MEDIA_QUERY}
+        />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <AppProviders>{children}</AppProviders>
       </body>
